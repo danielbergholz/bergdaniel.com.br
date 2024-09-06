@@ -1,4 +1,11 @@
-import { DevTo, GitHub, LinkedIn, Twitter, YouTube } from "@/components/icons"
+import {
+  DevTo,
+  GitHub,
+  LinkedIn,
+  Thunder,
+  Twitter,
+  YouTube
+} from "@/components/icons"
 
 export default function Home() {
   return (
@@ -61,6 +68,15 @@ export default function Home() {
           rel="noopener"
         >
           <LinkedIn width={25} height={25} />
+        </a>
+
+        <a
+          title="TechSchool"
+          href="https://techschool.dev/"
+          target="_blank"
+          rel="noopener"
+        >
+          <Thunder width={23} height={23} />
         </a>
       </section>
     </main>
