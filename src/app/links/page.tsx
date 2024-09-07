@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import {
+  Diamond,
   DevTo,
   GitHub,
   LinkedIn,
@@ -16,11 +17,18 @@ export const metadata: Metadata = {
 
 export default function Links() {
   return (
-    <main className="my-32 md:my-44">
+    <main className="my-24 md:my-36">
       <section
         aria-label="Social Media Links"
         className="flex flex-col items-center gap-4"
       >
+        <Link
+          title="Premium"
+          href="https://www.youtube.com/@DanielBergholz/join"
+        >
+          <Diamond width={25} height={25} />
+        </Link>
+
         <Link title="TechSchool" href="https://techschool.dev/">
           <Thunder width={25} height={25} />
         </Link>
