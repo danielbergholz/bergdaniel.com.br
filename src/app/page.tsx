@@ -10,13 +10,13 @@ import {
 export default function Home() {
   return (
     <main className="text-left w-auto md:w-[500px] mx-auto my-48 md:my-56 flex flex-col gap-3">
-      <h1 className="text-xl md:text-2xl font-bold">Hello</h1>
-      <h2 className="text-sm md:text-base">
+      <h1 className="text-2xl md:text-3xl font-bold">Hello</h1>
+      <h2 className="text-base md:text-xl">
         My name is <span>Daniel Bergholz</span>, I&apos;m a Senior Frontend
         Engineer and Content Creator from Brazil
       </h2>
       <a
-        className="opacity-60 underline w-max text-sm md:text-base"
+        className="opacity-60 underline w-max text-base md:text-xl"
         href="mailto:bergholz.daniel@gmail.com"
         title="Send email to Daniel Bergholz"
         target="_blank"
@@ -31,7 +31,7 @@ export default function Home() {
           target="_blank"
           rel="noopener"
         >
-          <GitHub width={25} height={25} />
+          <GitHub width={28} height={28} />
         </a>
 
         <a
@@ -40,7 +40,7 @@ export default function Home() {
           target="_blank"
           rel="noopener"
         >
-          <YouTube width={25} height={25} />
+          <YouTube width={28} height={28} />
         </a>
 
         <a
@@ -49,7 +49,7 @@ export default function Home() {
           target="_blank"
           rel="noopener"
         >
-          <DevTo width={20} height={20} />
+          <DevTo width={23} height={23} />
         </a>
 
         <a
@@ -58,7 +58,7 @@ export default function Home() {
           target="_blank"
           rel="noopener"
         >
-          <Twitter width={20} height={20} />
+          <Twitter width={25} height={25} />
         </a>
 
         <a
@@ -76,7 +76,7 @@ export default function Home() {
           target="_blank"
           rel="noopener"
         >
-          <Thunder width={23} height={23} />
+          <Thunder width={25} height={25} />
         </a>
       </section>
     </main>

@@ -14,7 +14,7 @@ export default async function Blog() {
   const articles = await getArticles()
 
   return (
-    <main className="my-24 md:my-36 flex flex-col gap-4">
+    <main className="my-20 md:my-36 flex flex-col gap-4">
       {articles.map((article) => (
         <Article key={article.id} article={article} />
       ))}

@@ -10,7 +10,7 @@ export function Nav() {
     pathname === path ? "" : "opacity-60 hover:opacity-100 transition-opacity"
 
   return (
-    <nav className="flex justify-between items-center md:text-xl">
+    <nav className="flex justify-between items-center text-xl md:text-2xl">
       <Link href="/" className="font-bold">
         BERGHOLZ
       </Link>

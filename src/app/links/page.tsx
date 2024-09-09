@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function Links() {
   return (
-    <main className="my-24 md:my-36">
+    <main className="my-20 md:my-36">
       <section
         aria-label="Social Media Links"
         className="flex flex-col items-center gap-4"
@@ -26,34 +26,34 @@ export default function Links() {
           title="Premium"
           href="https://www.youtube.com/@DanielBergholz/join"
         >
-          <Diamond width={25} height={25} />
+          <Diamond width={28} height={28} />
         </Link>
 
         <Link title="TechSchool" href="https://techschool.dev/">
-          <Thunder width={25} height={25} />
+          <Thunder width={28} height={28} />
         </Link>
 
         <Link href="https://www.youtube.com/@DanielBergholz" title="YouTube">
-          <YouTube width={25} height={25} />
+          <YouTube width={28} height={28} />
         </Link>
 
         <Link href="https://github.com/danielbergholz" title="GitHub">
-          <GitHub width={25} height={25} />
+          <GitHub width={28} height={28} />
         </Link>
 
         <Link href="https://dev.to/danielbergholz" title="Blog">
-          <DevTo width={20} height={20} />
+          <DevTo width={23} height={23} />
         </Link>
 
         <Link href="https://twitter.com/danielberg_" title="Twitter">
-          <Twitter width={20} height={20} />
+          <Twitter width={25} height={25} />
         </Link>
 
         <Link
           href="https://www.linkedin.com/in/daniel-gobbi-bergholz/"
           title="LinkedIn"
         >
-          <LinkedIn width={25} height={25} />
+          <LinkedIn width={28} height={28} />
         </Link>
       </section>
     </main>

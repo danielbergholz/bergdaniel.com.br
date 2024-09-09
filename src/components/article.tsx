@@ -12,7 +12,7 @@ export function Article({ article }: Props) {
       target="_blank"
       href={article.url}
       title={article.title}
-      className="border-2 rounded-md border-gray-500 p-4 flex flex-col md:flex-row items-center gap-4 hover:opacity-70 transition-opacity justify-center w-4/5 md:w-[830px] m-auto"
+      className="border-2 rounded-md border-gray-500 p-4 flex flex-col md:flex-row items-center gap-4 hover:opacity-70 transition-opacity justify-center w-[92%] md:w-[830px] m-auto"
     >
       <Image
         src={article.cover_image}
@@ -22,9 +22,9 @@ export function Article({ article }: Props) {
         className="rounded-md"
       />
       <div className="flex flex-col gap-2">
-        <h1 className="font-bold text-base md:text-xl">{article.title}</h1>
-        <p className="opacity-60 text-sm md:text-base">{article.description}</p>
-        <p className="opacity-60 text-xs md:text-sm">
+        <h1 className="font-bold text-xl">{article.title}</h1>
+        <p className="opacity-60 text-base">{article.description}</p>
+        <p className="opacity-60 text-sm">
           {article.reading_time_minutes} minutes read
         </p>
       </div>
