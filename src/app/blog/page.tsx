@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
+
 import { getArticles } from "@/data-access/blog"
+import { Article } from "@/components/article"
 
 export const metadata: Metadata = {
   title: "Blog | Daniel Bergholz",
@@ -12,12 +14,10 @@ export default async function Blog() {
   const articles = await getArticles()
 
   return (
-    <main>
-      <ul>
-        {articles.map((article) => (
-          <li key={article.id}>{article.title}</li>
-        ))}
-      </ul>
+    <main className="my-24 md:my-36 flex flex-col gap-4">
+      {articles.map((article) => (
+        <Article key={article.id} article={article} />
+      ))}
     </main>
   )
 }
