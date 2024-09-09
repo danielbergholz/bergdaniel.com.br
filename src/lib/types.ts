@@ -4,7 +4,7 @@ export type Article = {
   description: string
   readable_publish_date: string
   url: string
-  social_image: string
+  cover_image: string
   reading_time_minutes: number
   tag_list: string[]
 }
