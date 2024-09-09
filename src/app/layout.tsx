@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
+import { Analytics } from "@vercel/analytics/react"
 
 import { Nav } from "@/components/nav"
 import "./globals.css"
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body className={`${poppins.className} px-6 md:px-10 py-5 md:py-6`}>
         <Nav />
         {children}
+        <Analytics />
       </body>
     </html>
   )
