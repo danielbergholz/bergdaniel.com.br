@@ -25,11 +25,6 @@ export function Nav() {
             blog
           </Link>
         </li>
-        <li>
-          <Link href="/courses" className={activeStyle("/courses")}>
-            courses
-          </Link>
-        </li>
       </ul>
     </nav>
   )
