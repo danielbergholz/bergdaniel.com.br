@@ -1,3 +1,24 @@
-const BASE_URL = "https://www.googleapis.com/youtube/v3"
+import { Playlists } from "@/lib/types"
+
 const API_KEY = process.env.YOUTUBE_API_KEY
 const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID
+const BASE_URL = "https://www.googleapis.com/youtube/v3"
+const PLAYLISTS_URL = `${BASE_URL}/playlists?part=snippet&maxResults=50&key=${API_KEY}&channelId=${CHANNEL_ID}`
+
+const getPlaylists = async () => {
+  const response = await fetch(PLAYLISTS_URL)
+  const data: Playlists = await response.json()
+  return data.items
+}
+
+export const getCourses = async () => {
+  const playlists = await getPlaylists()
+  const englishCourses = playlists.filter((playlist) =>
+    playlist.snippet.title.toLowerCase().includes("course")
+  )
+  const portugueseCourses = playlists.filter((playlist) =>
+    playlist.snippet.title.toLowerCase().includes("curso")
+  )
+
+  return { englishCourses, portugueseCourses }
+}
