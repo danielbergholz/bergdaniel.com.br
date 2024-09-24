@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Daniel Bergholz's blog"
 }
 
-export const revalidate = 60 * 60 * 24 * 7 // one week
+export const revalidate = 60 * 60 * 24 // one day
 
 export default async function Blog() {
   const articles = await getArticles()
