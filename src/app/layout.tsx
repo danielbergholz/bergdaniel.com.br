@@ -14,9 +14,15 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Daniel Bergholz",
     title: "Daniel Bergholz",
-    url: "https://danielbergholz.com",
+    url: "https://bergdaniel.com.br",
     description:
-      "Daniel Bergholz is a Senior Frontend Engineer and Content Creator"
+      "Daniel Bergholz is a Senior Frontend Engineer and Content Creator",
+    images: {
+      url: "https://bergdaniel.com.br/logo.png",
+      width: 400,
+      height: 400,
+      alt: "Daniel Bergholz logo"
+    }
   }
 }
 
