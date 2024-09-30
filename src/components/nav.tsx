@@ -14,6 +14,7 @@ export function Nav() {
       <Link href="/" className="font-bold">
         BERGHOLZ
       </Link>
+
       <ul className="flex space-x-2 md:space-x-4">
         <li>
           <Link href="/links" className={activeStyle("/links")}>
