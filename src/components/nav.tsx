@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { HamburguerMenu } from "./hamburguer-menu"
+
 export function Nav() {
   const pathname = usePathname()
 
@@ -14,7 +16,8 @@ export function Nav() {
       <Link href="/" className="font-bold">
         BERGHOLZ
       </Link>
-      <ul className="flex space-x-2 md:space-x-4">
+
+      <ul className="hidden sm:flex space-x-2 md:space-x-4">
         <li>
           <Link href="/links" className={activeStyle("/links")}>
             links
@@ -31,6 +34,8 @@ export function Nav() {
           </Link>
         </li>
       </ul>
+
+      <HamburguerMenu pathname={pathname} />
     </nav>
   )
 }
