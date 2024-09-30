@@ -17,7 +17,9 @@ const config: Config = {
         green: {
           dark: "var(--color-green-dark)",
           light: "var(--color-green-light)"
-        }
+        },
+        foreground: "rgb(var(--foreground-rgb))",
+        background: "rgb(var(--background-rgb))"
       }
     }
   },
