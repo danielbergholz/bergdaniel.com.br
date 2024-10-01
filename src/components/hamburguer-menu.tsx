@@ -13,10 +13,11 @@ export function HamburguerMenu({ pathname, ...rest }: Props) {
 
   const toggleMenu = () => setIsOpen(!isOpen)
 
-  const activeStyle = (path: string) => (pathname === path ? "" : "opacity-60")
+  const activeStyle = (path: string) =>
+    pathname === path ? "" : "opacity-60 dark:opacity-70"
 
   return (
-    <div className="sm:hidden" {...rest}>
+    <div className="sm:hidden flex" {...rest}>
       <button
         onClick={toggleMenu}
         className="text-2xl bg-transparent border-none cursor-pointer"

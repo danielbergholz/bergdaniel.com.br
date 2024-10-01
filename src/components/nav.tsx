@@ -7,7 +7,9 @@ export function Nav() {
   const pathname = usePathname()
 
   const activeStyle = (path: string) =>
-    pathname === path ? "" : "opacity-60 hover:opacity-100 transition-opacity"
+    pathname === path
+      ? ""
+      : "opacity-60 dark:opacity-70 hover:opacity-100 transition-opacity"
 
   return (
     <nav className="flex justify-between items-center text-xl md:text-2xl">
