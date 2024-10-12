@@ -35,7 +35,7 @@ export default function Home() {
         </a>
 
         <a
-          href="https://twitter.com/danielberg_"
+          href="https://twitter.com/danielbergholz"
           title="X (Formerly Twitter)"
           target="_blank"
           rel="noopener"

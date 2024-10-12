@@ -37,7 +37,7 @@ export default function Links() {
           <YouTube width={28} height={28} />
         </Link>
 
-        <Link href="https://twitter.com/danielberg_" title="Twitter">
+        <Link href="https://twitter.com/danielbergholz" title="Twitter">
           <Twitter width={25} height={25} />
         </Link>
 

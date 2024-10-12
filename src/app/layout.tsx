@@ -18,10 +18,22 @@ export const metadata: Metadata = {
     description:
       "Daniel Bergholz is a Senior Frontend Engineer and Content Creator",
     images: {
-      url: "https://bergdaniel.com.br/logo.png",
-      width: 400,
-      height: 400,
-      alt: "Daniel Bergholz logo"
+      url: "https://bergdaniel.com.br/og.png",
+      width: 1200,
+      height: 630
+    }
+  },
+  twitter: {
+    site: "@danielbergholz",
+    creator: "@danielbergholz",
+    card: "summary_large_image",
+    title: "Daniel Bergholz",
+    description:
+      "Daniel Bergholz is a Senior Frontend Engineer and Content Creator",
+    images: {
+      url: "https://bergdaniel.com.br/og.png",
+      width: 1200,
+      height: 630
     }
   }
 }
