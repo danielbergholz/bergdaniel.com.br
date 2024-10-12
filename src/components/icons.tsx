@@ -125,8 +125,8 @@ export function LinkedIn(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
+      viewBox="0 0 24 24"
       fill="rgb(var(--foreground-rgb))"
-      data-supported-dps="24x24"
       aria-label="LinkedIn"
       {...props}
     >
@@ -138,18 +138,18 @@ export function LinkedIn(props: React.SVGProps<SVGSVGElement>) {
 export function Twitter({ fill, ...rest }: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="32"
-      height="32"
+      width="28"
+      height="28"
+      viewBox="0 0 24 24"
       fill="none"
-      viewBox="0 0 512 512"
+      xmlns="http://www.w3.org/2000/svg"
       aria-label="X (Formerly Twitter)"
       {...rest}
     >
       <path
+        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
         fill={fill || "rgb(var(--foreground-rgb))"}
-        d="M459.583 149.216c.312 4.629.312 9.258.312 13.93 0 142.347-105.665 306.515-298.88 306.515v-.085C103.939 469.661 48.049 452.895 0 421.281c8.3 1.024 16.64 1.536 25.002 1.557 47.3.043 93.248-16.233 130.46-46.204-44.95-.875-84.366-30.931-98.136-74.811a102.2 102.2 0 0 0 47.424-1.855c-49.005-10.154-84.262-54.311-84.262-105.592v-1.366c14.602 8.341 30.951 12.97 47.675 13.482-46.156-31.635-60.384-94.606-32.511-143.84 53.332 67.302 132.019 108.216 216.49 112.546-8.466-37.416 3.099-76.623 30.389-102.925 42.308-40.786 108.848-38.696 148.618 4.671 23.525-4.757 46.073-13.61 66.707-26.152-7.842 24.936-24.253 46.119-46.177 59.579A204.9 204.9 0 0 0 512 93.413c-14.103 21.673-31.866 40.551-52.417 55.803"
-      />
+      ></path>
     </svg>
   )
 }

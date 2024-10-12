@@ -26,15 +26,6 @@ export default function Home() {
       </a>
       <section aria-label="Social Media" className="flex items-center gap-2">
         <a
-          href="https://github.com/danielbergholz"
-          title="GitHub"
-          target="_blank"
-          rel="noopener"
-        >
-          <GitHub width={28} height={28} />
-        </a>
-
-        <a
           href="https://www.youtube.com/@DanielBergholz"
           title="YouTube"
           target="_blank"
@@ -44,21 +35,12 @@ export default function Home() {
         </a>
 
         <a
-          href="https://dev.to/danielbergholz"
-          title="Blog"
-          target="_blank"
-          rel="noopener"
-        >
-          <DevTo width={23} height={23} />
-        </a>
-
-        <a
           href="https://twitter.com/danielberg_"
           title="X (Formerly Twitter)"
           target="_blank"
           rel="noopener"
         >
-          <Twitter width={25} height={25} />
+          <Twitter width={24} height={24} />
         </a>
 
         <a
@@ -71,12 +53,12 @@ export default function Home() {
         </a>
 
         <a
-          title="TechSchool"
-          href="https://techschool.dev/"
+          href="https://github.com/danielbergholz"
+          title="GitHub"
           target="_blank"
           rel="noopener"
         >
-          <Thunder width={25} height={25} />
+          <GitHub width={28} height={28} />
         </a>
       </section>
     </main>

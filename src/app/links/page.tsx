@@ -37,14 +37,6 @@ export default function Links() {
           <YouTube width={28} height={28} />
         </Link>
 
-        <Link href="https://github.com/danielbergholz" title="GitHub">
-          <GitHub width={28} height={28} />
-        </Link>
-
-        <Link href="https://dev.to/danielbergholz" title="Blog">
-          <DevTo width={23} height={23} />
-        </Link>
-
         <Link href="https://twitter.com/danielberg_" title="Twitter">
           <Twitter width={25} height={25} />
         </Link>
@@ -54,6 +46,14 @@ export default function Links() {
           title="LinkedIn"
         >
           <LinkedIn width={28} height={28} />
+        </Link>
+
+        <Link href="https://dev.to/danielbergholz" title="Blog">
+          <DevTo width={23} height={23} />
+        </Link>
+
+        <Link href="https://github.com/danielbergholz" title="GitHub">
+          <GitHub width={28} height={28} />
         </Link>
       </section>
     </main>
