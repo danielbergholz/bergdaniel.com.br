@@ -17,6 +17,11 @@ export type Playlists = {
 export type Video = {
   id: string
   snippet: Snippet
+  contentDetails: ContentDetails
+}
+
+type ContentDetails = {
+  itemCount: number
 }
 
 type Snippet = {

@@ -14,27 +14,15 @@ export default async function Courses() {
   const { englishCourses, portugueseCourses } = await getCourses()
 
   return (
-    <main className="my-14 md:my-16 w-[72%] m-auto flex flex-col items-center">
-      <h1 className="text-4xl md:text-5xl mb-2 md:mb-6 w-max">🇺🇸</h1>
-      <ul
-        aria-label="Courses in English"
-        className="flex flex-wrap gap-4 md:gap-6 items-center"
-      >
+    <main className="my-16 md:my-36 w-[72%] m-auto flex flex-col items-center">
+      <div className="flex flex-wrap gap-4 md:gap-6 items-center justify-center">
         {englishCourses.map((playlist) => (
-          <Video video={playlist} key={playlist.id} />
+          <Video video={playlist} key={playlist.id} locale="en" />
         ))}
-      </ul>
-      <h1 className="text-4xl md:text-5xl mb-2 md:mb-6 mt-8 md:mt-10 w-max">
-        🇧🇷
-      </h1>
-      <ul
-        aria-label="Courses in Brazilian Portuguese"
-        className="flex flex-wrap gap-4 md:gap-6 items-center justify-center"
-      >
         {portugueseCourses.map((playlist) => (
-          <Video video={playlist} key={playlist.id} />
+          <Video video={playlist} key={playlist.id} locale="pt" />
         ))}
-      </ul>
+      </div>
     </main>
   )
 }
