@@ -31,7 +31,7 @@ export function Video({ video, locale, featured = false }: Props) {
           </p>
         </div>
 
-        <p className="text-sm sm:text-base">{description}</p>
+        <p>{description}</p>
 
         <div className="flex justify-between items-center">
           <p>

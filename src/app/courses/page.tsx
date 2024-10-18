@@ -38,7 +38,7 @@ export default async function Courses() {
   const { englishCourses, portugueseCourses } = await getCourses()
 
   return (
-    <main className="my-16 md:my-36 max-w-[978px] m-auto flex flex-col items-center">
+    <main className="my-14 md:my-28 max-w-[978px] m-auto flex flex-col items-center">
       {englishCourses.map((playlist) => (
         <Video video={playlist} key={playlist.id} locale="en" featured />
       ))}

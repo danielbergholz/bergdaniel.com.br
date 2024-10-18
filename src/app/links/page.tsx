@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function Links() {
   return (
-    <main className="my-20 md:my-36">
+    <main className="my-16 md:my-32">
       <section
         aria-label="Social Media Links"
         className="flex flex-col items-center gap-4"

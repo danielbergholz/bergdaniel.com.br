@@ -9,7 +9,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="text-left w-auto md:w-[500px] mx-auto my-48 md:my-56 flex flex-col gap-3">
+    <main className="text-left w-auto md:w-[500px] mx-auto my-44 md:my-52 flex flex-col gap-3">
       <h1 className="text-2xl md:text-3xl font-bold">Hello</h1>
       <h2 className="text-base md:text-xl">
         My name is <span>Daniel Bergholz</span>, I&apos;m a Senior Frontend
