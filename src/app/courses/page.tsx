@@ -14,11 +14,12 @@ export default async function Courses() {
   const { englishCourses, portugueseCourses } = await getCourses()
 
   return (
-    <main className="my-16 md:my-36 w-[72%] m-auto flex flex-col items-center">
-      <div className="flex flex-wrap gap-4 md:gap-6 items-center justify-center">
-        {englishCourses.map((playlist) => (
-          <Video video={playlist} key={playlist.id} locale="en" />
-        ))}
+    <main className="my-16 md:my-36 max-w-[978px] m-auto flex flex-col items-center">
+      {englishCourses.map((playlist) => (
+        <Video video={playlist} key={playlist.id} locale="en" featured />
+      ))}
+
+      <div className="flex flex-wrap gap-4 justify-center lg:justify-between mt-4 sm:mt-6">
         {portugueseCourses.map((playlist) => (
           <Video video={playlist} key={playlist.id} locale="pt" />
         ))}

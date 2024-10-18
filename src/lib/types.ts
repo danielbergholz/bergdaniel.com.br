@@ -35,6 +35,8 @@ type Thumbnails = {
   default: Thumbnail
   standard: Thumbnail
   medium: Thumbnail
+  high: Thumbnail
+  maxres: Thumbnail
 }
 
 type Thumbnail = {
