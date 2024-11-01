@@ -8,15 +8,13 @@ const poppins = Poppins({ weight: ["400", "700"], subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Daniel Bergholz",
-  description:
-    "Daniel Bergholz is a Senior Frontend Engineer and Content Creator",
+  description: "Daniel Bergholz is a Fullstack Developer and Content Creator",
   openGraph: {
     type: "website",
     siteName: "Daniel Bergholz",
     title: "Daniel Bergholz",
     url: "https://bergdaniel.com.br",
-    description:
-      "Daniel Bergholz is a Senior Frontend Engineer and Content Creator",
+    description: "Daniel Bergholz is a Fullstack Developer and Content Creator",
     images: {
       url: "https://bergdaniel.com.br/og.png",
       width: 1200,
@@ -28,8 +26,7 @@ export const metadata: Metadata = {
     creator: "@danielbergholz",
     card: "summary_large_image",
     title: "Daniel Bergholz",
-    description:
-      "Daniel Bergholz is a Senior Frontend Engineer and Content Creator",
+    description: "Daniel Bergholz is a Fullstack Developer and Content Creator",
     images: {
       url: "https://bergdaniel.com.br/og.png",
       width: 1200,
