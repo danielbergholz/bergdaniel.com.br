@@ -5,9 +5,15 @@ type Props = {
   video: VideoType
   locale: "en" | "pt"
   featured?: boolean
+  newCourse?: boolean
 }
 
-export function Video({ video, locale, featured = false }: Props) {
+export function Video({
+  video,
+  locale,
+  featured = false,
+  newCourse = false
+}: Props) {
   const { title, description, thumbnails } = video.snippet
   const { itemCount } = video.contentDetails
   const thumbnail = featured ? thumbnails.maxres : thumbnails.medium
@@ -38,9 +44,11 @@ export function Video({ video, locale, featured = false }: Props) {
             <span className="text-green-light dark:text-green-dark border-green-light dark:border-green-dark border rounded px-2 mr-2 text-sm sm:text-base">
               Free
             </span>
-            <span className="text-yellow-500 border-yellow-500 border rounded px-2 text-sm sm:text-base">
-              New
-            </span>
+            {newCourse && (
+              <span className="text-yellow-500 border-yellow-500 border rounded px-2 text-sm sm:text-base">
+                New
+              </span>
+            )}
           </p>
           <p className="opacity-60 text-sm sm:text-base">{itemCount} videos</p>
         </div>

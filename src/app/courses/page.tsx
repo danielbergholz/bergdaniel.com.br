@@ -39,9 +39,17 @@ export default async function Courses() {
 
   return (
     <main className="my-14 md:my-28 max-w-[978px] m-auto flex flex-col items-center">
-      {englishCourses.map((playlist) => (
-        <Video video={playlist} key={playlist.id} locale="en" featured />
-      ))}
+      <div className="flex flex-col gap-4">
+        {englishCourses.map((playlist, index) => (
+          <Video
+            video={playlist}
+            key={playlist.id}
+            newCourse={index === 0}
+            locale="en"
+            featured
+          />
+        ))}
+      </div>
 
       <div className="flex flex-wrap gap-4 justify-center lg:justify-between mt-4 sm:mt-6">
         {portugueseCourses.map((playlist) => (
