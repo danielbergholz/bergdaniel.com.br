@@ -9,7 +9,9 @@ const oneDay = 60 * 60 * 24
 
 const getPlaylists = async () => {
   const response = await fetch(PLAYLISTS_URL, {
-    cache: "no-store"
+    next: {
+      revalidate: oneDay
+    }
   })
   const data: Playlists = await response.json()
   return data.items
