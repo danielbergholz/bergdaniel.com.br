@@ -29,7 +29,7 @@ export function Nav() {
           </Link>
         </li>
         <li>
-          <Link href="/courses" className={activeStyle("/courses")}>
+          <Link href="/courses" className={activeStyle("/courses")} prefetch>
             courses
           </Link>
         </li>
