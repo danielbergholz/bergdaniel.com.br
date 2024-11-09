@@ -1,8 +1,9 @@
+import { Banner } from "@/components/banner"
 import { GitHub, LinkedIn, Twitter, YouTube } from "@/components/icons"
 
 export default function Home() {
   return (
-    <main className="text-left w-auto md:w-[500px] mx-auto my-44 md:my-52 flex flex-col gap-3">
+    <main className="text-left w-auto md:w-[500px] mx-auto my-36 md:my-44 flex flex-col gap-3">
       <h1 className="text-2xl md:text-3xl font-bold">Hello</h1>
       <h2 className="text-base md:text-xl">
         My name is <span>Daniel Bergholz</span>, I&apos;m a Fullstack Developer
@@ -54,6 +55,12 @@ export default function Home() {
           <GitHub width={28} height={28} />
         </a>
       </section>
+
+      <Banner
+        text="Get early access to my upcoming courses"
+        href="https://www.youtube.com/@DanielBergholz/join"
+        className="mt-8"
+      />
     </main>
   )
 }
