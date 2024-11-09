@@ -32,8 +32,6 @@ export const metadata: Metadata = {
   }
 }
 
-export const revalidate = 60 * 60 * 24 // 1 day
-
 export default async function Courses() {
   const { englishCourses, portugueseCourses } = await getCourses()
 
