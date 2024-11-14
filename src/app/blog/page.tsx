@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Daniel Bergholz's blog"
 }
 
-export const dynamic = "force-dynamic"
+export const revalidate = 86400 // 1 day
 
 export default async function Blog() {
   const articles = await getArticles()

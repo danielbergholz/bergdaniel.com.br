@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   }
 }
 
-export const dynamic = "force-dynamic"
+export const revalidate = 86400 // 1 day
 
 export default async function Courses() {
   const { englishCourses, portugueseCourses } = await getCourses()
