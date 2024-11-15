@@ -8,7 +8,7 @@ export const getArticles = async () => {
   const response = await fetch(ARTICLES_URL, {
     headers: {
       "api-key": API_KEY
-    }
+    } as HeadersInit
   })
   const articles: Article[] = await response.json()
   return articles
