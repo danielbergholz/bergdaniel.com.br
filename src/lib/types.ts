@@ -2,7 +2,7 @@ export type Article = {
   id: number
   title: string
   description: string
-  readable_publish_date: string
+  published_at: string
   url: string
   cover_image: string
   social_image: string

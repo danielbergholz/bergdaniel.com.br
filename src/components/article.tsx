@@ -1,4 +1,5 @@
 import { Article as ArticleType } from "@/lib/types"
+import { readableDate } from "@/lib/utils"
 
 type Props = {
   article: ArticleType
@@ -16,7 +17,7 @@ export function Article({ article }: Props) {
       <h1 className="font-bold text-xl">{article.title}</h1>
       <p className="opacity-60 text-base">{article.description}</p>
       <p className="opacity-60 text-sm flex justify-between w-full">
-        <span>{article.readable_publish_date}</span>
+        <span>{readableDate(article.published_at)}</span>
         <span>{article.reading_time_minutes} minutes read</span>
       </p>
     </a>
