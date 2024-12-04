@@ -11,7 +11,7 @@
     "check": "npm run lint && npm run typecheck"
   },
   "dependencies": {
-    "next": "14.2.13",
+    "next": "15.0.3",
     "react": "^18",
     "react-dom": "^18"
   },
