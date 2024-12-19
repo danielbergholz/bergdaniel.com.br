@@ -90,7 +90,7 @@ export function Video({
           <p className="text-green-light dark:text-green-dark border-green-light dark:border-green-dark border rounded px-2 text-sm">
             Free
           </p>
-          <p className="opacity-60 text-sm">{itemCount} videos</p>
+          <p className="opacity-60 text-sm">{itemCount} {itemCount === 1 ? "video" : "videos"}</p>
         </div>
       </div>
     </a>
