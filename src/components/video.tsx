@@ -41,11 +41,11 @@ export function Video({
 
         <div className="flex justify-between items-center">
           <p>
-            <span className="text-green-light dark:text-green-dark border-green-light dark:border-green-dark border rounded px-2 mr-2 text-sm sm:text-base">
+            <span className="text-green-light dark:text-green-dark border-green-light dark:border-green-dark border rounded-sm px-2 mr-2 text-sm sm:text-base">
               Free
             </span>
             {newCourse && (
-              <span className="text-yellow-500 border-yellow-500 border rounded px-2 text-sm sm:text-base">
+              <span className="text-yellow-500 border-yellow-500 border rounded-sm px-2 text-sm sm:text-base">
                 New
               </span>
             )}
@@ -87,7 +87,7 @@ export function Video({
           </p>
         </div>
         <div className="flex justify-between items-center">
-          <p className="text-green-light dark:text-green-dark border-green-light dark:border-green-dark border rounded px-2 text-sm">
+          <p className="text-green-light dark:text-green-dark border-green-light dark:border-green-dark border rounded-sm px-2 text-sm">
             Free
           </p>
           <p className="opacity-60 text-sm">{itemCount} {itemCount === 1 ? "video" : "videos"}</p>
