@@ -1,0 +1,6 @@
+# https://bergdaniel.com.br llms.txt
+
+- [Daniel Bergholz](https://bergdaniel.com.br/): Fullstack developer and content creator from Brazil.
+- [Free Programming Courses](https://bergdaniel.com.br/courses): Explore free courses on Elixir, Phoenix, React, and more.
+- [Useful Links](https://bergdaniel.com.br/links): Links to premium content, tech resources, and social media.
+- [TechSchool and Developer Journey](https://bergdaniel.com.br/blog): Explore free programming courses and personal development stories.

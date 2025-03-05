@@ -1,0 +1,94 @@
+# https://bergdaniel.com.br llms-full.txt
+
+## Daniel Bergholz
+# Hello
+
+## My name is Daniel Bergholz, I'm a Fullstack Developer and Content Creator from Brazil
+
+ [Contact me](mailto:bergholz.daniel@gmail.com "Send email to Daniel Bergholz")[YouTube](https://www.youtube.com/@DanielBergholz "YouTube")[X (Formerly Twitter)](https://twitter.com/danielbergholz "X (Formerly Twitter)")[LinkedIn](https://www.linkedin.com/in/daniel-gobbi-bergholz/ "LinkedIn")[GitHub](https://github.com/danielbergholz "GitHub") [Get early access to my upcoming courses](https://www.youtube.com/@DanielBergholz/join)
+
+## Free Programming Courses
+[**Phoenix crash course** \\
+\\
+🇺🇸\\
+\\
+Learn the powerful Phoenix framework for Elixir in this crash course, covering key concepts like routing, controllers, HEEx components, Ecto, authentication, internationalization, and JSON APIs. With a mix of theory and hands-on examples, you'll gain both foundational knowledge and practical skills to build robust web applications\\
+\\
+FreeNew\\
+\\
+21 videos\\
+\\
+![Phoenix crash course](https://bergdaniel.com.br/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FhsYrr1OgQ28%2Fmaxresdefault.jpg&w=828&q=75)](https://www.youtube.com/playlist?list=PLbV6TI03ZWYXKCJePfD8G34hyWdW_WLFk "Phoenix crash course") [**Elixir crash course** \\
+\\
+🇺🇸\\
+\\
+Learn the fundamentals of Elixir in this free crash course! Whether you're new to functional programming or want to quickly get productive, this course covers essential topics like pattern matching, immutability, and recursion. Perfect for developers looking to build scalable and fault-tolerant systems\\
+\\
+Free\\
+\\
+21 videos\\
+\\
+![Elixir crash course](https://bergdaniel.com.br/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FQ0Z1jqv6LW0%2Fmaxresdefault.jpg&w=828&q=75)](https://www.youtube.com/playlist?list=PLbV6TI03ZWYVQEC_Txq_cV0Uy_s16b0d3 "Elixir crash course")
+
+[![Curso de React](https://bergdaniel.com.br/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FmXuxPrs6oHE%2Fmqdefault.jpg&w=640&q=75)\\
+\\
+**Curso de React** \\
+\\
+🇧🇷\\
+\\
+Free\\
+\\
+6videos](https://www.youtube.com/playlist?list=PLbV6TI03ZWYVIiHL5XBvefrVwhcLo7XYN "Curso de React") [![Curso de NPM](https://bergdaniel.com.br/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fg-V5qptW2oo%2Fmqdefault.jpg&w=640&q=75)\\
+\\
+**Curso de NPM** \\
+\\
+🇧🇷\\
+\\
+Free\\
+\\
+8videos](https://www.youtube.com/playlist?list=PLbV6TI03ZWYVjruiKLeb3m2rEXeYsG6RQ "Curso de NPM") [![Curso de Typescript](https://bergdaniel.com.br/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2F3LPWQtvxHOk%2Fmqdefault.jpg&w=640&q=75)\\
+\\
+**Curso de Typescript** \\
+\\
+🇧🇷\\
+\\
+Free\\
+\\
+11videos](https://www.youtube.com/playlist?list=PLbV6TI03ZWYWwU5p9ZBH8oJTCjgneX53u "Curso de Typescript") [![Curso de Trello](https://bergdaniel.com.br/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fck7WWHaAgpU%2Fmqdefault.jpg&w=640&q=75)\\
+\\
+**Curso de Trello** \\
+\\
+🇧🇷\\
+\\
+Free\\
+\\
+1video](https://www.youtube.com/playlist?list=PLbV6TI03ZWYX0JAlemRNK6IXoeXscW5C8 "Curso de Trello") [![Curso de Javascript](https://bergdaniel.com.br/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FpL9nX6Ac2Lc%2Fmqdefault.jpg&w=640&q=75)\\
+\\
+**Curso de Javascript** \\
+\\
+🇧🇷\\
+\\
+Free\\
+\\
+14videos](https://www.youtube.com/playlist?list=PLbV6TI03ZWYVP6EByYoUxZJeZaqitHi9r "Curso de Javascript") [![Curso de Terminal Linux](https://bergdaniel.com.br/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FVRR3V42EdSg%2Fmqdefault.jpg&w=640&q=75)\\
+\\
+**Curso de Terminal Linux** \\
+\\
+🇧🇷\\
+\\
+Free\\
+\\
+8videos](https://www.youtube.com/playlist?list=PLbV6TI03ZWYXXwbP2TNTbviUaFh6YqqVt "Curso de Terminal Linux")
+
+## Useful Links
+[Premium](https://www.youtube.com/@DanielBergholz/join "Premium") [TechSchool](https://techschool.dev/ "TechSchool") [YouTube](https://www.youtube.com/@DanielBergholz "YouTube") [Twitter](https://twitter.com/danielbergholz "Twitter") [LinkedIn](https://www.linkedin.com/in/daniel-gobbi-bergholz/ "LinkedIn") [Blog](https://dev.to/danielbergholz "Blog") [GitHub](https://github.com/danielbergholz "GitHub")
+
+## TechSchool and Developer Journey
+[**Announcing TechSchool: A free and open-source platform to learn programming** \\
+Since 2019 I have published free courses on my YouTube channel. Many times, people have commented on...\\
+\\
+March 5, 20242 minutes read](https://dev.to/danielbergholz/announcing-techschool-a-free-and-open-source-platform-to-learn-programming-47fk "Announcing TechSchool: A free and open-source platform to learn programming") [**From Next.js to Rails then Elixir: My journey through React.js burnout** \\
+I've been a web developer since 2019. I used React.js and React-based frameworks like Gatsby, Next,...\\
+\\
+January 10, 202413 minutes read](https://dev.to/danielbergholz/from-nextjs-to-rails-then-elixir-my-journey-through-reactjs-burnout-h8d "From Next.js to Rails then Elixir: My journey through React.js burnout")
+
