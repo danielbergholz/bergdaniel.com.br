@@ -3,9 +3,10 @@ import { readableDate } from "@/lib/utils"
 
 type Props = {
   article: ArticleType
+  newPost?: boolean
 }
 
-export function Article({ article }: Props) {
+export function Article({ article, newPost = false }: Props) {
   return (
     <a
       rel="noopener"
@@ -16,10 +17,17 @@ export function Article({ article }: Props) {
     >
       <h1 className="font-bold text-xl">{article.title}</h1>
       <p className="opacity-60 text-base">{article.description}</p>
-      <p className="opacity-60 text-sm flex justify-between w-full">
-        <span>{readableDate(article.published_at)}</span>
-        <span>{article.reading_time_minutes} minutes read</span>
-      </p>
+      <div className="flex justify-between w-full items-center">
+        <p className="opacity-60 text-sm">
+          {readableDate(article.published_at)} · {article.reading_time_minutes}{" "}
+          minutes read
+        </p>
+        {newPost && (
+          <span className="text-yellow-500 border-yellow-500 border rounded-sm px-2 text-sm">
+            New
+          </span>
+        )}
+      </div>
     </a>
   )
 }

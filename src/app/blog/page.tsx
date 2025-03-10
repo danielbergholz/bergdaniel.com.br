@@ -15,8 +15,8 @@ export default async function Blog() {
 
   return (
     <main className="my-14 md:my-32 flex flex-col gap-4">
-      {articles.map((article) => (
-        <Article key={article.id} article={article} />
+      {articles.map((article, index) => (
+        <Article key={article.id} article={article} newPost={index === 0} />
       ))}
     </main>
   )
