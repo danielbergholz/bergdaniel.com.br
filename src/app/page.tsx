@@ -55,12 +55,6 @@ export default function Home() {
           <GitHub width={28} height={28} />
         </a>
       </section>
-
-      <Banner
-        text="Get early access to my upcoming courses"
-        href="https://www.youtube.com/@DanielBergholz/join"
-        className="mt-8"
-      />
     </main>
   )
 }
