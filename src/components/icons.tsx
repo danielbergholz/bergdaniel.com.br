@@ -6,6 +6,8 @@ export function Diamond({ fill, ...rest }: React.SVGProps<SVGSVGElement>) {
       viewBox="0 0 28 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Diamond"
       {...rest}
     >
       <path
@@ -24,6 +26,7 @@ export function Thunder(props: React.SVGProps<SVGSVGElement>) {
       height="35"
       fill="rgb(var(--foreground-rgb))"
       viewBox="0 0 24 24"
+      role="img"
       aria-label="Thunder"
       {...props}
     >
@@ -40,6 +43,7 @@ export function GitHub(props: React.SVGProps<SVGSVGElement>) {
       height="35"
       fill="rgb(var(--foreground-rgb))"
       viewBox="0 0 24 24"
+      role="img"
       aria-label="GitHub"
       {...props}
     >
@@ -55,6 +59,7 @@ export function DevTo(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       width="35"
       height="35"
+      role="img"
       aria-label="dev.to"
       viewBox="0 0 512 512"
       fill="rgb(var(--foreground-rgb))"
@@ -77,6 +82,7 @@ export function Discord({ fill, ...rest }: React.SVGProps<SVGSVGElement>) {
       height="35"
       fill="none"
       viewBox="0 0 24 24"
+      role="img"
       aria-label="Discord"
       {...rest}
     >
@@ -96,6 +102,8 @@ export function Email(props: React.SVGProps<SVGSVGElement>) {
       height="26"
       fill="none"
       viewBox="0 0 24 24"
+      role="img"
+      aria-label="Email"
       {...props}
     >
       <path
@@ -127,6 +135,7 @@ export function LinkedIn(props: React.SVGProps<SVGSVGElement>) {
       height="24"
       viewBox="0 0 24 24"
       fill="rgb(var(--foreground-rgb))"
+      role="img"
       aria-label="LinkedIn"
       {...props}
     >
@@ -143,13 +152,14 @@ export function Twitter({ fill, ...rest }: React.SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
       aria-label="X (Formerly Twitter)"
       {...rest}
     >
       <path
         d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
         fill={fill || "rgb(var(--foreground-rgb))"}
-      ></path>
+      />
     </svg>
   )
 }
@@ -161,6 +171,7 @@ export function YouTube({ fill, ...rest }: React.SVGProps<SVGSVGElement>) {
       width="35"
       height="35"
       viewBox="0 0 512 512"
+      role="img"
       aria-label="YouTube"
       {...rest}
     >
@@ -182,6 +193,7 @@ export function Hamburguer(props: React.SVGProps<SVGSVGElement>) {
       strokeWidth={1.5}
       stroke="currentColor"
       className="size-8"
+      role="img"
       aria-label="Hamburguer"
       {...props}
     >
@@ -203,6 +215,7 @@ export function X(props: React.SVGProps<SVGSVGElement>) {
       strokeWidth={1.5}
       stroke="currentColor"
       className="size-8"
+      role="img"
       aria-label="Close"
       {...props}
     >

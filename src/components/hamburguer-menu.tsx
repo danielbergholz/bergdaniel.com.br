@@ -19,6 +19,7 @@ export function HamburguerMenu({ pathname, ...rest }: Props) {
   return (
     <div className="sm:hidden flex" {...rest}>
       <button
+        type="button"
         onClick={toggleMenu}
         className="text-2xl bg-transparent border-none cursor-pointer"
       >
@@ -32,6 +33,7 @@ export function HamburguerMenu({ pathname, ...rest }: Props) {
       >
         <div className="flex justify-end p-4 text-xl md:text-2xl">
           <button
+            type="button"
             onClick={toggleMenu}
             className="text-2xl bg-transparent border-none cursor-pointer"
           >
@@ -75,7 +77,15 @@ export function HamburguerMenu({ pathname, ...rest }: Props) {
         <div
           className="fixed inset-0 bg-black opacity-50 z-40"
           onClick={toggleMenu}
-        ></div>
+          onKeyDown={(e) => {
+            if (e.key === "Escape") {
+              toggleMenu()
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          aria-label="Close menu"
+        />
       )}
     </div>
   )

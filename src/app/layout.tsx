@@ -114,6 +114,7 @@ export default function RootLayout({
         {/* Structured Data */}
         <script
           type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Safe JSON-LD structured data
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(personSchema)
           }}
@@ -124,7 +125,7 @@ export default function RootLayout({
           defer
           data-domain="bergdaniel.com.br"
           src="https://plausible.io/js/script.js"
-        ></script>
+        />
       </head>
       <body className={`${poppins.className} px-6 md:px-10 py-5 md:py-6`}>
         <Nav />
