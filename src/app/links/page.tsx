@@ -1,7 +1,6 @@
-import type { Metadata } from "next"
 import {
-  Diamond,
   DevTo,
+  Diamond,
   GitHub,
   LinkedIn,
   Thunder,
@@ -9,6 +8,7 @@ import {
   YouTube
 } from "@/components/icons"
 import { Link } from "@/components/link"
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Links | Daniel Bergholz",

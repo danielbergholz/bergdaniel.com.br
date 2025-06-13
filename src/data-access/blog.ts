@@ -1,4 +1,4 @@
-import { Article } from "@/lib/types"
+import type { Article } from "@/lib/types"
 
 const BASE_URL = "https://dev.to/api"
 const ARTICLES_URL = `${BASE_URL}/articles/me/published`

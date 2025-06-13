@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
-import { getArticles } from "@/data-access/blog"
 import { Article } from "@/components/article"
+import { getArticles } from "@/data-access/blog"
 
 export const metadata: Metadata = {
   title: "Blog | Daniel Bergholz",

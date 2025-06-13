@@ -1,5 +1,5 @@
+import type { Video as VideoType } from "@/lib/types"
 import Image from "next/image"
-import { Video as VideoType } from "@/lib/types"
 
 type Props = {
   video: VideoType
@@ -20,7 +20,7 @@ export function Video({
 
   return featured ? (
     <a
-      rel="noopener"
+      rel="noreferrer noopener"
       target="_blank"
       href={`https://www.youtube.com/playlist?list=${video.id}`}
       title={title}
@@ -63,7 +63,7 @@ export function Video({
     </a>
   ) : (
     <a
-      rel="noopener"
+      rel="noreferrer noopener"
       target="_blank"
       href={`https://www.youtube.com/playlist?list=${video.id}`}
       title={title}
@@ -90,7 +90,9 @@ export function Video({
           <p className="text-green-light dark:text-green-dark border-green-light dark:border-green-dark border rounded-sm px-2 text-sm">
             Free
           </p>
-          <p className="opacity-60 text-sm">{itemCount} {itemCount === 1 ? "video" : "videos"}</p>
+          <p className="opacity-60 text-sm">
+            {itemCount} {itemCount === 1 ? "video" : "videos"}
+          </p>
         </div>
       </div>
     </a>

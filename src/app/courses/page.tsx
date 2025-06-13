@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
-import { getCourses } from "@/data-access/youtube"
 import { Video } from "@/components/video"
+import { getCourses } from "@/data-access/youtube"
 
 export const metadata: Metadata = {
   title: "Courses | Daniel Bergholz",

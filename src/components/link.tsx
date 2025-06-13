@@ -11,7 +11,7 @@ export function Link({ href, title, children }: Props) {
       href={href}
       title={title}
       target="_blank"
-      rel="noopener"
+      rel="noreferrer noopener"
     >
       {children}
       <span>{title}</span>

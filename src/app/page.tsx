@@ -14,7 +14,7 @@ export default function Home() {
         href="mailto:bergholz.daniel@gmail.com"
         title="Send email to Daniel Bergholz"
         target="_blank"
-        rel="noopener"
+        rel="noreferrer noopener"
       >
         Contact me
       </a>
@@ -23,7 +23,7 @@ export default function Home() {
           href="https://www.youtube.com/@DanielBergholz"
           title="YouTube"
           target="_blank"
-          rel="noopener"
+          rel="noreferrer noopener"
         >
           <YouTube width={28} height={28} />
         </a>
@@ -32,7 +32,7 @@ export default function Home() {
           href="https://twitter.com/danielbergholz"
           title="X (Formerly Twitter)"
           target="_blank"
-          rel="noopener"
+          rel="noreferrer noopener"
         >
           <Twitter width={24} height={24} />
         </a>
@@ -41,7 +41,7 @@ export default function Home() {
           href="https://www.linkedin.com/in/daniel-gobbi-bergholz/"
           title="LinkedIn"
           target="_blank"
-          rel="noopener"
+          rel="noreferrer noopener"
         >
           <LinkedIn width={25} height={25} />
         </a>
@@ -50,7 +50,7 @@ export default function Home() {
           href="https://github.com/danielbergholz"
           title="GitHub"
           target="_blank"
-          rel="noopener"
+          rel="noreferrer noopener"
         >
           <GitHub width={28} height={28} />
         </a>

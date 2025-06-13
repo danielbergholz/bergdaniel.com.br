@@ -1,4 +1,4 @@
-import { Article as ArticleType } from "@/lib/types"
+import type { Article as ArticleType } from "@/lib/types"
 import { readableDate } from "@/lib/utils"
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 export function Article({ article, newPost = false }: Props) {
   return (
     <a
-      rel="noopener"
+      rel="noreferrer noopener"
       target="_blank"
       href={article.url}
       title={article.title}
