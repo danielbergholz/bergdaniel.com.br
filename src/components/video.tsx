@@ -29,12 +29,13 @@ export function Video({
       <div className="flex flex-col justify-between h-full order-2 md:order-1 gap-2 sm:gap-4">
         <div className="flex items-center justify-between md:justify-normal md:gap-3">
           <h1 className="font-bold text-xl">{title}</h1>
-          <p
+          <span
             className="text-3xl"
+            role="img"
             aria-label={locale === "pt" ? "Brazilian portuguese" : "English"}
           >
             {locale === "pt" ? "🇧🇷" : "🇺🇸"}
-          </p>
+          </span>
         </div>
 
         <p>{description}</p>
@@ -79,12 +80,13 @@ export function Video({
       <div className="flex flex-col gap-2 w-full">
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-xl w-[216px]">{title}</h1>
-          <p
+          <span
             className="text-3xl"
+            role="img"
             aria-label={locale === "pt" ? "Brazilian portuguese" : "English"}
           >
             {locale === "pt" ? "🇧🇷" : "🇺🇸"}
-          </p>
+          </span>
         </div>
         <div className="flex justify-between items-center">
           <p className="text-green-light dark:text-green-dark border-green-light dark:border-green-dark border rounded-sm px-2 text-sm">
