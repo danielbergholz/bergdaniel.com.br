@@ -12,13 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0
     },
     {
-      url: `${baseUrl}/courses`,
+      url: `${baseUrl}/products`,
       lastModified: currentDate,
       changeFrequency: "monthly",
-      priority: 0.8
+      priority: 0.9
     },
     {
-      url: `${baseUrl}/links`,
+      url: `${baseUrl}/courses`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8
@@ -28,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: "yearly",
       priority: 0.6
+    },
+    {
+      url: `${baseUrl}/links`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.5
     }
   ]
 }
