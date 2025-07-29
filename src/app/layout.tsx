@@ -7,17 +7,22 @@ import "./globals.css"
 const poppins = Poppins({ weight: ["400", "700"], subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Daniel Bergholz",
-  description: "Daniel Bergholz is a Fullstack Developer and Content Creator",
+  title: "Daniel Bergholz - Software Engineer, Content Creator & Solopreneur",
+  description:
+    "Daniel Bergholz is a Software Engineer, Content Creator and Solopreneur from Brazil building SaaS products and teaching programming to developers",
   keywords: [
     "Daniel Bergholz",
-    "Fullstack Developer",
+    "Software Engineer",
     "Content Creator",
+    "Solopreneur",
+    "SaaS Products",
+    "CourseShelf",
+    "Programming",
+    "Software Development",
     "React.js",
     "Next.js",
     "Elixir",
     "Phoenix",
-    "Programming",
     "Web Development",
     "JavaScript",
     "TypeScript"
@@ -39,9 +44,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Daniel Bergholz",
-    title: "Daniel Bergholz",
+    title: "Daniel Bergholz - Software Engineer, Content Creator & Solopreneur",
     url: "https://bergdaniel.com.br",
-    description: "Daniel Bergholz is a Fullstack Developer and Content Creator",
+    description:
+      "Daniel Bergholz is a Software Engineer, Content Creator and Solopreneur from Brazil building SaaS products and teaching programming",
     images: {
       url: "https://bergdaniel.com.br/og.png",
       width: 1200,
@@ -52,8 +58,9 @@ export const metadata: Metadata = {
     site: "@danielbergholz",
     creator: "@danielbergholz",
     card: "summary_large_image",
-    title: "Daniel Bergholz",
-    description: "Daniel Bergholz is a Fullstack Developer and Content Creator",
+    title: "Daniel Bergholz - Software Engineer, Content Creator & Solopreneur",
+    description:
+      "Daniel Bergholz is a Software Engineer, Content Creator and Solopreneur from Brazil building SaaS products and teaching programming",
     images: {
       url: "https://bergdaniel.com.br/og.png",
       width: 1200,
@@ -69,18 +76,23 @@ const personSchema = {
   name: "Daniel Bergholz",
   url: "https://bergdaniel.com.br",
   image: "https://bergdaniel.com.br/og.png",
-  jobTitle: "Fullstack Developer",
-  description: "Fullstack Developer and Content Creator from Brazil",
+  jobTitle: ["Software Engineer", "Content Creator", "Solopreneur"],
+  description:
+    "Software Engineer, Content Creator and Solopreneur from Brazil, building SaaS products while teaching programming to developers",
   nationality: "Brazilian",
   knowsAbout: [
-    "Web Development",
+    "Software Engineering",
+    "Programming",
     "JavaScript",
     "TypeScript",
     "React.js",
     "Next.js",
     "Elixir",
     "Phoenix",
-    "Node.js"
+    "Node.js",
+    "SaaS Development",
+    "Content Creation",
+    "Product Development"
   ],
   sameAs: [
     "https://www.youtube.com/@DanielBergholz",

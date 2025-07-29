@@ -2,11 +2,11 @@ import { GitHub, LinkedIn, Twitter, YouTube } from "@/components/icons"
 
 export default function Home() {
   return (
-    <main className="text-left w-auto md:w-[500px] mx-auto my-36 md:my-44 flex flex-col gap-3">
+    <main className="text-left w-auto md:w-[520px] mx-auto my-36 md:my-44 flex flex-col gap-3">
       <h1 className="text-2xl md:text-3xl font-bold">Hello</h1>
       <h2 className="text-base md:text-xl">
-        My name is <span>Daniel Bergholz</span>, I&apos;m a Fullstack Developer
-        and Content Creator from Brazil
+        My name is <span>Daniel Bergholz</span>, I&apos;m a Software Engineer,
+        Content Creator and Solopreneur from Brazil
       </h2>
       <a
         className="opacity-60 underline w-max text-base md:text-xl"

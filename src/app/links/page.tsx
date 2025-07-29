@@ -3,7 +3,6 @@ import {
   Diamond,
   GitHub,
   LinkedIn,
-  Thunder,
   Twitter,
   YouTube
 } from "@/components/icons"
@@ -27,10 +26,6 @@ export default function Links() {
           href="https://www.youtube.com/@DanielBergholz/join"
         >
           <Diamond width={28} height={28} />
-        </Link>
-
-        <Link title="TechSchool" href="https://techschool.dev/">
-          <Thunder width={28} height={28} />
         </Link>
 
         <Link href="https://www.youtube.com/@DanielBergholz" title="YouTube">
