@@ -64,19 +64,18 @@ export default function Products() {
           </div>
 
           <p className="mb-4 leading-relaxed">
-            A community-driven platform where self-taught learners discover,
-            review, and share online courses that actually work. Think of it as
-            your personal learning library, curated by people who've taken the
-            courses.
+            The evolution of TechSchool. Building on what we've learned from creating 
+            a free education platform, this next project will take the learning experience 
+            to a whole new level for self-taught developers.
           </p>
 
           <div>
             <p className="font-semibold mb-2">What's coming:</p>
             <ul className="list-disc list-inside space-y-1 opacity-60">
-              <li>Community reviews and ratings from real learners</li>
-              <li>Curated playlists for structured learning paths</li>
-              <li>Course discovery across all subjects and platforms</li>
-              <li>Connect with fellow autodidacts and share your journey</li>
+              <li>Enhanced learning experience beyond just course curation</li>
+              <li>Community-driven features for learners</li>
+              <li>Better ways to discover and organize learning content</li>
+              <li>Tools to help track and share your learning journey</li>
             </ul>
           </div>
         </div>
