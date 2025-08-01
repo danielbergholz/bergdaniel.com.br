@@ -22,7 +22,7 @@
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@biomejs/biome": "^2.0.6",
+    "@biomejs/biome": "^2.1.3",
     "postcss": "^8",
     "tailwindcss": "^4.0.0",
     "typescript": "^5"
