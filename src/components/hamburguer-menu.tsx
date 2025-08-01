@@ -74,16 +74,15 @@ export function HamburguerMenu({ pathname, ...rest }: Props) {
 
       {/* Overlay to close the menu when clicking outside */}
       {isOpen && (
-        <div
-          className="fixed inset-0 bg-black opacity-50 z-40"
+        <button
+          type="button"
+          className="fixed inset-0 bg-black opacity-50 z-40 border-none cursor-pointer"
           onClick={toggleMenu}
           onKeyDown={(e) => {
             if (e.key === "Escape") {
               toggleMenu()
             }
           }}
-          role="button"
-          tabIndex={0}
           aria-label="Close menu"
         />
       )}
