@@ -1,8 +1,9 @@
 import { GitHub, LinkedIn, Twitter, YouTube } from "@/components/icons"
+import { CourseShelfBanner } from "@/components/courseshelf-banner"
 
 export default function Home() {
   return (
-    <main className="text-left w-auto md:w-[520px] mx-auto my-36 md:my-44 flex flex-col gap-3">
+    <main className="text-left w-auto md:w-[520px] mx-auto my-28 md:my-44 flex flex-col gap-3">
       <h1 className="text-2xl md:text-3xl font-bold">Hello</h1>
       <h2 className="text-base md:text-xl">
         My name is <span>Daniel Bergholz</span>, I&apos;m a Software Engineer,
@@ -54,6 +55,8 @@ export default function Home() {
           <GitHub width={28} height={28} />
         </a>
       </section>
+
+      <CourseShelfBanner />
     </main>
   )
 }
