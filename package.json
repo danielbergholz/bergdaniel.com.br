@@ -13,18 +13,18 @@
     "check": "npm run lint && npm run typecheck"
   },
   "dependencies": {
-    "next": "15.5.4",
-    "react": "^19",
-    "react-dom": "^19"
+    "next": "^16.0.9",
+    "react": "^19.2.2",
+    "react-dom": "^19.2.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.13",
-    "@types/node": "^24",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@biomejs/biome": "^2.2.4",
-    "postcss": "^8",
+    "@biomejs/biome": "^2.3.8",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^25.0.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "postcss": "^8.5.6",
     "tailwindcss": "^4.0.0",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   }
 }
