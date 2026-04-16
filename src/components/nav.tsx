@@ -17,32 +17,36 @@ export function Nav() {
   const closeMenu = () => setIsMenuOpen(false)
 
   return (
-    <nav className="relative">
-      <div className="flex justify-between items-center text-xl md:text-2xl">
-        <Link href="/" className="font-bold" onClick={closeMenu}>
+    <nav className="relative pb-5 border-b border-current/10 dark:border-current/20">
+      <div className="flex justify-between items-center">
+        <Link
+          href="/"
+          className="font-bold text-lg md:text-xl tracking-[0.15em]"
+          onClick={closeMenu}
+        >
           BERGHOLZ
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-4">
+        <ul className="hidden md:flex space-x-8 text-xs uppercase tracking-[0.2em]">
           <li>
             <Link href="/products" className={activeStyle("/products")}>
-              products
+              Products
             </Link>
           </li>
           <li>
             <Link href="/courses" className={activeStyle("/courses")} prefetch>
-              courses
+              Courses
             </Link>
           </li>
           <li>
             <Link href="/blog" className={activeStyle("/blog")}>
-              blog
+              Blog
             </Link>
           </li>
           <li>
             <Link href="/links" className={activeStyle("/links")}>
-              links
+              Links
             </Link>
           </li>
         </ul>
@@ -51,22 +55,17 @@ export function Nav() {
         <button
           type="button"
           onClick={toggleMenu}
-          className="md:hidden flex flex-col justify-center items-center w-6 h-6 space-y-1 cursor-pointer"
+          className="md:hidden flex flex-col justify-center items-center w-6 h-6 space-y-1.5 cursor-pointer"
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-5 h-0.5 bg-current transition-all duration-300 ${
-              isMenuOpen ? "rotate-45 translate-y-1.5" : ""
+            className={`block w-5 h-[1px] bg-current transition-all duration-300 ${
+              isMenuOpen ? "rotate-45 translate-y-[4px]" : ""
             }`}
           />
           <span
-            className={`block w-5 h-0.5 bg-current transition-all duration-300 ${
-              isMenuOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block w-5 h-0.5 bg-current transition-all duration-300 ${
-              isMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
+            className={`block w-5 h-[1px] bg-current transition-all duration-300 ${
+              isMenuOpen ? "-rotate-45 -translate-y-[4px]" : ""
             }`}
           />
         </button>
@@ -74,43 +73,43 @@ export function Nav() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-700 py-4 z-50">
-          <ul className="flex flex-col space-y-4 px-0">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-black border-b border-current/10 dark:border-current/20 py-6 z-50">
+          <ul className="flex flex-col space-y-4 text-xs uppercase tracking-[0.2em]">
             <li>
               <Link
                 href="/products"
-                className={`block text-lg ${activeStyle("/products")}`}
+                className={`block ${activeStyle("/products")}`}
                 onClick={closeMenu}
               >
-                products
+                Products
               </Link>
             </li>
             <li>
               <Link
                 href="/courses"
-                className={`block text-lg ${activeStyle("/courses")}`}
+                className={`block ${activeStyle("/courses")}`}
                 onClick={closeMenu}
                 prefetch
               >
-                courses
+                Courses
               </Link>
             </li>
             <li>
               <Link
                 href="/blog"
-                className={`block text-lg ${activeStyle("/blog")}`}
+                className={`block ${activeStyle("/blog")}`}
                 onClick={closeMenu}
               >
-                blog
+                Blog
               </Link>
             </li>
             <li>
               <Link
                 href="/links"
-                className={`block text-lg ${activeStyle("/links")}`}
+                className={`block ${activeStyle("/links")}`}
                 onClick={closeMenu}
               >
-                links
+                Links
               </Link>
             </li>
           </ul>

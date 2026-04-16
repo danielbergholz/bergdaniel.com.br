@@ -13,21 +13,25 @@ export function Article({ article, newPost = false }: Props) {
       target="_blank"
       href={article.url}
       title={article.title}
-      className="border-2 rounded-md border-gray-500 p-4 flex flex-col items-start gap-2 md:gap-3 hover:opacity-70 transition-opacity justify-center w-[94%] md:w-[80%] max-w-[830px] m-auto"
+      className="group border border-current/10 dark:border-current/20 rounded-lg p-5 md:p-6 flex flex-col items-start gap-2 md:gap-3 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300"
     >
-      <h1 className="font-bold text-xl">{article.title}</h1>
-      <p className="opacity-60 text-base">{article.description}</p>
-      <div className="flex justify-between w-full items-center">
-        <p className="opacity-60 text-sm">
-          {readableDate(article.published_at)} · {article.reading_time_minutes}{" "}
-          minutes read
-        </p>
+      <div className="flex justify-between w-full items-start gap-3">
+        <h2 className="font-bold text-lg md:text-xl group-hover:opacity-80 transition-opacity">
+          {article.title}
+        </h2>
         {newPost && (
-          <span className="text-yellow-500 border-yellow-500 border rounded-sm px-2 text-sm">
+          <span className="text-xs uppercase tracking-widest text-amber-600 dark:text-amber-400 border border-amber-300 dark:border-amber-800 rounded-sm px-2 py-0.5 shrink-0">
             New
           </span>
         )}
       </div>
+      <p className="opacity-50 text-sm md:text-base leading-relaxed">
+        {article.description}
+      </p>
+      <p className="opacity-40 text-xs md:text-sm tracking-wide">
+        {readableDate(article.published_at)} · {article.reading_time_minutes}{" "}
+        min read
+      </p>
     </a>
   )
 }

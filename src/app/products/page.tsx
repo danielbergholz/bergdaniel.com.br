@@ -17,23 +17,30 @@ export const metadata: Metadata = {
 
 export default function Products() {
   return (
-    <main className="w-auto md:max-w-4xl mx-auto my-16 md:my-24 px-4">
-      <div className="space-y-6 md:space-y-8">
-        {/* CourseShelf - New Project */}
+    <main className="w-auto md:max-w-3xl mx-auto my-14 md:my-28">
+      <h1 className="font-serif text-3xl md:text-4xl italic tracking-tight mb-4">
+        Products
+      </h1>
+      <hr className="w-12 border-t border-current opacity-20 mb-6 md:mb-8" />
+
+      <div className="space-y-5 md:space-y-6">
+        {/* CourseShelf */}
         <a
           href="https://thecourseshelf.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="block border-2 border-gray-500 rounded-md p-4 hover:opacity-70 transition-opacity"
+          className="group block border border-current/10 dark:border-current/20 rounded-lg p-5 md:p-6 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300"
         >
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold">CourseShelf</h2>
-            <span className="text-yellow-500 border-yellow-500 border rounded-sm px-2 text-sm">
-              Beta Available
+            <h2 className="text-lg md:text-xl font-bold group-hover:opacity-80 transition-opacity">
+              CourseShelf
+            </h2>
+            <span className="text-xs uppercase tracking-widest text-violet-600 dark:text-violet-400 border border-violet-300 dark:border-violet-800 rounded-sm px-2 py-0.5">
+              Beta
             </span>
           </div>
 
-          <p className="mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed opacity-60 text-sm md:text-base">
             The community where self-taught learners discover, review, and
             recommend online courses across every subject. Think of it as your
             personal learning library, curated by people who've actually taken
@@ -41,8 +48,10 @@ export default function Products() {
           </p>
 
           <div>
-            <h3 className="font-semibold mb-2">What CourseShelf offers:</h3>
-            <ul className="list-disc list-inside space-y-1 opacity-60">
+            <h3 className="text-sm font-semibold mb-2 tracking-wide">
+              What CourseShelf offers:
+            </h3>
+            <ul className="list-disc list-inside space-y-1 opacity-40 text-sm">
               <li>Community-driven course reviews and recommendations</li>
               <li>Personal learning library and playlist creation</li>
               <li>Courses across all subjects - from coding to cooking</li>
@@ -53,21 +62,23 @@ export default function Products() {
           </div>
         </a>
 
-        {/* TechSchool - Main Project */}
+        {/* TechSchool */}
         <a
           href="https://techschool.dev/"
           target="_blank"
           rel="noopener noreferrer"
-          className="block border-2 border-gray-500 rounded-md p-4 hover:opacity-70 transition-opacity"
+          className="group block border border-current/10 dark:border-current/20 rounded-lg p-5 md:p-6 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300"
         >
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold">TechSchool</h2>
-            <span className="text-green-light dark:text-green-dark border-green-light dark:border-green-dark border rounded-sm px-2 text-sm">
+            <h2 className="text-lg md:text-xl font-bold group-hover:opacity-80 transition-opacity">
+              TechSchool
+            </h2>
+            <span className="text-xs uppercase tracking-widest text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800 rounded-sm px-2 py-0.5">
               Live
             </span>
           </div>
 
-          <p className="mb-4 leading-relaxed">
+          <p className="mb-4 leading-relaxed opacity-60 text-sm md:text-base">
             Free technology education platform for everyone. TechSchool curates
             the best free programming courses from across the internet, helping
             developers go from zero to their first job without any financial
@@ -75,8 +86,10 @@ export default function Products() {
           </p>
 
           <div>
-            <h3 className="font-semibold mb-2">What TechSchool offers:</h3>
-            <ul className="list-disc list-inside space-y-1 opacity-60">
+            <h3 className="text-sm font-semibold mb-2 tracking-wide">
+              What TechSchool offers:
+            </h3>
+            <ul className="list-disc list-inside space-y-1 opacity-40 text-sm">
               <li>
                 189+ curated free courses in multiple programming languages
               </li>

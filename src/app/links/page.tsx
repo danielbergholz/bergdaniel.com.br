@@ -16,10 +16,16 @@ export const metadata: Metadata = {
 
 export default function Links() {
   return (
-    <main className="my-16 md:my-32">
+    <main className="my-14 md:my-28">
+      <div className="flex flex-col items-center mb-6 md:mb-8">
+        <h1 className="font-serif text-3xl md:text-4xl italic tracking-tight">
+          Links
+        </h1>
+        <hr className="w-12 border-t border-current opacity-20 mt-4" />
+      </div>
       <section
         aria-label="Social Media Links"
-        className="flex flex-col items-center gap-4"
+        className="flex flex-col items-center gap-3"
       >
         <Link
           title="Premium"

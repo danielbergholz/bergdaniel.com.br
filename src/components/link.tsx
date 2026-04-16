@@ -7,14 +7,16 @@ type Props = {
 export function Link({ href, title, children }: Props) {
   return (
     <a
-      className="border-2 rounded-md border-gray-500 px-4 py-2 flex items-center gap-2 hover:opacity-70 transition-opacity w-48 justify-center text-xl"
+      className="group border border-current/10 dark:border-current/20 rounded-lg px-5 py-3 flex items-center gap-3 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300 w-52 justify-center"
       href={href}
       title={title}
       target="_blank"
       rel="noreferrer noopener"
     >
-      {children}
-      <span>{title}</span>
+      <span className="opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+        {children}
+      </span>
+      <span className="text-base tracking-wide">{title}</span>
     </a>
   )
 }

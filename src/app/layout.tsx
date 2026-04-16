@@ -1,10 +1,16 @@
 import type { Metadata } from "next"
-import { Poppins } from "next/font/google"
+import { Instrument_Serif, Poppins } from "next/font/google"
 
 import { Nav } from "@/components/nav"
 import "./globals.css"
 
 const poppins = Poppins({ weight: ["400", "700"], subsets: ["latin"] })
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-serif"
+})
 
 export const metadata: Metadata = {
   title: "Daniel Bergholz - Software Engineer, Content Creator & Solopreneur",
@@ -139,7 +145,9 @@ export default function RootLayout({
           src="https://plausible.io/js/script.js"
         />
       </head>
-      <body className={`${poppins.className} px-6 md:px-10 py-5 md:py-6`}>
+      <body
+        className={`${poppins.className} ${instrumentSerif.variable} px-6 md:px-10 py-5 md:py-6`}
+      >
         <Nav />
         {children}
       </body>

@@ -12,6 +12,8 @@
 
   --color-foreground: rgb(var(--foreground-rgb));
   --color-background: rgb(var(--background-rgb));
+
+  --font-serif: var(--font-serif);
 }
 
 /*

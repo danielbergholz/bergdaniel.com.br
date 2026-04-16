@@ -38,7 +38,12 @@ export default async function Courses() {
   const { englishCourses, portugueseCourses } = await getCourses()
 
   return (
-    <main className="my-14 md:my-28 max-w-[978px] m-auto flex flex-col items-center">
+    <main className="my-14 md:my-28 max-w-[978px] mx-auto flex flex-col">
+      <h1 className="font-serif text-3xl md:text-4xl italic tracking-tight mb-4">
+        Courses
+      </h1>
+      <hr className="w-12 border-t border-current opacity-20 mb-6 md:mb-8" />
+
       <div className="flex flex-col gap-4">
         {englishCourses.map((playlist, index) => (
           <Video
