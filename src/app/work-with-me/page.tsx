@@ -156,7 +156,7 @@ export default async function WorkWithMe() {
               href={item.url}
               target="_blank"
               rel="noreferrer noopener"
-              className="group flex flex-col gap-0.5 w-max"
+              className="group flex flex-col gap-0.5"
             >
               <span className="text-sm md:text-base font-bold group-hover:opacity-80 transition-opacity">
                 {item.name}{" "}
