@@ -1,14 +1,25 @@
-import type { Playlists } from "@/lib/types"
+import type { ChannelStats, Playlists } from "@/lib/types"
 
 const API_KEY = process.env.YOUTUBE_API_KEY
 const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID
 const BASE_URL = "https://www.googleapis.com/youtube/v3"
 const PLAYLISTS_URL = `${BASE_URL}/playlists?part=snippet,contentDetails&maxResults=50&key=${API_KEY}&channelId=${CHANNEL_ID}`
+const CHANNEL_URL = `${BASE_URL}/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`
 
 const getPlaylists = async () => {
   const response = await fetch(PLAYLISTS_URL)
   const data: Playlists = await response.json()
   return data.items
+}
+
+export const getChannelStats = async () => {
+  const response = await fetch(CHANNEL_URL, { next: { revalidate: 86400 } })
+  const data: ChannelStats = await response.json()
+  const stats = data.items[0].statistics
+  return {
+    subscriberCount: Number(stats.subscriberCount),
+    viewCount: Number(stats.viewCount)
+  }
 }
 
 export const getCourses = async () => {

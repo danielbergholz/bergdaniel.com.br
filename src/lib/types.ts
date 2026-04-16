@@ -10,6 +10,16 @@ export type Article = {
   tag_list: string[]
 }
 
+export type ChannelStats = {
+  items: {
+    statistics: {
+      viewCount: string
+      subscriberCount: string
+      videoCount: string
+    }
+  }[]
+}
+
 export type Playlists = {
   items: Video[]
 }
