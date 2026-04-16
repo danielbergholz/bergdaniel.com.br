@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to AI coding agents (Claude Code, Cursor, Codex, etc.) when working with code in this repository.
 
 ## Development Commands
 
@@ -40,6 +40,14 @@ Required environment variables (see `.env.example`):
 - `YOUTUBE_API_KEY` - YouTube Data API key
 - `YOUTUBE_CHANNEL_ID` - Channel ID for fetching playlists
 - `DEV_TO_API_KEY` - Dev.to API key for articles
+
+**When working in a git worktree**: the `.env` file is gitignored and therefore absent from new worktrees. Before running `npm run dev` or any command that reads env vars, copy `.env` from the main checkout:
+
+```bash
+cp ../../.env .env
+```
+
+(Adjust the relative path based on where the worktree was created — typically `.claude/worktrees/<name>/` is two levels deep.) Without this, the YouTube and Dev.to API calls will fail silently or return empty data.
 
 ### SEO & Performance
 
