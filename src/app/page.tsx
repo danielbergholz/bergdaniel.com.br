@@ -1,18 +1,7 @@
 import { GitHub, LinkedIn, Twitter, YouTube } from "@/components/icons"
 import { CourseShelfBanner } from "@/components/courseshelf-banner"
 import { getChannelStats } from "@/data-access/youtube"
-
-function formatNumber(num: number): string {
-  if (num >= 1_000_000) {
-    const formatted = (num / 1_000_000).toFixed(1)
-    return `${formatted.replace(/\.0$/, "")}M`
-  }
-  if (num >= 1_000) {
-    const formatted = (num / 1_000).toFixed(1)
-    return `${formatted.replace(/\.0$/, "")}K`
-  }
-  return num.toString()
-}
+import { formatNumber } from "@/lib/utils"
 
 export default async function Home() {
   const { subscriberCount, viewCount } = await getChannelStats()

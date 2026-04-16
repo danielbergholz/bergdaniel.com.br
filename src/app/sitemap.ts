@@ -30,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6
     },
     {
+      url: `${baseUrl}/work-with-me`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.9
+    },
+    {
       url: `${baseUrl}/links`,
       lastModified: currentDate,
       changeFrequency: "monthly",

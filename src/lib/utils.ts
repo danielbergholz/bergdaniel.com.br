@@ -1,3 +1,15 @@
+export function formatNumber(num: number): string {
+  if (num >= 1_000_000) {
+    const formatted = (num / 1_000_000).toFixed(1)
+    return `${formatted.replace(/\.0$/, "")}M`
+  }
+  if (num >= 1_000) {
+    const formatted = (num / 1_000).toFixed(1)
+    return `${formatted.replace(/\.0$/, "")}K`
+  }
+  return num.toString()
+}
+
 export function readableDate(date: string) {
   const parsedDate = new Date(date)
   const currentYear = new Date().getFullYear()
