@@ -12,10 +12,13 @@ This file provides guidance to AI coding agents (Claude Code, Cursor, Codex, etc
 **IMPORTANT**: After making any code changes, always run:
 1. `npm run format` - Format the code
 2. `npm run check` - Verify no linting or type errors
+3. `npm run build` - Verify the production build succeeds
+
+Lint and typecheck alone do not catch Next.js structural rules (e.g. `pages/` and `app/` must be colocated). The build does. Do not skip it, even for small changes — especially when adding or moving files, adding dependencies, or touching config (`next.config.mjs`, `proxy.ts`, `middleware.ts`, `instrumentation.ts`).
 
 ## Architecture Overview
 
-This is a Next.js 15 personal website using the App Router with TypeScript and Tailwind CSS v4. The site integrates with external APIs to display dynamic content.
+This is a Next.js 16 personal website using the App Router with TypeScript and Tailwind CSS v4. The site integrates with external APIs to display dynamic content.
 
 ### Key Directories
 
