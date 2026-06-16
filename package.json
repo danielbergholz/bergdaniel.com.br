@@ -13,18 +13,22 @@
     "check": "npm run lint && npm run typecheck"
   },
   "dependencies": {
+    "@opentelemetry/sdk-node": "^0.219.0",
     "next": "^16.2.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",
+    "@opentelemetry/sdk-logs": "^0.219.0",
+    "@opentelemetry/sdk-trace-base": "^2.8.0",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "postcss": "^8.5.10",
     "tailwindcss": "^4.2.2",
+    "tidewave": "^0.7.0",
     "typescript": "^6.0.2"
   }
 }
