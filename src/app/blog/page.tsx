@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-import { Article } from "@/components/article"
+import { BlogSearch } from "@/components/blog-search"
 import { getArticles } from "@/data-access/blog"
 
 export const metadata: Metadata = {
@@ -19,11 +19,7 @@ export default async function Blog() {
         Blog
       </h1>
       <hr className="w-12 border-t border-current opacity-20" />
-      <div className="flex flex-col gap-4">
-        {articles.map((article, index) => (
-          <Article key={article.id} article={article} newPost={index === 0} />
-        ))}
-      </div>
+      <BlogSearch articles={articles} />
     </main>
   )
 }
