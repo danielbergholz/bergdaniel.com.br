@@ -72,8 +72,12 @@ function BlogSearchInner({ articles }: Props) {
   const [inputValue, setInputValue] = useState(queryFromUrl)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  // Keep input in sync when navigating back/forward.
+  // Keep input in sync when navigating back/forward. Skip when the URL already
+  // reflects the current input (e.g. trailing whitespace stripped on write) so
+  // the visible value doesn't shift under the cursor mid-typing.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only re-sync on URL changes, not every keystroke
   useEffect(() => {
+    if (queryFromUrl === inputValue.trim()) return
     setInputValue(queryFromUrl)
   }, [queryFromUrl])
 
