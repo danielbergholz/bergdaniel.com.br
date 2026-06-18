@@ -8,14 +8,35 @@ const CHANNEL_URL = `${BASE_URL}/channels?part=statistics&id=${CHANNEL_ID}&key=$
 
 const getPlaylists = async () => {
   const response = await fetch(PLAYLISTS_URL)
+
+  // Throw on any bad response so ISR keeps serving the last healthy page.
+  // YouTube returns 403 on quota exhaustion with a parseable error body that
+  // lacks `items`; without these guards that surfaces as a cryptic crash and
+  // an empty `items` array would silently cache an empty courses page.
+  if (!response.ok) {
+    throw new Error(`YouTube API error: ${response.status}`)
+  }
+
   const data: Playlists = await response.json()
+  if (!Array.isArray(data.items)) {
+    throw new Error("YouTube API: missing playlist items")
+  }
+
   return data.items
 }
 
 export const getChannelStats = async () => {
   const response = await fetch(CHANNEL_URL, { next: { revalidate: 86400 } })
+  if (!response.ok) {
+    throw new Error(`YouTube API error: ${response.status}`)
+  }
+
   const data: ChannelStats = await response.json()
-  const stats = data.items[0].statistics
+  const stats = data.items?.[0]?.statistics
+  if (!stats) {
+    throw new Error("YouTube API: missing channel statistics")
+  }
+
   return {
     subscriberCount: Number(stats.subscriberCount),
     viewCount: Number(stats.viewCount)
