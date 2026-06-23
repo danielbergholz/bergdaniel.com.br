@@ -52,14 +52,6 @@ Required environment variables (see `.env.example`):
 - `YOUTUBE_CHANNEL_ID` - Channel ID for fetching playlists
 - `DEV_TO_API_KEY` - Dev.to API key for articles
 
-**When working in a git worktree**: the `.env` file is gitignored and therefore absent from new worktrees. Before running `npm run dev` or any command that reads env vars, copy `.env` from the main checkout:
-
-```bash
-cp ../../.env .env
-```
-
-(Adjust the relative path based on where the worktree was created — typically `.claude/worktrees/<name>/` is two levels deep.) Without this, the YouTube and Dev.to API calls will fail silently or return empty data.
-
 ### SEO & Performance
 
 The site includes comprehensive SEO setup:
@@ -72,8 +64,3 @@ The site includes comprehensive SEO setup:
 ### Styling
 
 Uses Tailwind CSS v4 with PostCSS processing. Dark mode support is implemented via CSS custom properties in the root layout.
-
-## MCP Tools
-
-- **Context7 MCP** - Use to fetch updated documentation for libraries and frameworks like Next.js, Tailwind CSS, Shadcn and Radix-UI
-- **Playwright MCP** - Use to check visual changes in the frontend with a real browser when UI modifications are made
