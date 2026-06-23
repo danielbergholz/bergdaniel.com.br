@@ -2,6 +2,14 @@
 
 This file provides guidance to AI coding agents (Claude Code, Cursor, Codex, etc.) when working with code in this repository.
 
+<!-- BEGIN:nextjs-agent-rules -->
+
+# Next.js: ALWAYS read docs before coding
+
+Before any Next.js work, find and read the relevant doc in `node_modules/next/dist/docs/`. Your training data is outdated — the docs are the source of truth.
+
+<!-- END:nextjs-agent-rules -->
+
 ## Development Commands
 
 - `npm run dev` - Start development server on http://localhost:3000
