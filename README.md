@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# bergdaniel.com.br
+
+Daniel Bergholz's personal website — built with Next.js 16 (App Router), TypeScript, and Tailwind CSS v4. It pulls in dynamic content from external APIs: course playlists from the YouTube Data API and blog articles from Dev.to.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and start the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Copy `.env.example` to `.env` and fill in:
 
-## Learn More
+- `YOUTUBE_API_KEY` — YouTube Data API key
+- `YOUTUBE_CHANNEL_ID` — channel ID for fetching playlists
+- `DEV_TO_API_KEY` — Dev.to API key for articles
 
-To learn more about Next.js, take a look at the following resources:
+Without these, the YouTube and Dev.to sections render empty.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `npm run dev` — start the development server
+- `npm run build` — build for production
+- `npm run start` — run the production build
+- `npm run format` — format with Biome
+- `npm run check` — run lint and typecheck
 
-## Deploy on Vercel
+## Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Framework:** Next.js 16 (App Router) with Server Components and ISR
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4 (Instrument Serif + Poppins via `next/font`)
+- **Tooling:** Biome for linting and formatting
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Project Structure
+
+- `src/app/` — pages and layouts
+- `src/components/` — reusable UI components
+- `src/data-access/` — API integration layer (YouTube, Dev.to)
+- `src/lib/` — types and utilities
+
+> Working in this repo with an AI coding agent? See [`AGENTS.md`](./AGENTS.md).
+
+## Deploy
+
+Deployed on [Vercel](https://vercel.com). See the [Next.js deployment docs](https://nextjs.org/docs/app/getting-started/deploying) for details.
