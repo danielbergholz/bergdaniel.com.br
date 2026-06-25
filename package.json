@@ -10,7 +10,8 @@
     "lint:fix": "biome check --write ./src",
     "typecheck": "tsc --noEmit",
     "format": "biome format --write ./src",
-    "check": "npm run lint && npm run typecheck"
+    "check": "npm run lint && npm run typecheck",
+    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test \"src/**/*.test.ts\""
   },
   "dependencies": {
     "@opentelemetry/sdk-node": "^0.219.0",
