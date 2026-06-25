@@ -157,3 +157,46 @@ export function X(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
+
+export function Play({ fill, ...rest }: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      role="img"
+      aria-label="Play"
+      {...rest}
+    >
+      <path
+        d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.29-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14Z"
+        fill={fill || "currentColor"}
+      />
+    </svg>
+  )
+}
+
+export function Read(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      role="img"
+      aria-label="Read"
+      {...props}
+    >
+      <path d="M5 4a1 1 0 0 1 1-1h7l5 5v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4Z" />
+      <path d="M13 3v5h5" />
+      <path d="M8.5 13h7M8.5 17h7" />
+    </svg>
+  )
+}

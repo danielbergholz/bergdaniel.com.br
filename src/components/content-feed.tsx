@@ -3,25 +3,21 @@
 import { useRouter, useSearchParams } from "next/navigation"
 import { Suspense, useEffect, useRef, useState } from "react"
 
-import { Article } from "@/components/article"
-import type { Article as ArticleType } from "@/lib/types"
+import { ContentCard } from "@/components/content-card"
+import type { ContentItem } from "@/lib/types"
 
 type Props = {
-  articles: ArticleType[]
+  items: ContentItem[]
 }
 
-function matches(article: ArticleType, query: string): boolean {
+// How many of the newest items get the large full-width "featured" treatment
+// (only in the default, unsearched view).
+const FEATURED_COUNT = 4
+
+function matches(item: ContentItem, query: string): boolean {
   const q = query.trim().toLowerCase()
   if (!q) return true
-  const haystack = [
-    article.title,
-    article.description,
-    ...(article.tag_list ?? [])
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase()
-  return haystack.includes(q)
+  return item.title.toLowerCase().includes(q)
 }
 
 function SearchInput({
@@ -56,15 +52,15 @@ function SearchInput({
         type="search"
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder="Search articles..."
-        aria-label="Search articles"
+        placeholder="Search videos and articles..."
+        aria-label="Search videos and articles"
         className="w-full rounded-lg border border-current/10 dark:border-current/20 bg-transparent pl-10 pr-4 py-2.5 text-sm md:text-base outline-none focus:border-current/30 dark:focus:border-current/40 transition-colors"
       />
     </div>
   )
 }
 
-function BlogSearchInner({ articles }: Props) {
+function ContentFeedInner({ items }: Props) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const queryFromUrl = searchParams?.get("q") ?? ""
@@ -73,8 +69,7 @@ function BlogSearchInner({ articles }: Props) {
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   // Keep input in sync when navigating back/forward. Skip when the URL already
-  // reflects the current input (e.g. trailing whitespace stripped on write) so
-  // the visible value doesn't shift under the cursor mid-typing.
+  // reflects the current input so the visible value doesn't shift mid-typing.
   // biome-ignore lint/correctness/useExhaustiveDependencies: only re-sync on URL changes, not every keystroke
   useEffect(() => {
     if (queryFromUrl === inputValue.trim()) return
@@ -89,7 +84,7 @@ function BlogSearchInner({ articles }: Props) {
       params.delete("q")
     }
     const queryString = params.toString()
-    router.replace(queryString ? `/blog?${queryString}` : "/blog", {
+    router.replace(queryString ? `/videos?${queryString}` : "/videos", {
       scroll: false
     })
   }
@@ -110,35 +105,46 @@ function BlogSearchInner({ articles }: Props) {
 
   const isSearching = inputValue.trim().length > 0
   const filtered = isSearching
-    ? articles.filter((article) => matches(article, inputValue))
-    : articles
+    ? items.filter((item) => matches(item, inputValue))
+    : items
 
   return (
     <div className="flex flex-col gap-5">
       <SearchInput value={inputValue} onChange={handleChange} />
       {filtered.length === 0 ? (
         <p className="opacity-50 text-sm md:text-base">
-          No articles found for &ldquo;{inputValue.trim()}&rdquo;.
+          No results for &ldquo;{inputValue.trim()}&rdquo;.
         </p>
-      ) : (
-        <div className="flex flex-col gap-4">
-          {filtered.map((article, index) => (
-            <Article
-              key={article.id}
-              article={article}
-              newPost={!isSearching && index === 0}
-            />
+      ) : isSearching ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filtered.map((item) => (
+            <ContentCard key={item.id} item={item} />
           ))}
         </div>
+      ) : (
+        <>
+          <div className="flex flex-col gap-4">
+            {filtered.slice(0, FEATURED_COUNT).map((item) => (
+              <ContentCard key={item.id} item={item} featured />
+            ))}
+          </div>
+          {filtered.length > FEATURED_COUNT && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filtered.slice(FEATURED_COUNT).map((item) => (
+                <ContentCard key={item.id} item={item} />
+              ))}
+            </div>
+          )}
+        </>
       )}
     </div>
   )
 }
 
-export function BlogSearch(props: Props) {
+export function ContentFeed(props: Props) {
   return (
     <Suspense fallback={null}>
-      <BlogSearchInner {...props} />
+      <ContentFeedInner {...props} />
     </Suspense>
   )
 }

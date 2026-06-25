@@ -5,12 +5,16 @@ import { usePathname } from "next/navigation"
 import { useState } from "react"
 
 const navLinks = [
-  { href: "/products", label: "Products" },
+  { href: "/videos", label: "Videos", prefetch: true },
   { href: "/courses", label: "Courses", prefetch: true },
-  { href: "/blog", label: "Blog" },
-  { href: "/links", label: "Links" },
+  { href: "/products", label: "Products" },
   { href: "/work-with-me", label: "Work with me" }
 ]
+
+const JOIN_URL = "https://www.youtube.com/@DanielBergholz/join"
+
+const joinButtonStyle =
+  "inline-block text-violet-600 dark:text-violet-400 border border-violet-400/60 dark:border-violet-700/60 rounded-sm px-3 py-1.5 hover:border-violet-500 dark:hover:border-violet-500 transition-colors"
 
 export function Nav() {
   const pathname = usePathname()
@@ -35,7 +39,7 @@ export function Nav() {
           BERGHOLZ
         </Link>
 
-        <ul className="hidden md:flex space-x-8 text-xs uppercase tracking-[0.2em]">
+        <ul className="hidden md:flex items-center space-x-8 text-xs uppercase tracking-[0.2em]">
           {navLinks.map(({ href, label, prefetch }) => (
             <li key={href}>
               <Link
@@ -47,6 +51,16 @@ export function Nav() {
               </Link>
             </li>
           ))}
+          <li>
+            <a
+              href={JOIN_URL}
+              target="_blank"
+              rel="noreferrer noopener"
+              className={joinButtonStyle}
+            >
+              Join
+            </a>
+          </li>
         </ul>
 
         <button
@@ -83,6 +97,17 @@ export function Nav() {
                 </Link>
               </li>
             ))}
+            <li>
+              <a
+                href={JOIN_URL}
+                target="_blank"
+                rel="noreferrer noopener"
+                onClick={closeMenu}
+                className={joinButtonStyle}
+              >
+                Join
+              </a>
+            </li>
           </ul>
         </div>
       )}

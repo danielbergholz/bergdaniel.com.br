@@ -12,9 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0
     },
     {
-      url: `${baseUrl}/products`,
+      url: `${baseUrl}/videos`,
       lastModified: currentDate,
-      changeFrequency: "monthly",
+      changeFrequency: "weekly",
       priority: 0.9
     },
     {
@@ -24,16 +24,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8
     },
     {
-      url: `${baseUrl}/blog`,
+      url: `${baseUrl}/products`,
       lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.6
+      changeFrequency: "monthly",
+      priority: 0.7
     },
     {
       url: `${baseUrl}/work-with-me`,
       lastModified: currentDate,
       changeFrequency: "monthly",
-      priority: 0.9
+      priority: 0.7
     },
     {
       url: `${baseUrl}/links`,
