@@ -16,7 +16,8 @@ Run in order:
 
 1. `npm run format` — format with Biome
 2. `npm run check` — lint + typecheck
-3. `npm run build` — production build
+3. `npm test` — unit tests (Node's built-in runner)
+4. `npm run build` — production build
 
 Don't skip the build. Lint and typecheck miss Next.js structural rules (e.g. `pages/` and `app/` colocation); only the build catches them. This matters most when adding or moving files, adding dependencies, or touching `next.config.mjs`, `src/proxy.ts`, or `src/instrumentation.ts`.
 
@@ -24,3 +25,4 @@ Don't skip the build. Lint and typecheck miss Next.js structural rules (e.g. `pa
 
 - Data is fetched in Server Components at the page level (with ISR), then passed to components as props. API integrations live in `src/data-access/` (YouTube Data API, Dev.to).
 - Routes in `src/app/sitemap.ts` are listed by hand — when you add a page under `src/app/`, add its URL there too.
+- Tests use Node's built-in runner (`node --test`, no extra deps; needs Node 24+, which runs TypeScript directly). Keep business logic pure and I/O-free — e.g. the feed pairing/filtering lives in `src/lib/feed.ts` and is unit-tested with fixtures, while `src/data-access/` modules stay thin `fetch` wrappers. Co-locate tests as `*.test.ts`.
