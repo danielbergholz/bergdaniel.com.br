@@ -18,23 +18,6 @@ export function Diamond({ fill, ...rest }: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-export function Thunder(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="35"
-      height="35"
-      fill="rgb(var(--foreground-rgb))"
-      viewBox="0 0 24 24"
-      role="img"
-      aria-label="Thunder"
-      {...props}
-    >
-      <path d="M18.82 9.18A2 2 0 0 0 17 8h-1.81l1.33-3.26a2 2 0 0 0-.19-1.84 2.06 2.06 0 0 0-1.71-.9h-4.34a2 2 0 0 0-1.91 1.27l-3.23 8a2 2 0 0 0 .2 1.83 2.06 2.06 0 0 0 1.71.9h2.76L8 20.74a1 1 0 0 0 .5 1.15A1.1 1.1 0 0 0 9 22a1 1 0 0 0 .76-.35l8.8-10.37a2 2 0 0 0 .26-2.1" />
-    </svg>
-  )
-}
-
 export function GitHub(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -69,59 +52,6 @@ export function DevTo(props: React.SVGProps<SVGSVGElement>) {
       <path
         fill="rgb(var(--background-rgb))"
         d="M140.47 203.94h-17.44v104.47h17.45c10.155-.545 17.358-8.669 17.47-17.41v-69.65c-.696-10.364-7.796-17.272-17.48-17.41m45.73 87.25c0 18.81-11.61 47.31-48.36 47.25h-46.4V172.98h47.38c35.44 0 47.36 28.46 47.37 47.28zm100.68-88.66H233.6v38.42h32.57v29.57H233.6v38.41h53.29v29.57h-62.18c-11.16.29-20.44-8.53-20.72-19.69V193.7c-.27-11.15 8.56-20.41 19.71-20.69h63.19zm103.64 115.29c-13.2 30.75-36.85 24.63-47.44 0l-38.53-144.8h32.57l29.71 113.72 29.57-113.72h32.58z"
-      />
-    </svg>
-  )
-}
-
-export function Discord({ fill, ...rest }: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="35"
-      height="35"
-      fill="none"
-      viewBox="0 0 24 24"
-      role="img"
-      aria-label="Discord"
-      {...rest}
-    >
-      <path
-        fill={fill || "rgb(var(--foreground-rgb))"}
-        d="M18.59 5.89c-1.23-.57-2.54-.99-3.92-1.23-.17.3-.37.71-.5 1.04-1.46-.22-2.91-.22-4.34 0-.14-.33-.34-.74-.51-1.04-1.38.24-2.69.66-3.92 1.23-2.48 3.74-3.15 7.39-2.82 10.98 1.65 1.23 3.24 1.97 4.81 2.46.39-.53.73-1.1 1.03-1.69-.57-.21-1.11-.48-1.62-.79.14-.1.27-.21.4-.31 3.13 1.46 6.52 1.46 9.61 0 .13.11.26.21.4.31-.51.31-1.06.57-1.62.79.3.59.64 1.16 1.03 1.69 1.57-.49 3.17-1.23 4.81-2.46.39-4.17-.67-7.78-2.82-10.98zm-9.75 8.78c-.94 0-1.71-.87-1.71-1.94s.75-1.94 1.71-1.94 1.72.87 1.71 1.94c0 1.06-.75 1.94-1.71 1.94m6.31 0c-.94 0-1.71-.87-1.71-1.94s.75-1.94 1.71-1.94 1.72.87 1.71 1.94c0 1.06-.75 1.94-1.71 1.94"
-      />
-    </svg>
-  )
-}
-
-export function Email(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="26"
-      height="26"
-      fill="none"
-      viewBox="0 0 24 24"
-      role="img"
-      aria-label="Email"
-      {...props}
-    >
-      <path
-        stroke="#000"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="m4 7 6.2 4.65a3 3 0 0 0 3.6 0L20 7"
-      />
-      <rect
-        width="18"
-        height="14"
-        x="3"
-        y="5"
-        stroke="#000"
-        stroke-linecap="round"
-        stroke-width="2"
-        rx="2"
       />
     </svg>
   )

@@ -15,7 +15,6 @@ export type ChannelStats = {
     statistics: {
       viewCount: string
       subscriberCount: string
-      videoCount: string
     }
   }[]
 }

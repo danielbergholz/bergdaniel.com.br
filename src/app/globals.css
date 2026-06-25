@@ -1,15 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
-  --background-image-gradient-conic: conic-gradient(
-    from 180deg at 50% 50%,
-    var(--tw-gradient-stops)
-  );
-
-  --color-green-dark: var(--color-green-dark);
-  --color-green-light: var(--color-green-light);
-
   --color-foreground: rgb(var(--foreground-rgb));
   --color-background: rgb(var(--background-rgb));
 
@@ -34,16 +25,10 @@
   }
 }
 
-@utility text-balance {
-  text-wrap: balance;
-}
-
 @layer utilities {
   :root {
     --foreground-rgb: 0, 0, 0;
     --background-rgb: 255, 255, 255;
-    --color-green-dark: #00e3a5;
-    --color-green-light: #07c895;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -56,21 +41,5 @@
   body {
     color: rgb(var(--foreground-rgb));
     background: rgb(var(--background-rgb));
-  }
-
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  .animate-gradient {
-    animation: gradient 3s ease infinite;
   }
 }
