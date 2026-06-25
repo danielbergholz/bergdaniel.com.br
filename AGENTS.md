@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This file provides guidance to AI coding agents (Claude Code, Cursor, Codex, etc.) when working with code in this repository.
+Guidance for AI coding agents working in this repo. For the human-facing overview (stack, scripts, structure, env vars), see [README.md](./README.md).
 
 <!-- BEGIN:nextjs-agent-rules -->
 
@@ -10,57 +10,17 @@ Before any Next.js work, find and read the relevant doc in `node_modules/next/di
 
 <!-- END:nextjs-agent-rules -->
 
-## Development Commands
+## After any code change
 
-- `npm run dev` - Start development server on http://localhost:3000
-- `npm run build` - Build for production
-- `npm run format` - Format code with Biome
-- `npm run check` - Run lint and typecheck (run this before committing)
+Run in order:
 
-**IMPORTANT**: After making any code changes, always run:
-1. `npm run format` - Format the code
-2. `npm run check` - Verify no linting or type errors
-3. `npm run build` - Verify the production build succeeds
+1. `npm run format` — format with Biome
+2. `npm run check` — lint + typecheck
+3. `npm run build` — production build
 
-Lint and typecheck alone do not catch Next.js structural rules (e.g. `pages/` and `app/` must be colocated). The build does. Do not skip it, even for small changes — especially when adding or moving files, adding dependencies, or touching config (`next.config.mjs`, `proxy.ts`, `middleware.ts`, `instrumentation.ts`).
+Don't skip the build. Lint and typecheck miss Next.js structural rules (e.g. `pages/` and `app/` colocation); only the build catches them. This matters most when adding or moving files, adding dependencies, or touching `next.config.mjs`, `src/proxy.ts`, or `src/instrumentation.ts`.
 
-## Architecture Overview
+## Conventions
 
-This is a Next.js 16 personal website using the App Router with TypeScript and Tailwind CSS v4. The site integrates with external APIs to display dynamic content.
-
-### Key Directories
-
-- `src/app/` - Next.js App Router pages and layouts
-- `src/components/` - Reusable UI components
-- `src/data-access/` - API integration layer (YouTube, Dev.to)
-- `src/lib/` - Types and utilities
-
-### Data Fetching Pattern
-
-The site uses Server Components with ISR (24-hour revalidation) to fetch data from:
-
-- **YouTube Data API v3** - Course playlists (`src/data-access/youtube.ts`)
-- **Dev.to API** - Blog articles (`src/data-access/blog.ts`)
-
-All data fetching happens at the page level, with results passed to components as props.
-
-### Environment Setup
-
-Required environment variables (see `.env.example`):
-
-- `YOUTUBE_API_KEY` - YouTube Data API key
-- `YOUTUBE_CHANNEL_ID` - Channel ID for fetching playlists
-- `DEV_TO_API_KEY` - Dev.to API key for articles
-
-### SEO & Performance
-
-The site includes comprehensive SEO setup:
-
-- Dynamic sitemap generation (`src/app/sitemap.ts`)
-- Structured data (JSON-LD Person schema)
-- ISR with revalidation for dynamic content
-- Image optimization for YouTube thumbnails
-
-### Styling
-
-Uses Tailwind CSS v4 with PostCSS processing. Dark mode support is implemented via CSS custom properties in the root layout.
+- Data is fetched in Server Components at the page level (with ISR), then passed to components as props. API integrations live in `src/data-access/` (YouTube Data API, Dev.to).
+- Routes in `src/app/sitemap.ts` are listed by hand — when you add a page under `src/app/`, add its URL there too.
