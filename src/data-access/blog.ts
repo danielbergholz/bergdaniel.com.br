@@ -1,7 +1,8 @@
 import type { Article } from "@/lib/types"
 
 const BASE_URL = "https://dev.to/api"
-const ARTICLES_URL = `${BASE_URL}/articles/me/published`
+// per_page=1000 so the merged feed sees every post (the default is only 30).
+const ARTICLES_URL = `${BASE_URL}/articles/me/published?per_page=1000`
 const API_KEY = process.env.DEV_TO_API_KEY
 
 export const getArticles = async (): Promise<Article[]> => {

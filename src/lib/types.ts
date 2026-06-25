@@ -1,6 +1,7 @@
 export type Article = {
   id: number
   title: string
+  slug: string
   description: string
   published_at: string
   url: string
@@ -8,6 +9,24 @@ export type Article = {
   social_image: string
   reading_time_minutes: number
   tag_list: string[]
+  // The dev.to list endpoint (/articles/me/published) returns the full markdown,
+  // which holds the YouTube link Daniel pastes in each post. We parse the video
+  // id from it server-side and never ship this field to the client.
+  body_markdown: string
+}
+
+// Unified shape for the merged content feed: a topic that may exist as a video,
+// an article, or both. Built by getContentFeed from videos + articles.
+export type ContentItem = {
+  id: string
+  title: string
+  date: string
+  thumbnailUrl: string
+  description?: string
+  durationSeconds?: number
+  videoUrl?: string
+  articleUrl?: string
+  readingMinutes?: number
 }
 
 export type ChannelStats = {
@@ -52,4 +71,30 @@ type Thumbnail = {
   url: string
   width: number
   height: number
+}
+
+// A single video from the channel's uploads playlist (playlistItems endpoint).
+// This shape differs from the playlist `Video` type above: the video id lives in
+// `snippet.resourceId.videoId`, and `standard`/`maxres` thumbnails are not always
+// generated, so they're optional — fall back to `medium` (always present, 16:9).
+export type LatestVideo = {
+  snippet: {
+    publishedAt: string
+    title: string
+    description: string
+    thumbnails: {
+      default: Thumbnail
+      medium: Thumbnail
+      high: Thumbnail
+      standard?: Thumbnail
+      maxres?: Thumbnail
+    }
+    resourceId: {
+      videoId: string
+    }
+  }
+}
+
+export type LatestVideos = {
+  items: LatestVideo[]
 }
