@@ -47,7 +47,7 @@ export default async function Courses() {
       </h1>
       <hr className="w-12 border-t border-current opacity-20 mb-6 md:mb-8" />
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col items-center sm:items-stretch gap-4">
         {englishCourses.map((playlist, index) => (
           <Video
             video={playlist}
