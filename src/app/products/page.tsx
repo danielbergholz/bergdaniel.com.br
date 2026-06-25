@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Products - Daniel Bergholz",
@@ -35,9 +36,18 @@ export default function Products() {
           className="group block border border-current/10 dark:border-current/20 rounded-lg p-5 md:p-6 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300"
         >
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg md:text-xl font-bold group-hover:opacity-80 transition-opacity">
-              CourseShelf
-            </h2>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/courseshelf-logo.svg"
+                alt="CourseShelf logo"
+                width={36}
+                height={36}
+                className="w-8 h-8 md:w-9 md:h-9 object-contain flex-shrink-0"
+              />
+              <h2 className="text-lg md:text-xl font-bold group-hover:opacity-80 transition-opacity">
+                CourseShelf
+              </h2>
+            </div>
             <span className="text-xs uppercase tracking-widest text-violet-600 dark:text-violet-400 border border-violet-300 dark:border-violet-800 rounded-sm px-2 py-0.5">
               Beta
             </span>
@@ -73,9 +83,18 @@ export default function Products() {
           className="group block border border-current/10 dark:border-current/20 rounded-lg p-5 md:p-6 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300"
         >
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg md:text-xl font-bold group-hover:opacity-80 transition-opacity">
-              TechSchool
-            </h2>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/techschool-logo.svg"
+                alt="TechSchool logo"
+                width={36}
+                height={36}
+                className="w-8 h-8 md:w-9 md:h-9 object-contain flex-shrink-0"
+              />
+              <h2 className="text-lg md:text-xl font-bold group-hover:opacity-80 transition-opacity">
+                TechSchool
+              </h2>
+            </div>
             <span className="text-xs uppercase tracking-widest text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800 rounded-sm px-2 py-0.5">
               Live
             </span>
