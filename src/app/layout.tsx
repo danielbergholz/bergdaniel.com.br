@@ -13,6 +13,10 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bergdaniel.com.br"),
+  alternates: {
+    canonical: "/"
+  },
   title: "Daniel Bergholz - Software Engineer, Content Creator & Solopreneur",
   description:
     "Daniel Bergholz is a Software Engineer, Content Creator and Solopreneur from Brazil building SaaS products and teaching programming to developers",
@@ -124,7 +128,6 @@ export default function RootLayout({
       <head>
         {/* SEO Meta Tags */}
         <link rel="sitemap" href="/sitemap.xml" />
-        <link rel="canonical" href="https://bergdaniel.com.br" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="color-scheme" content="light dark" />

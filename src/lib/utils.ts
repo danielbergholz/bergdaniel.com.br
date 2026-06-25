@@ -22,5 +22,8 @@ export function readableDate(date: string) {
     options.year = "numeric"
   }
 
-  return parsedDate.toLocaleDateString(undefined, options)
+  // Pin the locale so server and client format identically (the site is in
+  // English); passing `undefined` uses each runtime's default and can trigger
+  // a hydration mismatch for visitors whose browser locale differs.
+  return parsedDate.toLocaleDateString("en-US", options)
 }

@@ -18,6 +18,14 @@ export function Video({
   const { itemCount } = video.contentDetails
   const thumbnail = featured ? thumbnails.maxres : thumbnails.medium
 
+  // Render at a fixed display width, deriving the height from the thumbnail's
+  // own aspect ratio so next/image reserves the correct space (no layout shift)
+  // and never receives a distorted — or negative — height.
+  const displayWidth = featured ? 380 : 270
+  const displayHeight = Math.round(
+    displayWidth * (thumbnail.height / thumbnail.width)
+  )
+
   return featured ? (
     <a
       rel="noreferrer noopener"
@@ -59,8 +67,8 @@ export function Video({
       <Image
         src={thumbnail.url}
         alt={title}
-        width={thumbnail.width - 900}
-        height={thumbnail.height - 900}
+        width={displayWidth}
+        height={displayHeight}
         className="rounded-lg order-1 md:order-2"
       />
     </a>
@@ -75,8 +83,8 @@ export function Video({
       <Image
         src={thumbnail.url}
         alt={title}
-        width={thumbnail.width - 50}
-        height={thumbnail.height - 50}
+        width={displayWidth}
+        height={displayHeight}
         className="rounded-lg"
       />
       <div className="flex flex-col gap-2 w-full">

@@ -5,7 +5,10 @@ import { getArticles } from "@/data-access/blog"
 
 export const metadata: Metadata = {
   title: "Blog | Daniel Bergholz",
-  description: "Daniel Bergholz's blog"
+  description: "Daniel Bergholz's blog",
+  alternates: {
+    canonical: "/blog"
+  }
 }
 
 export const revalidate = 3600 // 1 hour

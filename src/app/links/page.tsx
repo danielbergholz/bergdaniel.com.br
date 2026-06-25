@@ -11,7 +11,10 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Links | Daniel Bergholz",
-  description: "Social media links: YouTube, Twitter, Blog and GitHub"
+  description: "Social media links: YouTube, Twitter, Blog and GitHub",
+  alternates: {
+    canonical: "/links"
+  }
 }
 
 export default function Links() {

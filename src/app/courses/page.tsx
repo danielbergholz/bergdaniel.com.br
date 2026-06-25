@@ -6,6 +6,9 @@ import { getCourses } from "@/data-access/youtube"
 export const metadata: Metadata = {
   title: "Courses | Daniel Bergholz",
   description: "Free and premium fullstack web development courses",
+  alternates: {
+    canonical: "/courses"
+  },
   openGraph: {
     type: "website",
     siteName: "Daniel Bergholz",

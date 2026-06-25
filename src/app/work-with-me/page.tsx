@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Work With Me - Daniel Bergholz",
   description:
     "Hire Daniel Bergholz as a fullstack developer, contractor, or content collaborator. Specializing in Elixir, Phoenix, React, and AI-driven development for startups.",
+  alternates: {
+    canonical: "/work-with-me"
+  },
   keywords: [
     "Daniel Bergholz",
     "Hire Developer",

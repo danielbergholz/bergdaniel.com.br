@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Products - Daniel Bergholz",
   description:
     "Projects built by Daniel Bergholz - CourseShelf learning community, TechSchool free tech education platform and more developer tools",
+  alternates: {
+    canonical: "/products"
+  },
   keywords: [
     "Daniel Bergholz",
     "Projects",
