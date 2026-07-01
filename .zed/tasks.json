@@ -1,9 +1,0 @@
-[
-  {
-    "label": "Set up new worktree",
-    "command": "cp \"$ZED_MAIN_GIT_WORKTREE/.env\" .env && npm install",
-    "hooks": ["create_worktree"],
-    "reveal": "always",
-    "hide": "on_success"
-  }
-]
