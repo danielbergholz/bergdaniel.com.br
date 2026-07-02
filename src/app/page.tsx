@@ -1,6 +1,7 @@
 import { GitHub, LinkedIn, Twitter, YouTube } from "@/components/icons"
 import { ContentCard } from "@/components/content-card"
 import { MembershipCTA } from "@/components/membership-cta"
+import { NewsletterSignup } from "@/components/newsletter-signup"
 import { getChannelStats } from "@/data-access/youtube"
 import { getContentFeed } from "@/data-access/content"
 import { formatNumber } from "@/lib/utils"
@@ -129,6 +130,10 @@ export default async function Home() {
             <ContentCard key={item.id} item={item} />
           ))}
         </div>
+      </section>
+
+      <section aria-label="Newsletter signup">
+        <NewsletterSignup />
       </section>
 
       <section aria-label="Channel membership">

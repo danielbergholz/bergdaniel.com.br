@@ -37,6 +37,15 @@ export function formatDuration(seconds: number): string {
   return h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${m}:${pad(s)}`
 }
 
+// Basic email shape check for the newsletter form. Kept deliberately simple:
+// real validity is confirmed by Loops (and by the user receiving the email),
+// so this only rejects obviously malformed input before we hit the API.
+export function isValidEmail(email: string): boolean {
+  const trimmed = email.trim()
+  if (trimmed.length === 0 || trimmed.length > 320) return false
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)
+}
+
 // ISO-8601 video duration ("PT16M17S", "PT1H2M3S") -> seconds.
 export function parseIsoDuration(iso: string): number {
   const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/)

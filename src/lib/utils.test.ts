@@ -1,6 +1,11 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
-import { formatDuration, formatNumber, parseIsoDuration } from "./utils.ts"
+import {
+  formatDuration,
+  formatNumber,
+  isValidEmail,
+  parseIsoDuration
+} from "./utils.ts"
 
 test("formatNumber abbreviates thousands and millions", () => {
   assert.equal(formatNumber(950), "950")
@@ -15,6 +20,23 @@ test("formatDuration formats mm:ss and h:mm:ss", () => {
   assert.equal(formatDuration(977), "16:17")
   assert.equal(formatDuration(3723), "1:02:03")
   assert.equal(formatDuration(60), "1:00")
+})
+
+test("isValidEmail accepts well-formed addresses", () => {
+  assert.equal(isValidEmail("user@example.com"), true)
+  assert.equal(isValidEmail("first.last@sub.domain.co"), true)
+  assert.equal(isValidEmail("  spaced@example.com  "), true)
+})
+
+test("isValidEmail rejects malformed input", () => {
+  assert.equal(isValidEmail(""), false)
+  assert.equal(isValidEmail("   "), false)
+  assert.equal(isValidEmail("nope"), false)
+  assert.equal(isValidEmail("nope@"), false)
+  assert.equal(isValidEmail("@example.com"), false)
+  assert.equal(isValidEmail("no@dot"), false)
+  assert.equal(isValidEmail("two@@example.com"), false)
+  assert.equal(isValidEmail("spaces in@example.com"), false)
 })
 
 test("parseIsoDuration parses ISO-8601 durations", () => {

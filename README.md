@@ -20,8 +20,12 @@ Copy `.env.example` to `.env` and fill in:
 - `YOUTUBE_API_KEY` — YouTube Data API key
 - `YOUTUBE_CHANNEL_ID` — channel ID for fetching videos and playlists
 - `DEV_TO_API_KEY` — Dev.to API key for articles
+- `LOOPS_API_KEY` — [Loops](https://loops.so) API key, powers the newsletter signup form
+- `LOOPS_NEWSLETTER_LIST_ID` — _(optional)_ Loops mailing list ID to add signups to; omit to use the default audience
 
-All three are required. The data-access layer throws on a failed API response (so a broken or empty page is never cached), so the build will error if a key is missing or invalid.
+The first three are required. The data-access layer throws on a failed API response (so a broken or empty page is never cached), so the build will error if a key is missing or invalid.
+
+`LOOPS_API_KEY` is only used at runtime by the newsletter signup (a Server Action), so the build succeeds without it — but the form will return an error until it's set. Generate a key in Loops under **Settings → API**.
 
 ## Scripts
 

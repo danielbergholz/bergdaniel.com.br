@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 
+import { NewsletterSignup } from "@/components/newsletter-signup"
 import { Video } from "@/components/video"
 import { getCourses } from "@/data-access/youtube"
 
@@ -64,6 +65,13 @@ export default async function Courses() {
           <Video video={playlist} key={playlist.id} locale="pt" />
         ))}
       </div>
+
+      <section aria-label="Course updates" className="mt-10 md:mt-14">
+        <NewsletterSignup
+          title="Be first to know about new courses"
+          description="I'm building premium courses. Drop your email to get early access, launch discounts, and updates on new free lessons."
+        />
+      </section>
     </main>
   )
 }
