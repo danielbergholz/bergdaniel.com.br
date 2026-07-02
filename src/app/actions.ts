@@ -8,11 +8,6 @@ export type NewsletterState = {
   message: string
 }
 
-export const initialNewsletterState: NewsletterState = {
-  status: "idle",
-  message: ""
-}
-
 export async function subscribeToNewsletterAction(
   _prevState: NewsletterState,
   formData: FormData

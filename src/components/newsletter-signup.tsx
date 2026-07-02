@@ -2,10 +2,15 @@
 
 import { useActionState, useId } from "react"
 import {
-  initialNewsletterState,
+  type NewsletterState,
   subscribeToNewsletterAction
 } from "@/app/actions"
 import { Diamond } from "@/components/icons"
+
+const initialNewsletterState: NewsletterState = {
+  status: "idle",
+  message: ""
+}
 
 type Props = {
   title?: string
