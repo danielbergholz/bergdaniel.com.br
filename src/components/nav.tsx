@@ -13,8 +13,33 @@ const navLinks = [
 
 const JOIN_URL = "https://www.youtube.com/@DanielBergholz/join"
 
+const internalLinkBase =
+  "text-sm normal-case tracking-normal font-medium transition-colors"
+
 const joinButtonStyle =
-  "inline-block text-violet-600 dark:text-violet-400 border border-violet-400/60 dark:border-violet-700/60 rounded-sm px-3 py-1.5 hover:border-violet-500 dark:hover:border-violet-500 transition-colors"
+  "inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-violet-700 dark:text-violet-300 border border-violet-400/70 dark:border-violet-600/70 rounded-sm px-3 py-1.5 hover:bg-violet-50 dark:hover:bg-violet-950/40 hover:border-violet-500 dark:hover:border-violet-500 transition-colors"
+
+function ExternalIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M15 3h6v6" />
+      <path d="M10 14 21 3" />
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    </svg>
+  )
+}
 
 export function Nav() {
   const pathname = usePathname()
@@ -27,9 +52,9 @@ export function Nav() {
 
   const linkStyle = (path: string) => {
     if (isActive(path)) {
-      return "font-bold underline underline-offset-4 decoration-current/40"
+      return `${internalLinkBase} text-foreground underline underline-offset-4 decoration-current/50`
     }
-    return "opacity-60 dark:opacity-70 hover:opacity-100 transition-opacity"
+    return `${internalLinkBase} text-foreground/60 hover:text-foreground`
   }
 
   const closeMenu = useCallback(() => setIsMenuOpen(false), [])
@@ -62,42 +87,58 @@ export function Nav() {
     }
   }, [isMenuOpen, closeMenu])
 
+  const joinLink = (
+    <a
+      href={JOIN_URL}
+      target="_blank"
+      rel="noreferrer noopener"
+      onClick={closeMenu}
+      className={joinButtonStyle}
+      aria-label="Join on YouTube (opens in a new tab)"
+    >
+      YouTube Members
+      <ExternalIcon />
+    </a>
+  )
+
   return (
-    <nav className="relative pb-5 border-b border-current/10 dark:border-current/20">
-      <div className="flex justify-between items-center">
+    <nav
+      className="relative pb-5 border-b border-current/10 dark:border-current/20"
+      aria-label="Main"
+    >
+      <div className="flex justify-between items-center gap-4">
         <Link
           href="/"
-          className="font-bold text-lg md:text-xl tracking-[0.15em]"
+          className="font-bold text-lg md:text-xl tracking-[0.15em] shrink-0"
           onClick={closeMenu}
           aria-current={pathname === "/" ? "page" : undefined}
         >
           BERGHOLZ
         </Link>
 
-        <ul className="hidden md:flex items-center space-x-8 text-xs uppercase tracking-[0.2em]">
-          {navLinks.map(({ href, label, prefetch }) => (
-            <li key={href}>
-              <Link
-                href={href}
-                className={linkStyle(href)}
-                prefetch={prefetch}
-                aria-current={isActive(href) ? "page" : undefined}
-              >
-                {label}
-              </Link>
-            </li>
-          ))}
-          <li>
-            <a
-              href={JOIN_URL}
-              target="_blank"
-              rel="noreferrer noopener"
-              className={joinButtonStyle}
-            >
-              Join
-            </a>
-          </li>
-        </ul>
+        <div className="hidden md:flex items-center gap-6">
+          <ul className="flex items-center gap-6">
+            {navLinks.map(({ href, label, prefetch }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className={linkStyle(href)}
+                  prefetch={prefetch}
+                  aria-current={isActive(href) ? "page" : undefined}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div
+            className="h-5 w-px bg-current/15 dark:bg-current/25 shrink-0"
+            aria-hidden="true"
+          />
+
+          {joinLink}
+        </div>
 
         <button
           ref={toggleRef}
@@ -138,32 +179,35 @@ export function Nav() {
               paddingBottom: "max(1.5rem, env(safe-area-inset-bottom))"
             }}
           >
-            <ul className="flex flex-col space-y-4 text-xs uppercase tracking-[0.2em] px-6 md:px-10">
-              {navLinks.map(({ href, label, prefetch }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className={`block py-1 ${linkStyle(href)}`}
-                    onClick={closeMenu}
-                    prefetch={prefetch}
-                    aria-current={isActive(href) ? "page" : undefined}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <a
-                  href={JOIN_URL}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  onClick={closeMenu}
-                  className={`inline-block ${joinButtonStyle}`}
-                >
-                  Join
-                </a>
-              </li>
-            </ul>
+            <div className="flex flex-col gap-6 px-6 md:px-10">
+              <div>
+                <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-foreground/50">
+                  Pages
+                </p>
+                <ul className="flex flex-col gap-3">
+                  {navLinks.map(({ href, label, prefetch }) => (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        className={`block py-1 ${linkStyle(href)}`}
+                        onClick={closeMenu}
+                        prefetch={prefetch}
+                        aria-current={isActive(href) ? "page" : undefined}
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="border-t border-current/10 dark:border-current/20 pt-6">
+                <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-foreground/50">
+                  YouTube
+                </p>
+                {joinLink}
+              </div>
+            </div>
           </div>
         </>
       )}
