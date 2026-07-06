@@ -23,6 +23,30 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
+
+  :focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--foreground-rgb));
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      /* biome-ignore lint/complexity/noImportantStyles: required to override Tailwind animations */
+      animation-duration: 0.01ms !important;
+      /* biome-ignore lint/complexity/noImportantStyles: required to override Tailwind animations */
+      animation-iteration-count: 1 !important;
+      /* biome-ignore lint/complexity/noImportantStyles: required to override Tailwind animations */
+      transition-duration: 0.01ms !important;
+      /* biome-ignore lint/complexity/noImportantStyles: required to override Tailwind animations */
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer utilities {
@@ -41,5 +65,26 @@
   body {
     color: rgb(var(--foreground-rgb));
     background: rgb(var(--background-rgb));
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    background: rgb(var(--background-rgb));
+    color: rgb(var(--foreground-rgb));
+    border: 1px solid rgb(var(--foreground-rgb) / 0.2);
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transform: translateY(-200%);
+    transition: transform 0.2s ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
   }
 }

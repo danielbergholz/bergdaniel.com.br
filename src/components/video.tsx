@@ -32,14 +32,14 @@ export function Video({
       target="_blank"
       href={`https://www.youtube.com/playlist?list=${video.id}`}
       title={title}
-      className="group border border-current/10 dark:border-current/20 rounded-lg p-5 md:p-6 flex flex-col md:flex-row items-center gap-4 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300 max-w-[306px] sm:max-w-full"
+      className="group border border-current/10 dark:border-current/20 rounded-lg p-5 md:p-6 flex flex-col md:flex-row items-center gap-4 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300 motion-reduce:transition-none max-w-[306px] sm:max-w-full"
     >
       <div className="flex flex-col justify-between h-full order-2 md:order-1 gap-2 sm:gap-4">
         <div className="flex items-center justify-between md:justify-normal md:gap-3">
           <h2 className="font-bold text-lg md:text-xl group-hover:opacity-80 transition-opacity">
             {title}
           </h2>
-          <span className="text-xs uppercase tracking-widest opacity-40 border border-current/20 dark:border-current/30 rounded-sm px-2 py-0.5 shrink-0">
+          <span className="text-xs uppercase tracking-widest opacity-60 border border-current/20 dark:border-current/30 rounded-sm px-2 py-0.5 shrink-0">
             {locale === "pt" ? "PT-BR" : "EN"}
           </span>
         </div>
@@ -59,7 +59,7 @@ export function Video({
               </span>
             )}
           </p>
-          <p className="opacity-40 text-xs md:text-sm tracking-wide">
+          <p className="opacity-60 text-xs md:text-sm tracking-wide">
             {itemCount} videos
           </p>
         </div>
@@ -78,7 +78,7 @@ export function Video({
       target="_blank"
       href={`https://www.youtube.com/playlist?list=${video.id}`}
       title={title}
-      className="group border border-current/10 dark:border-current/20 rounded-lg p-4 flex flex-col items-center gap-4 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300"
+      className="group border border-current/10 dark:border-current/20 rounded-lg p-4 flex flex-col items-center gap-4 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300 motion-reduce:transition-none"
     >
       <Image
         src={thumbnail.url}
@@ -89,10 +89,10 @@ export function Video({
       />
       <div className="flex flex-col gap-2 w-full">
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-lg w-[216px] group-hover:opacity-80 transition-opacity">
+          <h2 className="font-bold text-lg min-w-0 flex-1 group-hover:opacity-80 transition-opacity">
             {title}
           </h2>
-          <span className="text-xs uppercase tracking-widest opacity-40 border border-current/20 dark:border-current/30 rounded-sm px-2 py-0.5 shrink-0">
+          <span className="text-xs uppercase tracking-widest opacity-60 border border-current/20 dark:border-current/30 rounded-sm px-2 py-0.5 shrink-0">
             {locale === "pt" ? "PT-BR" : "EN"}
           </span>
         </div>
@@ -100,7 +100,7 @@ export function Video({
           <span className="text-xs uppercase tracking-widest text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800 rounded-sm px-2 py-0.5">
             Free
           </span>
-          <p className="opacity-40 text-xs tracking-wide">
+          <p className="opacity-60 text-xs tracking-wide">
             {itemCount} {itemCount === 1 ? "video" : "videos"}
           </p>
         </div>

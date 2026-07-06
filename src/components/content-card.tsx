@@ -4,14 +4,16 @@ import { formatDuration, readableDate } from "@/lib/utils"
 import Image from "next/image"
 
 const CARD_BASE =
-  "group flex rounded-lg border border-current/10 dark:border-current/20 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300"
+  "group flex rounded-lg border border-current/10 dark:border-current/20 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300 motion-reduce:transition-none"
 
 function Thumbnail({
   item,
-  featured
+  featured,
+  priority = false
 }: {
   item: ContentItem
   featured: boolean
+  priority?: boolean
 }) {
   const { title, thumbnailUrl, videoUrl, articleUrl, durationSeconds } = item
   const isArticleOnly = !videoUrl && !!articleUrl
@@ -22,6 +24,7 @@ function Thumbnail({
         src={thumbnailUrl}
         alt={title}
         fill
+        priority={priority}
         sizes={
           featured
             ? "(max-width: 768px) 100vw, 440px"
@@ -35,9 +38,9 @@ function Thumbnail({
         </span>
       )}
       {videoUrl && (
-        <span className="absolute inset-0 flex items-center justify-center">
+        <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <span
-            className={`flex items-center justify-center rounded-full bg-black/55 text-white transition-transform duration-300 group-hover:scale-110 ${
+            className={`flex items-center justify-center rounded-full bg-black/55 text-white transition-transform duration-300 motion-reduce:transition-none group-hover:scale-110 motion-reduce:group-hover:scale-100 ${
               featured ? "h-16 w-16" : "h-11 w-11"
             }`}
           >
@@ -57,6 +60,9 @@ function Thumbnail({
 function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
   const { videoUrl, articleUrl, readingMinutes } = item
 
+  const compactActionClass =
+    "inline-flex items-center justify-center gap-1 rounded-sm border border-current/20 min-h-11 px-3 py-2 text-[11px] uppercase tracking-wide opacity-70 hover:opacity-100 transition-opacity md:min-h-0 md:px-2 md:py-1"
+
   if (featured) {
     return (
       <div className="flex flex-wrap items-center gap-3">
@@ -65,7 +71,7 @@ function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
             href={videoUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-flex items-center gap-2 rounded-sm bg-foreground px-4 py-2 text-xs uppercase tracking-widest text-background hover:opacity-80 transition-opacity"
+            className="inline-flex items-center justify-center gap-2 rounded-sm bg-foreground min-h-11 px-4 py-2.5 text-xs uppercase tracking-widest text-background hover:opacity-80 transition-opacity"
           >
             <Play width={14} height={14} /> Watch
           </a>
@@ -75,7 +81,7 @@ function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
             href={articleUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-flex items-center gap-2 rounded-sm border border-current/30 px-4 py-2 text-xs uppercase tracking-widest hover:border-current/60 transition-colors"
+            className="inline-flex items-center justify-center gap-2 rounded-sm border border-current/30 min-h-11 px-4 py-2.5 text-xs uppercase tracking-widest hover:border-current/60 transition-colors"
           >
             <Read width={14} height={14} /> Read
           </a>
@@ -91,7 +97,7 @@ function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
           href={videoUrl}
           target="_blank"
           rel="noreferrer noopener"
-          className="inline-flex items-center gap-1 rounded-sm border border-current/20 px-2 py-1 text-[11px] uppercase tracking-wide opacity-70 hover:opacity-100 transition-opacity"
+          className={compactActionClass}
         >
           <Play width={12} height={12} /> Watch
         </a>
@@ -101,7 +107,7 @@ function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
           href={articleUrl}
           target="_blank"
           rel="noreferrer noopener"
-          className="inline-flex items-center gap-1 rounded-sm border border-current/20 px-2 py-1 text-[11px] uppercase tracking-wide opacity-70 hover:opacity-100 transition-opacity"
+          className={compactActionClass}
         >
           <Read width={12} height={12} /> Read
           {readingMinutes != null && (
@@ -116,9 +122,14 @@ function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
 type Props = {
   item: ContentItem
   featured?: boolean
+  priority?: boolean
 }
 
-export function ContentCard({ item, featured = false }: Props) {
+export function ContentCard({
+  item,
+  featured = false,
+  priority = false
+}: Props) {
   const { title, date, description, readingMinutes, videoUrl, articleUrl } =
     item
 
@@ -138,7 +149,7 @@ export function ContentCard({ item, featured = false }: Props) {
           title={title}
           className="block md:w-[440px] md:shrink-0"
         >
-          <Thumbnail item={item} featured />
+          <Thumbnail item={item} featured priority={priority} />
         </a>
         <div className="flex flex-1 flex-col gap-3">
           <a
@@ -156,7 +167,7 @@ export function ContentCard({ item, featured = false }: Props) {
               {description}
             </p>
           )}
-          <div className="flex flex-wrap items-center gap-x-2 text-xs uppercase tracking-widest opacity-40">
+          <div className="flex flex-wrap items-center gap-x-2 text-xs uppercase tracking-widest opacity-60">
             <span>{readableDate(date)}</span>
             {readingMinutes != null && <span>· {readingMinutes} min read</span>}
           </div>
@@ -177,13 +188,13 @@ export function ContentCard({ item, featured = false }: Props) {
         title={title}
         className="flex flex-col gap-3"
       >
-        <Thumbnail item={item} featured={false} />
+        <Thumbnail item={item} featured={false} priority={priority} />
         <h2 className="font-bold text-base md:text-lg leading-snug line-clamp-2 group-hover:opacity-80 transition-opacity">
           {title}
         </h2>
       </a>
       <div className="flex items-center justify-between gap-2">
-        <span className="text-xs uppercase tracking-widest opacity-40">
+        <span className="text-xs uppercase tracking-widest opacity-60">
           {readableDate(date)}
         </span>
         <Actions item={item} featured={false} />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Instrument_Serif, Poppins } from "next/font/google"
 
+import { Footer } from "@/components/footer"
 import { Nav } from "@/components/nav"
 import "./globals.css"
 
@@ -129,7 +130,16 @@ export default function RootLayout({
         {/* SEO Meta Tags */}
         <link rel="sitemap" href="/sitemap.xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <meta
+          name="theme-color"
+          content="#ffffff"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="#000000"
+          media="(prefers-color-scheme: dark)"
+        />
         <meta name="color-scheme" content="light dark" />
 
         {/* Structured Data */}
@@ -151,8 +161,12 @@ export default function RootLayout({
       <body
         className={`${poppins.className} ${instrumentSerif.variable} px-6 md:px-10 py-5 md:py-6`}
       >
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   )
