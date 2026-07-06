@@ -107,7 +107,7 @@ export default async function WorkWithMe() {
   ]
 
   return (
-    <main className="w-auto md:max-w-3xl mx-auto my-14 md:my-28">
+    <main id="main" className="w-auto md:max-w-3xl mx-auto my-14 md:my-28">
       <h1 className="font-serif text-3xl md:text-4xl italic tracking-tight mb-3">
         Work with me
       </h1>
@@ -137,7 +137,7 @@ export default async function WorkWithMe() {
               {service.description}
             </p>
 
-            <ul className="list-disc list-inside space-y-1 opacity-40 text-sm">
+            <ul className="list-disc list-inside space-y-1 opacity-60 text-sm">
               {service.highlights.map((item) => (
                 <li key={item}>{item}</li>
               ))}
@@ -167,7 +167,7 @@ export default async function WorkWithMe() {
                   &rarr;
                 </span>
               </span>
-              <span className="text-sm opacity-40 group-hover:opacity-60 transition-opacity">
+              <span className="text-sm opacity-60 group-hover:opacity-80 transition-opacity">
                 {item.role}
               </span>
             </a>

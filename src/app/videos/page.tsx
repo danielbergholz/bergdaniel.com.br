@@ -45,7 +45,7 @@ export default async function Videos() {
   const items = await getContentFeed()
 
   return (
-    <main className="my-14 md:my-28 max-w-5xl mx-auto flex flex-col">
+    <main id="main" className="my-14 md:my-28 max-w-5xl mx-auto flex flex-col">
       <h1 className="font-serif text-3xl md:text-4xl italic tracking-tight mb-4">
         Videos
       </h1>

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function Products() {
   return (
-    <main className="w-auto md:max-w-3xl mx-auto my-14 md:my-28">
+    <main id="main" className="w-auto md:max-w-3xl mx-auto my-14 md:my-28">
       <h1 className="font-serif text-3xl md:text-4xl italic tracking-tight mb-4">
         Products
       </h1>
@@ -64,7 +64,7 @@ export default function Products() {
             <h3 className="text-sm font-semibold mb-2 tracking-wide">
               What CourseShelf offers:
             </h3>
-            <ul className="list-disc list-inside space-y-1 opacity-40 text-sm">
+            <ul className="list-disc list-inside space-y-1 opacity-60 text-sm">
               <li>Community-driven course reviews and recommendations</li>
               <li>Personal learning library and playlist creation</li>
               <li>Courses across all subjects - from coding to cooking</li>
@@ -111,7 +111,7 @@ export default function Products() {
             <h3 className="text-sm font-semibold mb-2 tracking-wide">
               What TechSchool offers:
             </h3>
-            <ul className="list-disc list-inside space-y-1 opacity-40 text-sm">
+            <ul className="list-disc list-inside space-y-1 opacity-60 text-sm">
               <li>
                 189+ curated free courses in multiple programming languages
               </li>

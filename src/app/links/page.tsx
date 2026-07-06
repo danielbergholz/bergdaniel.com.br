@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function Links() {
   return (
-    <main className="my-14 md:my-28">
+    <main id="main" className="my-14 md:my-28">
       <div className="flex flex-col items-center mb-6 md:mb-8">
         <h1 className="font-serif text-3xl md:text-4xl italic tracking-tight">
           Links
