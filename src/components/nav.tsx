@@ -4,6 +4,8 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useCallback, useEffect, useId, useRef, useState } from "react"
 
+import { ExternalLink } from "@/components/icons"
+
 const navLinks = [
   { href: "/videos", label: "Videos", prefetch: true },
   { href: "/courses", label: "Courses", prefetch: true },
@@ -18,28 +20,6 @@ const internalLinkBase =
 
 const joinButtonStyle =
   "inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-violet-700 dark:text-violet-300 border border-violet-400/70 dark:border-violet-600/70 rounded-sm px-3 py-1.5 hover:bg-violet-50 dark:hover:bg-violet-950/40 hover:border-violet-500 dark:hover:border-violet-500 transition-colors"
-
-function ExternalIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="12"
-      height="12"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path d="M15 3h6v6" />
-      <path d="M10 14 21 3" />
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-    </svg>
-  )
-}
 
 export function Nav() {
   const pathname = usePathname()
@@ -97,7 +77,7 @@ export function Nav() {
       aria-label="Join on YouTube (opens in a new tab)"
     >
       YouTube Members
-      <ExternalIcon />
+      <ExternalLink />
     </a>
   )
 

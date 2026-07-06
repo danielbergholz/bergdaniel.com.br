@@ -1,3 +1,4 @@
+import { ExternalLink } from "@/components/icons"
 import Link from "next/link"
 
 const footerLinks = [
@@ -15,7 +16,7 @@ const socialLinks = [
   },
   {
     href: "https://twitter.com/danielbergholz",
-    label: "X (Twitter)"
+    label: "X"
   },
   {
     href: "https://www.linkedin.com/in/daniel-gobbi-bergholz/",
@@ -27,56 +28,71 @@ const socialLinks = [
   }
 ]
 
+const sectionLabel =
+  "mb-3 text-[10px] uppercase tracking-[0.2em] text-foreground/50"
+
+const internalLinkStyle =
+  "text-sm normal-case tracking-normal font-medium text-foreground/60 hover:text-foreground transition-colors"
+
+const externalLinkStyle =
+  "inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-foreground/60 hover:text-foreground border border-current/15 dark:border-current/25 rounded-sm px-2.5 py-1.5 transition-colors"
+
 export function Footer() {
   return (
     <footer className="mt-20 md:mt-28 pt-8 border-t border-current/10 dark:border-current/20">
       <div className="max-w-5xl mx-auto flex flex-col gap-8 md:gap-10">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
           <div className="flex flex-col gap-3">
             <p className="font-bold text-sm uppercase tracking-[0.15em]">
               Daniel Bergholz
             </p>
             <a
               href="mailto:bergholz.daniel@gmail.com"
-              className="text-sm opacity-60 hover:opacity-100 transition-opacity w-max"
+              className="text-sm text-foreground/60 hover:text-foreground transition-colors w-max"
             >
               bergholz.daniel@gmail.com
             </a>
           </div>
 
-          <nav aria-label="Footer">
-            <ul className="flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-[0.2em]">
-              {footerLinks.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="opacity-60 hover:opacity-100 transition-opacity"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 lg:gap-16">
+            <nav aria-label="Site pages">
+              <p className={sectionLabel}>Pages</p>
+              <ul className="flex flex-col gap-2.5">
+                {footerLinks.map(({ href, label }) => (
+                  <li key={href}>
+                    <Link href={href} className={internalLinkStyle}>
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <nav aria-label="Social media">
+              <p className={sectionLabel}>Social</p>
+              <ul className="flex flex-col gap-2.5">
+                {socialLinks.map(({ href, label }) => (
+                  <li key={href}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className={externalLinkStyle}
+                      aria-label={`${label} (opens in a new tab)`}
+                    >
+                      {label}
+                      <ExternalLink />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs uppercase tracking-[0.2em] opacity-60">
-          <ul className="flex flex-wrap gap-x-5 gap-y-2">
-            {socialLinks.map(({ href, label }) => (
-              <li key={href}>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="hover:opacity-100 transition-opacity"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p>&copy; {new Date().getFullYear()} Daniel Bergholz</p>
-        </div>
+        <p className="text-xs text-foreground/50">
+          &copy; {new Date().getFullYear()} Daniel Bergholz
+        </p>
       </div>
     </footer>
   )
