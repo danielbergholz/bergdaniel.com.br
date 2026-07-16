@@ -26,3 +26,9 @@ Don't skip the build. Lint and typecheck miss Next.js structural rules (e.g. `pa
 - Data is fetched in Server Components at the page level (with ISR), then passed to components as props. API integrations live in `src/data-access/` (YouTube Data API, Dev.to).
 - Routes in `src/app/sitemap.ts` are listed by hand — when you add a page under `src/app/`, add its URL there too.
 - Tests use Node's built-in runner (`node --test`, no extra deps; needs Node 24+, which runs TypeScript directly). Keep business logic pure and I/O-free — e.g. the feed pairing/filtering lives in `src/lib/feed.ts` and is unit-tested with fixtures, while `src/data-access/` modules stay thin `fetch` wrappers. Co-locate tests as `*.test.ts`.
+
+## Cursor Cloud specific instructions
+
+- Node 24+ is required (the `npm test` runner strips TypeScript types natively, which fails on older Node). The base VM ships an older `/exec-daemon/node` that would win in `PATH`, so the startup/update script installs Node 24 via `nvm` and symlinks `node`/`npm`/`npx` into `/usr/local/cargo/bin` (which is ahead of `/exec-daemon` in `PATH`). After startup, `node -v` should report v24.x — if it reports v22.x, re-run the symlink step. `.bashrc` PATH edits do NOT work here because the exec wrapper prepends `/exec-daemon` after `.bashrc` runs.
+- Standard commands are in `README.md` / the "After any code change" section above. Dev server: `npm run dev` (port 3000).
+- API keys (`YOUTUBE_API_KEY`, `YOUTUBE_CHANNEL_ID`, `DEV_TO_API_KEY`) are required for the data-backed pages and for `npm run build`. Without them, `/` `/videos` `/courses` `/work-with-me` throw and render the error boundary, and `npm run build` fails at prerender (by design — the data layer throws on bad API responses so ISR never caches an empty page). The static pages `/links` and `/products` render fine without keys, so you can exercise the dev server without secrets.
