@@ -19,7 +19,7 @@ Run in order:
 3. `npm test` — unit tests (Node's built-in runner)
 4. `npm run build` — production build
 
-Don't skip the build. Lint and typecheck miss Next.js structural rules (e.g. `pages/` and `app/` colocation); only the build catches them. This matters most when adding or moving files, adding dependencies, or touching `next.config.mjs`, `src/proxy.ts`, or `src/instrumentation.ts`.
+Don't skip the build. Lint and typecheck miss Next.js structural rules (e.g. `pages/` and `app/` colocation); only the build catches them. This matters most when adding or moving files, adding dependencies, or touching `next.config.mjs`.
 
 ## Conventions
 
