@@ -14,12 +14,14 @@ function Thumbnail({
   item,
   featured,
   priority = false,
-  t
+  t,
+  languageBadge
 }: {
   item: ContentItem
   featured: boolean
   priority?: boolean
   t: CardLabels
+  languageBadge?: string
 }) {
   const { title, thumbnailUrl, videoUrl, articleUrl, durationSeconds } = item
   const isArticleOnly = !videoUrl && !!articleUrl
@@ -41,6 +43,11 @@ function Thumbnail({
       {isArticleOnly && (
         <span className="absolute left-2 top-2 rounded-sm border border-current/20 bg-background px-1.5 py-0.5 text-[10px] uppercase tracking-widest opacity-70">
           {t.article}
+        </span>
+      )}
+      {languageBadge && (
+        <span className="absolute left-2 top-2 rounded-sm border border-current/20 bg-background px-1.5 py-0.5 text-[10px] uppercase tracking-widest opacity-70">
+          {languageBadge}
         </span>
       )}
       {videoUrl && (
@@ -155,6 +162,15 @@ export function ContentCard({
   const primary = videoUrl ?? articleUrl
   if (!primary) return null
 
+  // Badge only when the video's language differs from the UI locale — a feed
+  // that matches the reader's language stays unlabeled.
+  const languageBadge =
+    item.language && item.language !== locale
+      ? item.language === "pt"
+        ? "PT-BR"
+        : "EN"
+      : undefined
+
   if (featured) {
     return (
       <article
@@ -167,7 +183,13 @@ export function ContentCard({
           title={title}
           className="block md:w-[440px] md:shrink-0"
         >
-          <Thumbnail item={item} featured priority={priority} t={t} />
+          <Thumbnail
+            item={item}
+            featured
+            priority={priority}
+            t={t}
+            languageBadge={languageBadge}
+          />
         </a>
         <div className="flex flex-1 flex-col gap-3">
           <a
@@ -210,7 +232,13 @@ export function ContentCard({
         title={title}
         className="flex flex-col gap-3"
       >
-        <Thumbnail item={item} featured={false} priority={priority} t={t} />
+        <Thumbnail
+          item={item}
+          featured={false}
+          priority={priority}
+          t={t}
+          languageBadge={languageBadge}
+        />
         <h2 className="font-bold text-base md:text-lg leading-snug line-clamp-2 group-hover:opacity-80 transition-opacity">
           {title}
         </h2>

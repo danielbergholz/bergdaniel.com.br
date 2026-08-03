@@ -1,4 +1,9 @@
-import type { Article, ContentItem, LatestVideo } from "@/lib/types"
+import type {
+  Article,
+  ContentItem,
+  LatestVideo,
+  VideoDetails
+} from "@/lib/types"
 
 // Videos at or under this length are treated as Shorts and dropped from the feed.
 // The API has no Shorts flag; this channel's Shorts are all <=65s and its shortest
@@ -41,10 +46,17 @@ export function firstMeaningfulLine(text: string): string | undefined {
   return undefined
 }
 
+// Collapse YouTube's BCP-47 tag ("en", "en-US", "pt-BR") to the site's two
+// languages; anything else (or unset) is unknown and gets no badge.
+export function siteLanguage(tag: string | undefined): "en" | "pt" | undefined {
+  const primary = tag?.split("-")[0].toLowerCase()
+  return primary === "en" || primary === "pt" ? primary : undefined
+}
+
 function videoToItem(
   video: LatestVideo,
   article: Article | undefined,
-  durationSeconds: number | undefined
+  details: VideoDetails | undefined
 ): ContentItem {
   const { title, publishedAt, thumbnails, resourceId, description } =
     video.snippet
@@ -57,7 +69,8 @@ function videoToItem(
     thumbnailUrl: thumbnail.url,
     // Prefer the article's clean excerpt; fall back to the video's first real line.
     description: article?.description ?? firstMeaningfulLine(description ?? ""),
-    durationSeconds,
+    durationSeconds: details?.durationSeconds,
+    language: siteLanguage(details?.language),
     videoUrl: `https://www.youtube.com/watch?v=${resourceId.videoId}`,
     articleUrl: article?.url,
     readingMinutes: article?.reading_time_minutes
@@ -89,7 +102,7 @@ export function buildContentFeed(
   videos: LatestVideo[],
   articles: Article[],
   courseVideoIds: Set<string>,
-  durations: Map<string, number>
+  details: Map<string, VideoDetails>
 ): ContentItem[] {
   const articleByVideoId = new Map<string, Article>()
   const articleBySlug = new Map<string, Article>()
@@ -108,7 +121,8 @@ export function buildContentFeed(
     // Drop course videos (they have their own page) and Shorts (by duration —
     // keep anything whose duration is unknown rather than guess).
     if (courseVideoIds.has(videoId)) continue
-    const duration = durations.get(videoId)
+    const videoDetails = details.get(videoId)
+    const duration = videoDetails?.durationSeconds
     if (duration !== undefined && duration <= SHORTS_MAX_SECONDS) continue
 
     let article = articleByVideoId.get(videoId)
@@ -117,7 +131,7 @@ export function buildContentFeed(
       if (slug) article = articleBySlug.get(slug)
     }
     if (article) usedArticleIds.add(article.id)
-    items.push(videoToItem(video, article, duration))
+    items.push(videoToItem(video, article, videoDetails))
   }
 
   // Posts with no matching video card become their own cards (still linking a

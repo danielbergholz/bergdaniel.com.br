@@ -24,9 +24,19 @@ export type ContentItem = {
   thumbnailUrl: string
   description?: string
   durationSeconds?: number
+  // Spoken language of the video (from YouTube metadata); absent for
+  // article-only items and videos whose language isn't set.
+  language?: "en" | "pt"
   videoUrl?: string
   articleUrl?: string
   readingMinutes?: number
+}
+
+// Per-video metadata from the videos endpoint, keyed by video id.
+// `language` is the raw BCP-47 tag YouTube reports (e.g. "en", "pt-BR").
+export type VideoDetails = {
+  durationSeconds?: number
+  language?: string
 }
 
 export type ChannelStats = {

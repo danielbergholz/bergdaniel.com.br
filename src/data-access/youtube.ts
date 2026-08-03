@@ -1,4 +1,9 @@
-import type { ChannelStats, LatestVideos, Playlists } from "@/lib/types"
+import type {
+  ChannelStats,
+  LatestVideos,
+  Playlists,
+  VideoDetails
+} from "@/lib/types"
 import { parseIsoDuration } from "@/lib/utils"
 
 const API_KEY = process.env.YOUTUBE_API_KEY
@@ -79,8 +84,12 @@ export const getCourses = async () => {
   return { englishCourses, portugueseCourses }
 }
 
-type DurationResponse = {
-  items?: { id: string; contentDetails?: { duration?: string } }[]
+type VideoDetailsResponse = {
+  items?: {
+    id: string
+    contentDetails?: { duration?: string }
+    snippet?: { defaultAudioLanguage?: string; defaultLanguage?: string }
+  }[]
 }
 
 type PlaylistVideoIdResponse = {
@@ -88,31 +97,36 @@ type PlaylistVideoIdResponse = {
   nextPageToken?: string
 }
 
-// Durations live on the videos endpoint, not playlistItems. Used to show video
-// length and to detect Shorts (which the API has no flag for). Batched 50 ids
-// per call; durations never change, so cache for a day.
-export const getVideoDurations = async (videoIds: string[]) => {
-  const durations = new Map<string, number>()
+// Durations and language live on the videos endpoint, not playlistItems.
+// Durations show video length and detect Shorts (which the API has no flag
+// for); language drives the card badge. Batched 50 ids per call — extra
+// `part`s cost no additional quota. Neither changes after upload, so cache
+// for a day.
+export const getVideoDetails = async (videoIds: string[]) => {
+  const details = new Map<string, VideoDetails>()
   for (let i = 0; i < videoIds.length; i += 50) {
     const batch = videoIds.slice(i, i + 50)
-    const url = `${BASE_URL}/videos?part=contentDetails&id=${batch.join(",")}&key=${API_KEY}`
+    const url = `${BASE_URL}/videos?part=contentDetails,snippet&id=${batch.join(",")}&key=${API_KEY}`
     const response = await fetch(url, { next: { revalidate: 86400 } })
     if (!response.ok) {
       throw new Error(`YouTube API error: ${response.status}`)
     }
 
-    const data: DurationResponse = await response.json()
+    const data: VideoDetailsResponse = await response.json()
     if (!Array.isArray(data.items)) {
       throw new Error("YouTube API: missing video items")
     }
 
     for (const item of data.items) {
-      if (item.contentDetails?.duration) {
-        durations.set(item.id, parseIsoDuration(item.contentDetails.duration))
-      }
+      const duration = item.contentDetails?.duration
+      details.set(item.id, {
+        durationSeconds: duration ? parseIsoDuration(duration) : undefined,
+        language:
+          item.snippet?.defaultAudioLanguage ?? item.snippet?.defaultLanguage
+      })
     }
   }
-  return durations
+  return details
 }
 
 const getPlaylistVideoIds = async (playlistId: string): Promise<string[]> => {
