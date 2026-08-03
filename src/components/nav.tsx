@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { useCallback, useEffect, useId, useRef, useState } from "react"
 
 import { ExternalLink } from "@/components/icons"
@@ -23,6 +23,7 @@ type Props = {
 
 export function Nav({ locale, t }: Props) {
   const pathname = usePathname()
+  const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuId = useId()
   const menuRef = useRef<HTMLDivElement>(null)
@@ -107,7 +108,27 @@ export function Nav({ locale, t }: Props) {
           ) : (
             <Link
               href={localePath(target, basePath)}
-              onClick={closeMenu}
+              onClick={(event) => {
+                closeMenu()
+                // Carry the current query string (e.g. an active ?q= search)
+                // across the locale switch. Read at click time because
+                // useSearchParams here would opt the nav out of the
+                // prerendered HTML. Plain left clicks only, so cmd/ctrl-click
+                // keeps its open-in-new-tab behavior.
+                if (
+                  event.metaKey ||
+                  event.ctrlKey ||
+                  event.shiftKey ||
+                  event.altKey ||
+                  event.button !== 0
+                ) {
+                  return
+                }
+                event.preventDefault()
+                router.push(
+                  localePath(target, basePath) + window.location.search
+                )
+              }}
               className="opacity-50 hover:opacity-100 transition-opacity"
               aria-label={t.switchLocale}
             >
