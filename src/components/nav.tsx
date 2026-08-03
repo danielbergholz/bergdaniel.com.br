@@ -6,9 +6,25 @@ import { useCallback, useEffect, useId, useRef, useState } from "react"
 
 import { ExternalLink } from "@/components/icons"
 import type { Dictionary } from "@/dictionaries"
-import { type Locale, localePath, locales, stripLocalePrefix } from "@/lib/i18n"
+import {
+  type Locale,
+  languageTags,
+  localePath,
+  locales,
+  stripLocalePrefix
+} from "@/lib/i18n"
 
 const JOIN_URL = "https://www.youtube.com/@DanielBergholz/join"
+
+// Label for switching TO a locale, written in that locale's own language (the
+// W3C pattern for language switchers — the reader who needs it may not speak
+// the page's language). Rendered with a matching lang attribute so assistive
+// tech pronounces it correctly. Keyed by target, so it lives here instead of
+// the per-page dictionaries.
+const switchLocaleLabels: Record<Locale, string> = {
+  pt: "Mudar para português",
+  en: "Switch to English"
+}
 
 const internalLinkBase =
   "text-sm normal-case tracking-normal font-medium transition-colors"
@@ -108,6 +124,7 @@ export function Nav({ locale, t }: Props) {
           ) : (
             <Link
               href={localePath(target, basePath)}
+              lang={languageTags[target]}
               onClick={(event) => {
                 closeMenu()
                 // Carry the current query string (e.g. an active ?q= search)
@@ -130,7 +147,7 @@ export function Nav({ locale, t }: Props) {
                 )
               }}
               className="opacity-50 hover:opacity-100 transition-opacity"
-              aria-label={t.switchLocale}
+              aria-label={switchLocaleLabels[target]}
             >
               {target.toUpperCase()}
             </Link>
