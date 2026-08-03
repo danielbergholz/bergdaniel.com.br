@@ -5,7 +5,12 @@ import { ContentFeed } from "@/components/content-feed"
 import { MembershipCTA } from "@/components/membership-cta"
 import { getDictionary } from "@/dictionaries"
 import { getContentFeed } from "@/data-access/content"
-import { defaultLocale, hasLocale, pageAlternates } from "@/lib/i18n"
+import {
+  defaultLocale,
+  hasLocale,
+  localePath,
+  pageAlternates
+} from "@/lib/i18n"
 
 export async function generateMetadata({
   params
@@ -25,7 +30,7 @@ export async function generateMetadata({
       type: "website",
       siteName: "Daniel Bergholz",
       title: t.title,
-      url: "https://bergdaniel.com.br/videos",
+      url: localePath(locale, "/videos"),
       description: t.description,
       images: {
         url: "https://bergdaniel.com.br/og.png",

@@ -4,7 +4,12 @@ import { notFound } from "next/navigation"
 import { Video } from "@/components/video"
 import { getDictionary } from "@/dictionaries"
 import { getCourses } from "@/data-access/youtube"
-import { defaultLocale, hasLocale, pageAlternates } from "@/lib/i18n"
+import {
+  defaultLocale,
+  hasLocale,
+  localePath,
+  pageAlternates
+} from "@/lib/i18n"
 
 export async function generateMetadata({
   params
@@ -24,7 +29,7 @@ export async function generateMetadata({
       type: "website",
       siteName: "Daniel Bergholz",
       title: t.title,
-      url: "https://bergdaniel.com.br/courses",
+      url: localePath(locale, "/courses"),
       description: t.description,
       images: {
         url: "https://bergdaniel.com.br/og_courses.png",

@@ -9,6 +9,7 @@ import {
   defaultLocale,
   hasLocale,
   languageTags,
+  localePath,
   locales,
   pageAlternates
 } from "@/lib/i18n"
@@ -76,7 +77,7 @@ export async function generateMetadata({
       siteName: "Daniel Bergholz",
       locale: locale === "pt" ? "pt_BR" : "en_US",
       title: dict.meta.home.title,
-      url: "https://bergdaniel.com.br",
+      url: localePath(locale, "/"),
       description: dict.meta.home.ogDescription,
       images: {
         url: "https://bergdaniel.com.br/og.png",
