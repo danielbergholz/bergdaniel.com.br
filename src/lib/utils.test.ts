@@ -2,12 +2,22 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 import { formatDuration, formatNumber, parseIsoDuration } from "./utils.ts"
 
-test("formatNumber abbreviates thousands and millions", () => {
+test("formatNumber abbreviates thousands and millions in English", () => {
   assert.equal(formatNumber(950), "950")
   assert.equal(formatNumber(15_800), "15.8K")
   assert.equal(formatNumber(883_000), "883K")
   assert.equal(formatNumber(1_000_000), "1M")
   assert.equal(formatNumber(2_500_000), "2.5M")
+})
+
+test("formatNumber abbreviates with Brazilian Portuguese notation", () => {
+  // Intl separates the number and the "mil"/"mi" unit with a non-breaking space.
+  const nbsp = " "
+  assert.equal(formatNumber(950, "pt"), "950")
+  assert.equal(formatNumber(15_800, "pt"), `15,8${nbsp}mil`)
+  assert.equal(formatNumber(883_000, "pt"), `883${nbsp}mil`)
+  assert.equal(formatNumber(1_000_000, "pt"), `1${nbsp}mi`)
+  assert.equal(formatNumber(2_500_000, "pt"), `2,5${nbsp}mi`)
 })
 
 test("formatDuration formats mm:ss and h:mm:ss", () => {

@@ -1,14 +1,40 @@
-import { GitHub, LinkedIn, Twitter, YouTube } from "@/components/icons"
 import { ContentCard } from "@/components/content-card"
+import { GitHub, LinkedIn, Twitter, YouTube } from "@/components/icons"
 import { MembershipCTA } from "@/components/membership-cta"
-import { getChannelStats } from "@/data-access/youtube"
+import { getDictionary } from "@/dictionaries"
 import { getContentFeed } from "@/data-access/content"
+import { getChannelStats } from "@/data-access/youtube"
+import { HomeLoadingSkeleton } from "@/components/skeletons"
+import { type Locale, hasLocale, localePath } from "@/lib/i18n"
 import { formatNumber } from "@/lib/utils"
 import Link from "next/link"
+import { notFound } from "next/navigation"
+import { Suspense } from "react"
 
 export const revalidate = 3600 // 1 hour
 
-export default async function Home() {
+// The skeleton lives in an in-page Suspense boundary instead of a route-level
+// loading.tsx: a loading boundary above the [...rest] catch-all would flush a
+// 200 shell before its notFound() runs, turning real 404s into soft 404s.
+export default async function Home({
+  params
+}: {
+  params: Promise<{ lang: string }>
+}) {
+  const { lang } = await params
+  if (!hasLocale(lang)) notFound()
+
+  return (
+    <Suspense fallback={<HomeLoadingSkeleton />}>
+      <HomeContent lang={lang} />
+    </Suspense>
+  )
+}
+
+async function HomeContent({ lang }: { lang: Locale }) {
+  const dict = await getDictionary(lang)
+  const t = dict.home
+
   const [{ subscriberCount, viewCount }, content] = await Promise.all([
     getChannelStats(),
     getContentFeed()
@@ -22,20 +48,19 @@ export default async function Home() {
     >
       <section className="w-auto md:w-[560px] mx-auto flex flex-col gap-5 text-left">
         <h1 className="font-serif text-4xl md:text-5xl italic tracking-tight">
-          Hello
+          {t.hello}
         </h1>
         <h2 className="text-base md:text-xl leading-relaxed">
-          My name is{" "}
-          <span className="font-bold tracking-wide">Daniel Bergholz</span>,
-          I&apos;m a Software Engineer, Content Creator and Solopreneur from
-          Brazil
+          {t.introBefore}{" "}
+          <span className="font-bold tracking-wide">{t.name}</span>
+          {t.introAfter}
         </h2>
         <a
           className="group w-max text-xs md:text-sm uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity duration-300 motion-reduce:transition-none"
           href="mailto:bergholz.daniel@gmail.com"
-          aria-label="Get in touch via email"
+          aria-label={t.getInTouchAria}
         >
-          Get in touch{" "}
+          {t.getInTouch}{" "}
           <span className="inline-block transition-transform duration-300 motion-reduce:transition-none group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0">
             &rarr;
           </span>
@@ -43,7 +68,7 @@ export default async function Home() {
 
         <hr className="w-12 border-t border-current opacity-20 my-1" />
 
-        <section aria-label="Social Media" className="flex items-center gap-4">
+        <section aria-label={t.socialAria} className="flex items-center gap-4">
           <a
             href="https://www.youtube.com/@DanielBergholz"
             aria-label="YouTube"
@@ -86,40 +111,40 @@ export default async function Home() {
         </section>
 
         <section
-          aria-label="YouTube Stats"
+          aria-label={t.statsAria}
           className="flex items-center gap-8 md:gap-12 py-5 md:py-6 px-1"
         >
           <div className="flex flex-col gap-1">
             <span className="text-2xl md:text-3xl font-bold tracking-tight">
-              {formatNumber(subscriberCount)}+
+              {formatNumber(subscriberCount, lang)}+
             </span>
             <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-60">
-              Subscribers
+              {t.subscribers}
             </span>
           </div>
           <div className="w-px h-8 bg-current opacity-10" />
           <div className="flex flex-col gap-1">
             <span className="text-2xl md:text-3xl font-bold tracking-tight">
-              {formatNumber(viewCount)}+
+              {formatNumber(viewCount, lang)}+
             </span>
             <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-60">
-              Views
+              {t.views}
             </span>
           </div>
         </section>
       </section>
 
-      <section aria-label="Latest videos" className="flex flex-col gap-6">
+      <section aria-label={t.latestVideosAria} className="flex flex-col gap-6">
         <div className="flex items-end justify-between gap-4">
           <h2 className="font-serif text-2xl md:text-3xl italic tracking-tight">
-            Latest videos
+            {t.latestVideos}
           </h2>
           <Link
-            href="/videos"
-            title="See all videos and articles"
+            href={localePath(lang, "/videos")}
+            title={t.viewAllTitle}
             className="group whitespace-nowrap text-xs md:text-sm uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity duration-300 motion-reduce:transition-none"
           >
-            View all{" "}
+            {t.viewAll}{" "}
             <span className="inline-block transition-transform duration-300 motion-reduce:transition-none group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0">
               &rarr;
             </span>
@@ -127,23 +152,32 @@ export default async function Home() {
         </div>
         {latestVideos.length === 0 ? (
           <p className="opacity-60 text-sm md:text-base">
-            No videos available right now. Check back soon or browse{" "}
-            <Link href="/videos" className="underline underline-offset-2">
-              all content
+            {t.noVideosBefore}{" "}
+            <Link
+              href={localePath(lang, "/videos")}
+              className="underline underline-offset-2"
+            >
+              {t.noVideosLink}
             </Link>
             .
           </p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {latestVideos.map((item, index) => (
-              <ContentCard key={item.id} item={item} priority={index === 0} />
+              <ContentCard
+                key={item.id}
+                item={item}
+                locale={lang}
+                t={dict.card}
+                priority={index === 0}
+              />
             ))}
           </div>
         )}
       </section>
 
-      <section aria-label="Channel membership">
-        <MembershipCTA />
+      <section aria-label={t.membershipAria}>
+        <MembershipCTA t={dict.membership} />
       </section>
     </main>
   )

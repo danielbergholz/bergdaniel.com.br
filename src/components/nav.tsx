@@ -1,19 +1,30 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { useCallback, useEffect, useId, useRef, useState } from "react"
 
 import { ExternalLink } from "@/components/icons"
-
-const navLinks = [
-  { href: "/videos", label: "Videos", prefetch: true },
-  { href: "/courses", label: "Courses", prefetch: true },
-  { href: "/products", label: "Products" },
-  { href: "/work-with-me", label: "Work with me" }
-]
+import type { Dictionary } from "@/dictionaries"
+import {
+  type Locale,
+  languageTags,
+  localePath,
+  locales,
+  stripLocalePrefix
+} from "@/lib/i18n"
 
 const JOIN_URL = "https://www.youtube.com/@DanielBergholz/join"
+
+// Label for switching TO a locale, written in that locale's own language (the
+// W3C pattern for language switchers — the reader who needs it may not speak
+// the page's language). Rendered with a matching lang attribute so assistive
+// tech pronounces it correctly. Keyed by target, so it lives here instead of
+// the per-page dictionaries.
+const switchLocaleLabels: Record<Locale, string> = {
+  pt: "Mudar para português",
+  en: "Switch to English"
+}
 
 const internalLinkBase =
   "text-sm normal-case tracking-normal font-medium transition-colors"
@@ -21,12 +32,27 @@ const internalLinkBase =
 const joinButtonStyle =
   "inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-violet-700 dark:text-violet-300 border border-violet-400/70 dark:border-violet-600/70 rounded-sm px-3 py-1.5 hover:bg-violet-50 dark:hover:bg-violet-950/40 hover:border-violet-500 dark:hover:border-violet-500 transition-colors"
 
-export function Nav() {
+type Props = {
+  locale: Locale
+  t: Dictionary["nav"]
+}
+
+export function Nav({ locale, t }: Props) {
   const pathname = usePathname()
+  const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuId = useId()
   const menuRef = useRef<HTMLDivElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
+
+  const navLinks = [
+    { href: localePath(locale, "/videos"), label: t.videos, prefetch: true },
+    { href: localePath(locale, "/courses"), label: t.courses, prefetch: true },
+    { href: localePath(locale, "/products"), label: t.products },
+    { href: localePath(locale, "/work-with-me"), label: t.workWithMe }
+  ]
+
+  const homeHref = localePath(locale, "/")
 
   const isActive = (path: string) => pathname === path
 
@@ -74,11 +100,61 @@ export function Nav() {
       rel="noreferrer noopener"
       onClick={closeMenu}
       className={joinButtonStyle}
-      aria-label="Join on YouTube (opens in a new tab)"
+      aria-label={t.membersAria}
     >
-      YouTube Members
+      {t.members}
       <ExternalLink />
     </a>
+  )
+
+  // Same page in the other locale: strip the current prefix, apply the target's.
+  const basePath = stripLocalePrefix(pathname ?? "/")
+
+  const localeSwitcher = (
+    <div className="flex items-center gap-2 text-xs uppercase tracking-[0.15em]">
+      {locales.map((target, index) => (
+        <span key={target} className="flex items-center gap-2">
+          {index > 0 && (
+            <span className="opacity-30" aria-hidden="true">
+              /
+            </span>
+          )}
+          {target === locale ? (
+            <span className="font-bold">{target.toUpperCase()}</span>
+          ) : (
+            <Link
+              href={localePath(target, basePath)}
+              lang={languageTags[target]}
+              onClick={(event) => {
+                closeMenu()
+                // Carry the current query string (e.g. an active ?q= search)
+                // across the locale switch. Read at click time because
+                // useSearchParams here would opt the nav out of the
+                // prerendered HTML. Plain left clicks only, so cmd/ctrl-click
+                // keeps its open-in-new-tab behavior.
+                if (
+                  event.metaKey ||
+                  event.ctrlKey ||
+                  event.shiftKey ||
+                  event.altKey ||
+                  event.button !== 0
+                ) {
+                  return
+                }
+                event.preventDefault()
+                router.push(
+                  localePath(target, basePath) + window.location.search
+                )
+              }}
+              className="opacity-50 hover:opacity-100 transition-opacity"
+              aria-label={switchLocaleLabels[target]}
+            >
+              {target.toUpperCase()}
+            </Link>
+          )}
+        </span>
+      ))}
+    </div>
   )
 
   return (
@@ -88,10 +164,10 @@ export function Nav() {
     >
       <div className="flex justify-between items-center gap-4">
         <Link
-          href="/"
+          href={homeHref}
           className="font-bold text-lg md:text-xl tracking-[0.15em] shrink-0"
           onClick={closeMenu}
-          aria-current={pathname === "/" ? "page" : undefined}
+          aria-current={pathname === homeHref ? "page" : undefined}
         >
           BERGHOLZ
         </Link>
@@ -117,6 +193,13 @@ export function Nav() {
             aria-hidden="true"
           />
 
+          {localeSwitcher}
+
+          <div
+            className="h-5 w-px bg-current/15 dark:bg-current/25 shrink-0"
+            aria-hidden="true"
+          />
+
           {joinLink}
         </div>
 
@@ -125,7 +208,7 @@ export function Nav() {
           type="button"
           onClick={toggleMenu}
           className="md:hidden flex flex-col justify-center items-center w-11 h-11 -mr-2 space-y-1.5 cursor-pointer"
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-label={isMenuOpen ? t.closeMenu : t.openMenu}
           aria-expanded={isMenuOpen}
           aria-controls={menuId}
         >
@@ -146,7 +229,7 @@ export function Nav() {
         <>
           <button
             type="button"
-            aria-label="Close menu"
+            aria-label={t.closeMenu}
             className="md:hidden fixed inset-0 bg-black/40 dark:bg-black/60 z-40 cursor-default"
             onClick={closeMenu}
             tabIndex={-1}
@@ -162,7 +245,7 @@ export function Nav() {
             <div className="flex flex-col gap-6 px-6 md:px-10">
               <div>
                 <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-foreground/50">
-                  Pages
+                  {t.pages}
                 </p>
                 <ul className="flex flex-col gap-3">
                   {navLinks.map(({ href, label, prefetch }) => (
@@ -183,7 +266,14 @@ export function Nav() {
 
               <div className="border-t border-current/10 dark:border-current/20 pt-6">
                 <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-foreground/50">
-                  YouTube
+                  {t.language}
+                </p>
+                {localeSwitcher}
+              </div>
+
+              <div className="border-t border-current/10 dark:border-current/20 pt-6">
+                <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-foreground/50">
+                  {t.youtube}
                 </p>
                 {joinLink}
               </div>

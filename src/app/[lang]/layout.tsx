@@ -1,9 +1,19 @@
 import type { Metadata } from "next"
 import { Instrument_Serif, Poppins } from "next/font/google"
+import Script from "next/script"
 
 import { Footer } from "@/components/footer"
 import { Nav } from "@/components/nav"
-import "./globals.css"
+import { getDictionary } from "@/dictionaries"
+import {
+  defaultLocale,
+  hasLocale,
+  languageTags,
+  localePath,
+  locales,
+  pageAlternates
+} from "@/lib/i18n"
+import "../globals.css"
 
 const poppins = Poppins({ weight: ["400", "700"], subsets: ["latin"] })
 const instrumentSerif = Instrument_Serif({
@@ -13,69 +23,79 @@ const instrumentSerif = Instrument_Serif({
   variable: "--font-serif"
 })
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://bergdaniel.com.br"),
-  alternates: {
-    canonical: "/"
-  },
-  title: "Daniel Bergholz - Software Engineer, Content Creator & Solopreneur",
-  description:
-    "Daniel Bergholz is a Software Engineer, Content Creator and Solopreneur from Brazil building SaaS products and teaching programming to developers",
-  keywords: [
-    "Daniel Bergholz",
-    "Software Engineer",
-    "Content Creator",
-    "Solopreneur",
-    "SaaS Products",
-    "CourseShelf",
-    "Programming",
-    "Software Development",
-    "React.js",
-    "Next.js",
-    "Elixir",
-    "Phoenix",
-    "Web Development",
-    "JavaScript",
-    "TypeScript"
-  ],
-  authors: [{ name: "Daniel Bergholz", url: "https://bergdaniel.com.br" }],
-  creator: "Daniel Bergholz",
-  publisher: "Daniel Bergholz",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang }))
+}
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ lang: string }>
+}): Promise<Metadata> {
+  const { lang } = await params
+  const locale = hasLocale(lang) ? lang : defaultLocale
+  const dict = await getDictionary(locale)
+
+  return {
+    metadataBase: new URL("https://bergdaniel.com.br"),
+    alternates: pageAlternates(locale, "/"),
+    title: dict.meta.home.title,
+    description: dict.meta.home.description,
+    keywords: [
+      "Daniel Bergholz",
+      "Software Engineer",
+      "Content Creator",
+      "Solopreneur",
+      "SaaS Products",
+      "CourseShelf",
+      "Programming",
+      "Software Development",
+      "React.js",
+      "Next.js",
+      "Elixir",
+      "Phoenix",
+      "Web Development",
+      "JavaScript",
+      "TypeScript"
+    ],
+    authors: [{ name: "Daniel Bergholz", url: "https://bergdaniel.com.br" }],
+    creator: "Daniel Bergholz",
+    publisher: "Daniel Bergholz",
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1
-    }
-  },
-  openGraph: {
-    type: "website",
-    siteName: "Daniel Bergholz",
-    title: "Daniel Bergholz - Software Engineer, Content Creator & Solopreneur",
-    url: "https://bergdaniel.com.br",
-    description:
-      "Daniel Bergholz is a Software Engineer, Content Creator and Solopreneur from Brazil building SaaS products and teaching programming",
-    images: {
-      url: "https://bergdaniel.com.br/og.png",
-      width: 1200,
-      height: 630
-    }
-  },
-  twitter: {
-    site: "@danielbergholz",
-    creator: "@danielbergholz",
-    card: "summary_large_image",
-    title: "Daniel Bergholz - Software Engineer, Content Creator & Solopreneur",
-    description:
-      "Daniel Bergholz is a Software Engineer, Content Creator and Solopreneur from Brazil building SaaS products and teaching programming",
-    images: {
-      url: "https://bergdaniel.com.br/og.png",
-      width: 1200,
-      height: 630
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1
+      }
+    },
+    openGraph: {
+      type: "website",
+      siteName: "Daniel Bergholz",
+      locale: locale === "pt" ? "pt_BR" : "en_US",
+      title: dict.meta.home.title,
+      url: localePath(locale, "/"),
+      description: dict.meta.home.ogDescription,
+      images: {
+        url: "https://bergdaniel.com.br/og.png",
+        width: 1200,
+        height: 630
+      }
+    },
+    twitter: {
+      site: "@danielbergholz",
+      creator: "@danielbergholz",
+      card: "summary_large_image",
+      title: dict.meta.home.title,
+      description: dict.meta.home.ogDescription,
+      images: {
+        url: "https://bergdaniel.com.br/og.png",
+        width: 1200,
+        height: 630
+      }
     }
   }
 }
@@ -119,13 +139,19 @@ const personSchema = {
   }
 }
 
-export default function RootLayout({
-  children
+export default async function RootLayout({
+  children,
+  params
 }: Readonly<{
   children: React.ReactNode
+  params: Promise<{ lang: string }>
 }>) {
+  const { lang } = await params
+  const locale = hasLocale(lang) ? lang : defaultLocale
+  const dict = await getDictionary(locale)
+
   return (
-    <html lang="en">
+    <html lang={languageTags[locale]}>
       <head>
         {/* SEO Meta Tags */}
         <link rel="sitemap" href="/sitemap.xml" />
@@ -151,22 +177,24 @@ export default function RootLayout({
           }}
         />
 
-        {/* Analytics */}
-        <script
+        {/* Analytics — next/script so client-side locale switches don't
+            re-render a raw script tag React can't execute */}
+        <Script
           defer
           data-domain="bergdaniel.com.br"
           src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
         />
       </head>
       <body
         className={`${poppins.className} ${instrumentSerif.variable} px-6 md:px-10 py-5 md:py-6`}
       >
         <a href="#main" className="skip-link">
-          Skip to content
+          {dict.nav.skipLink}
         </a>
-        <Nav />
+        <Nav locale={locale} t={dict.nav} />
         {children}
-        <Footer />
+        <Footer locale={locale} t={dict.footer} nav={dict.nav} />
       </body>
     </html>
   )

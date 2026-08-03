@@ -1,16 +1,14 @@
-export function formatNumber(num: number): string {
-  if (num >= 1_000_000) {
-    const formatted = (num / 1_000_000).toFixed(1)
-    return `${formatted.replace(/\.0$/, "")}M`
-  }
-  if (num >= 1_000) {
-    const formatted = (num / 1_000).toFixed(1)
-    return `${formatted.replace(/\.0$/, "")}K`
-  }
-  return num.toString()
+import { type Locale, languageTags } from "./i18n.ts"
+
+// Compact notation: en "15.8K" / "2.5M", pt-BR "15,8 mil" / "2,5 mi".
+export function formatNumber(num: number, locale: Locale = "en"): string {
+  return new Intl.NumberFormat(languageTags[locale], {
+    notation: "compact",
+    maximumFractionDigits: 1
+  }).format(num)
 }
 
-export function readableDate(date: string) {
+export function readableDate(date: string, locale: Locale = "en") {
   const parsedDate = new Date(date)
   const currentYear = new Date().getFullYear()
   const options: Intl.DateTimeFormatOptions = {
@@ -22,10 +20,13 @@ export function readableDate(date: string) {
     options.year = "numeric"
   }
 
-  // Pin the locale so server and client format identically (the site is in
-  // English); passing `undefined` uses each runtime's default and can trigger
-  // a hydration mismatch for visitors whose browser locale differs.
-  return parsedDate.toLocaleDateString("en-US", options)
+  // Pin the locale to the page's language so server and client format
+  // identically; passing `undefined` uses each runtime's default and can
+  // trigger a hydration mismatch for visitors whose browser locale differs.
+  return parsedDate.toLocaleDateString(
+    locale === "en" ? "en-US" : languageTags[locale],
+    options
+  )
 }
 
 // 977 -> "16:17", 3723 -> "1:02:03"

@@ -2,10 +2,9 @@ import type { MetadataRoute } from "next"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Daniel Bergholz - Software Engineer & Solopreneur",
+    name: "Daniel Bergholz - Engenheiro de Software & Solopreneur",
     short_name: "Daniel Bergholz",
-    description:
-      "Software Engineer, Content Creator and Solopreneur from Brazil",
+    description: "Engenheiro de software, criador de conteúdo e solopreneur",
     icons: [
       {
         src: "/android-chrome-192x192.png",
@@ -23,7 +22,7 @@ export default function manifest(): MetadataRoute.Manifest {
     display: "standalone",
     start_url: "/",
     scope: "/",
-    lang: "en",
+    lang: "pt-BR",
     orientation: "portrait-primary"
   }
 }

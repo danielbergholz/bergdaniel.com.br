@@ -1,3 +1,6 @@
+import type { Metadata } from "next"
+import { notFound } from "next/navigation"
+
 import {
   DevTo,
   Diamond,
@@ -7,31 +10,49 @@ import {
   YouTube
 } from "@/components/icons"
 import { Link } from "@/components/link"
-import type { Metadata } from "next"
+import { getDictionary } from "@/dictionaries"
+import { defaultLocale, hasLocale, pageAlternates } from "@/lib/i18n"
 
-export const metadata: Metadata = {
-  title: "Links | Daniel Bergholz",
-  description: "Social media links: YouTube, Twitter, Blog and GitHub",
-  alternates: {
-    canonical: "/links"
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ lang: string }>
+}): Promise<Metadata> {
+  const { lang } = await params
+  const locale = hasLocale(lang) ? lang : defaultLocale
+  const dict = await getDictionary(locale)
+
+  return {
+    title: dict.meta.links.title,
+    description: dict.meta.links.description,
+    alternates: pageAlternates(locale, "/links")
   }
 }
 
-export default function Links() {
+export default async function Links({
+  params
+}: {
+  params: Promise<{ lang: string }>
+}) {
+  const { lang } = await params
+  if (!hasLocale(lang)) notFound()
+  const dict = await getDictionary(lang)
+  const t = dict.links
+
   return (
     <main id="main" className="my-14 md:my-28">
       <div className="flex flex-col items-center mb-6 md:mb-8">
         <h1 className="font-serif text-3xl md:text-4xl italic tracking-tight">
-          Links
+          {t.title}
         </h1>
         <hr className="w-12 border-t border-current opacity-20 mt-4" />
       </div>
       <section
-        aria-label="Social Media Links"
+        aria-label={t.sectionAria}
         className="flex flex-col items-center gap-3"
       >
         <Link
-          title="Premium"
+          title={t.premium}
           href="https://www.youtube.com/@DanielBergholz/join"
         >
           <Diamond width={28} height={28} />
@@ -52,7 +73,7 @@ export default function Links() {
           <LinkedIn width={28} height={28} />
         </Link>
 
-        <Link href="https://dev.to/danielbergholz" title="Blog">
+        <Link href="https://dev.to/danielbergholz" title={t.blog}>
           <DevTo width={23} height={23} />
         </Link>
 

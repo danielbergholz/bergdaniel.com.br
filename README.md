@@ -42,10 +42,16 @@ All three are required. The data-access layer throws on a failed API response (s
 
 ## Project Structure
 
-- `src/app/` — pages and layouts
+- `src/app/[lang]/` — pages and layouts, rendered once per locale (pt-BR at the root, English under `/en`)
+- `src/proxy.ts` — locale routing: rewrites unprefixed paths to the Portuguese default, redirects public `/pt/...` URLs
+- `src/dictionaries/` — pt/en UI strings, loaded in Server Components only
 - `src/components/` — reusable UI components
 - `src/data-access/` — API integration layer (YouTube, Dev.to)
-- `src/lib/` — types, utilities, and the pure feed logic (`feed.ts`), with co-located `*.test.ts` unit tests
+- `src/lib/` — types, utilities, locale helpers (`i18n.ts`), the route registry that generates the sitemap (`routes.ts`), and the pure feed logic (`feed.ts`), with co-located `*.test.ts` unit tests
+
+## Internationalization
+
+The site is bilingual: Brazilian Portuguese is the default and lives at the root (`/videos`), English lives under `/en` (`/en/videos`). There is no i18n library — routing is a `[lang]` segment plus a small proxy rewrite, and translations are two JSON dictionaries. Every page emits `hreflang` alternates and a locale-specific canonical URL, and the sitemap lists both URL sets.
 
 > Working in this repo with an AI coding agent? See [`AGENTS.md`](./AGENTS.md).
 

@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "home": {
+      "title": "Daniel Bergholz - Engenheiro de Software, Criador de Conteúdo e Solopreneur",
+      "description": "Daniel Bergholz é engenheiro de software, criador de conteúdo e solopreneur. Constrói produtos SaaS e ensina programação para devs",
+      "ogDescription": "Daniel Bergholz é engenheiro de software, criador de conteúdo e solopreneur. Constrói produtos SaaS e ensina programação"
+    },
+    "videos": {
+      "title": "Vídeos | Daniel Bergholz",
+      "description": "Assista aos vídeos do Daniel Bergholz ou leia a versão em artigo — tutoriais de desenvolvimento web fullstack, dicas de programação e conteúdo para devs"
+    },
+    "courses": {
+      "title": "Cursos | Daniel Bergholz",
+      "description": "Cursos gratuitos e premium de desenvolvimento web fullstack"
+    },
+    "links": {
+      "title": "Links | Daniel Bergholz",
+      "description": "Links das redes sociais: YouTube, Twitter, Blog e GitHub"
+    },
+    "products": {
+      "title": "Produtos - Daniel Bergholz",
+      "description": "Projetos criados por Daniel Bergholz - a comunidade de aprendizado CourseShelf, a plataforma gratuita de educação em tecnologia TechSchool e outras ferramentas para devs"
+    },
+    "workWithMe": {
+      "title": "Trabalhe Comigo - Daniel Bergholz",
+      "description": "Contrate Daniel Bergholz como desenvolvedor fullstack, contractor ou colaborador de conteúdo. Especialista em Elixir, Phoenix, React e desenvolvimento com IA para startups."
+    }
+  },
+  "nav": {
+    "skipLink": "Pular para o conteúdo",
+    "videos": "Vídeos",
+    "courses": "Cursos",
+    "products": "Produtos",
+    "workWithMe": "Trabalhe comigo",
+    "members": "Membros do YouTube",
+    "membersAria": "Vire membro no YouTube (abre em nova aba)",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "pages": "Páginas",
+    "youtube": "YouTube",
+    "language": "Idioma"
+  },
+  "footer": {
+    "pages": "Páginas",
+    "social": "Social",
+    "pagesAria": "Páginas do site",
+    "socialAria": "Redes sociais",
+    "opensNewTab": "abre em nova aba",
+    "links": "Links"
+  },
+  "home": {
+    "hello": "Olá",
+    "introBefore": "Meu nome é",
+    "name": "Daniel Bergholz",
+    "introAfter": ", sou engenheiro de software, criador de conteúdo e solopreneur",
+    "getInTouch": "Fale comigo",
+    "getInTouchAria": "Fale comigo por email",
+    "socialAria": "Redes sociais",
+    "statsAria": "Estatísticas do YouTube",
+    "subscribers": "Inscritos",
+    "views": "Visualizações",
+    "latestVideosAria": "Últimos vídeos",
+    "latestVideos": "Últimos vídeos",
+    "viewAll": "Ver todos",
+    "viewAllTitle": "Ver todos os vídeos e artigos",
+    "noVideosBefore": "Nenhum vídeo disponível no momento. Volte em breve ou veja",
+    "noVideosLink": "todo o conteúdo",
+    "membershipAria": "Membros do canal"
+  },
+  "videos": {
+    "title": "Vídeos",
+    "intro": "Tudo que eu publico, do mais recente ao mais antigo. A maioria dos vídeos também tem versão escrita — assista no YouTube ou leia o artigo, como preferir."
+  },
+  "feed": {
+    "searchLabel": "Buscar vídeos e artigos",
+    "searchPlaceholder": "Buscar vídeos e artigos...",
+    "clearSearch": "Limpar busca",
+    "noResultsFor": "Nenhum resultado para",
+    "resultSingular": "resultado",
+    "resultPlural": "resultados",
+    "resultsFor": "para"
+  },
+  "card": {
+    "watch": "Assistir",
+    "read": "Ler",
+    "article": "Artigo",
+    "minRead": "min de leitura"
+  },
+  "courses": {
+    "title": "Cursos",
+    "intro": "Playlists gratuitas de desenvolvimento web fullstack no YouTube. Confira os cursos em português ou comece pelos cursos em inglês.",
+    "englishHeading": "Cursos em inglês",
+    "portugueseHeading": "Cursos em português",
+    "emptyEnglish": "Nenhum curso em inglês disponível no momento. Volte em breve.",
+    "emptyPortuguese": "Nenhum curso em português disponível no momento. Volte em breve."
+  },
+  "video": {
+    "free": "Grátis",
+    "new": "Novo",
+    "videoSingular": "vídeo",
+    "videoPlural": "vídeos"
+  },
+  "membership": {
+    "title": "Entre para ter acesso antecipado",
+    "badge": "Membros",
+    "body": "Vire membro do canal para assistir aos vídeos novos antes de todo mundo, ter benefícios exclusivos e apoiar o canal diretamente."
+  },
+  "links": {
+    "title": "Links",
+    "sectionAria": "Links das redes sociais",
+    "premium": "Premium",
+    "blog": "Blog"
+  },
+  "products": {
+    "title": "Produtos",
+    "courseshelf": {
+      "badge": "Beta",
+      "description": "A comunidade onde autodidatas descobrem, avaliam e recomendam cursos online de todos os assuntos. Pense nela como a sua biblioteca pessoal de aprendizado, com curadoria de quem realmente fez os cursos.",
+      "offersHeading": "O que o CourseShelf oferece:",
+      "offers": [
+        "Avaliações e recomendações de cursos feitas pela comunidade",
+        "Biblioteca pessoal de aprendizado e criação de playlists",
+        "Cursos de todos os assuntos - de programação a culinária",
+        "Conecte-se com outros autodidatas e compartilhe sua jornada"
+      ]
+    },
+    "techschool": {
+      "badge": "No ar",
+      "description": "Plataforma gratuita de educação em tecnologia para todos. O TechSchool reúne os melhores cursos gratuitos de programação da internet, ajudando devs a irem do zero ao primeiro emprego sem gastar nada.",
+      "offersHeading": "O que o TechSchool oferece:",
+      "offers": [
+        "Mais de 189 cursos gratuitos selecionados, em várias linguagens de programação",
+        "Trilhas de estudo no estilo bootcamp",
+        "Cursos de Go, Elixir, Python, Ruby, React, Node.js e mais",
+        "Plataforma comunitária com contribuições open source"
+      ]
+    }
+  },
+  "workWithMe": {
+    "title": "Trabalhe comigo",
+    "intro": "Desenvolvedor fullstack especializado em desenvolvimento com IA. Entrego rápido, construo produtos do zero e crio conteúdo que alcança milhares de devs.",
+    "available": "Disponível",
+    "open": "Aberto",
+    "services": {
+      "startup": {
+        "title": "Engenharia para startups",
+        "description": "Procurando um dev fullstack que entrega rápido e assume features de ponta a ponta? Eu me destaco em startups em estágio intermediário, onde velocidade e qualidade importam igualmente. Mais de 6 anos construindo produtos do zero até a produção.",
+        "highlights": [
+          "Elixir, Phoenix, React, TypeScript, GraphQL",
+          "Integrações com IA (OpenAI, Groq, Claude)",
+          "Desenvolvimento de produto do 0 ao 1 e escala",
+          "Produtividade 10x com fluxos de trabalho guiados por IA"
+        ]
+      },
+      "contract": {
+        "title": "Trabalho por contrato",
+        "description": "Disponível para contratos com escopo focado. Entrego rápido sem cortar caminho, usando Claude Code para manter um alto nível de produção. Ideal para MVPs, features de IA e aplicações web fullstack.",
+        "highlights": [
+          "MVPs e provas de conceito",
+          "Integração de features de IA em produtos existentes",
+          "SaaS B2B e painéis administrativos",
+          "Aplicações fullstack com Phoenix/React"
+        ]
+      },
+      "content": {
+        "title": "Conteúdo e collabs",
+        "description": "Tenho um canal no YouTube com mais de {subscribers} inscritos onde ensino desenvolvimento web. Sempre aberto a participações em podcasts, vídeos como convidado, conteúdo em parceria e patrocínios. Falo inglês e português.",
+        "highlights": [
+          "Participações em podcasts e vídeos",
+          "Colaborações de conteúdo técnico",
+          "Patrocínios e parcerias",
+          "Conteúdo bilíngue (inglês e português)"
+        ]
+      }
+    },
+    "trackHeading": "Histórico",
+    "track": {
+      "gearflow": "Marketplace B2B com extração de peças por IA, feito com Elixir e Phoenix",
+      "nebulab": "3 anos construindo lojas Shopify e plataformas de e-commerce globais",
+      "courseshelf": "Fundei uma plataforma comunitária de avaliação de cursos, construída com IA",
+      "techschool": "Plataforma open source de educação com 2 mil visitantes mensais"
+    },
+    "stackHeading": "Stack",
+    "outro": "Quer trabalhar comigo? Me manda um email e vamos conversar.",
+    "emailTitle": "Enviar email para Daniel Bergholz"
+  }
+}
