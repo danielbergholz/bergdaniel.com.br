@@ -2,7 +2,7 @@ import { getArticles } from "@/data-access/blog"
 import {
   getCourseVideoIds,
   getLatestVideos,
-  getVideoDurations
+  getVideoDetails
 } from "@/data-access/youtube"
 import { buildContentFeed } from "@/lib/feed"
 import type { ContentItem } from "@/lib/types"
@@ -18,9 +18,9 @@ export const getContentFeed = async (): Promise<ContentItem[]> => {
     getCourseVideoIds()
   ])
 
-  const durations = await getVideoDurations(
+  const details = await getVideoDetails(
     videos.map((video) => video.snippet.resourceId.videoId)
   )
 
-  return buildContentFeed(videos, articles, courseVideoIds, durations)
+  return buildContentFeed(videos, articles, courseVideoIds, details)
 }

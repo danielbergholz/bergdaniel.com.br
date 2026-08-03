@@ -4,9 +4,10 @@ import {
   articleSlugFromDescription,
   buildContentFeed,
   firstMeaningfulLine,
+  siteLanguage,
   videoIdFromBody
 } from "./feed.ts"
-import type { Article, LatestVideo } from "./types"
+import type { Article, LatestVideo, VideoDetails } from "./types"
 
 // --- fixtures ---
 const thumb = (url: string) => ({ url, width: 1280, height: 720 })
@@ -57,7 +58,9 @@ function article(opts: {
 }
 
 const noCourses = new Set<string>()
-const durations = (entries: [string, number][]) => new Map(entries)
+const details = (entries: [string, VideoDetails][]) => new Map(entries)
+const durations = (entries: [string, number][]) =>
+  details(entries.map(([id, s]) => [id, { durationSeconds: s }]))
 
 // --- helpers ---
 test("videoIdFromBody handles every link format", () => {
@@ -96,6 +99,15 @@ test("firstMeaningfulLine skips promo lines", () => {
     undefined
   )
   assert.equal(firstMeaningfulLine(""), undefined)
+})
+
+test("siteLanguage collapses BCP-47 tags to the site's languages", () => {
+  assert.equal(siteLanguage("en"), "en")
+  assert.equal(siteLanguage("en-US"), "en")
+  assert.equal(siteLanguage("pt-BR"), "pt")
+  assert.equal(siteLanguage("pt-PT"), "pt")
+  assert.equal(siteLanguage("es"), undefined)
+  assert.equal(siteLanguage(undefined), undefined)
 })
 
 // --- buildContentFeed ---
@@ -217,6 +229,26 @@ test("an article linking an out-of-window video still offers Watch", () => {
   assert.equal(feed.length, 1)
   assert.equal(feed[0].videoUrl, "https://www.youtube.com/watch?v=oldvideo111")
   assert.equal(feed[0].articleUrl, "https://dev.to/danielbergholz/old")
+})
+
+test("video language flows into the item; article-only cards have none", () => {
+  const pt = video({ id: "ptvideo0001" })
+  const unset = video({ id: "unsetvid001" })
+  const a = article({ id: 11, slug: "text-only", body: "" })
+  const feed = buildContentFeed(
+    [pt, unset],
+    [a],
+    noCourses,
+    details([
+      ["ptvideo0001", { durationSeconds: 600, language: "pt-BR" }],
+      ["unsetvid001", { durationSeconds: 600 }]
+    ])
+  )
+
+  const byId = new Map(feed.map((i) => [i.id, i]))
+  assert.equal(byId.get("ptvideo0001")?.language, "pt")
+  assert.equal(byId.get("unsetvid001")?.language, undefined)
+  assert.equal(byId.get("article-11")?.language, undefined)
 })
 
 test("sorts newest first across videos and articles", () => {
