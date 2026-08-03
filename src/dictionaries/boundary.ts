@@ -19,7 +19,7 @@ export const boundaryStrings: Record<
   en: {
     errorTitle: "Something went wrong",
     errorBody:
-      "We couldn't load this page right now. This is usually temporary — try again in a moment.",
+      "We couldn't load this page right now. This is usually temporary, so try again in a moment.",
     tryAgain: "Try again",
     goHome: "Go home",
     notFoundTitle: "Whoops 👀",
@@ -31,7 +31,7 @@ export const boundaryStrings: Record<
   pt: {
     errorTitle: "Algo deu errado",
     errorBody:
-      "Não conseguimos carregar esta página agora. Normalmente é temporário — tente de novo em instantes.",
+      "Não conseguimos carregar esta página agora. Normalmente é temporário, tente de novo em instantes.",
     tryAgain: "Tentar de novo",
     goHome: "Voltar ao início",
     notFoundTitle: "Opa 👀",

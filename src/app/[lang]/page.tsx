@@ -1,6 +1,5 @@
 import { ContentCard } from "@/components/content-card"
 import { GitHub, LinkedIn, Twitter, YouTube } from "@/components/icons"
-import { MembershipCTA } from "@/components/membership-cta"
 import { getDictionary } from "@/dictionaries"
 import { getContentFeed } from "@/data-access/content"
 import { getChannelStats } from "@/data-access/youtube"
@@ -174,10 +173,6 @@ async function HomeContent({ lang }: { lang: Locale }) {
             ))}
           </div>
         )}
-      </section>
-
-      <section aria-label={t.membershipAria}>
-        <MembershipCTA t={dict.membership} />
       </section>
     </main>
   )

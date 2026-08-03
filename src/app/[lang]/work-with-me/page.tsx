@@ -21,16 +21,16 @@ export async function generateMetadata({
     alternates: pageAlternates(locale, "/work-with-me"),
     keywords: [
       "Daniel Bergholz",
-      "Hire Developer",
-      "Fullstack Developer",
-      "Elixir Developer",
-      "Phoenix Developer",
-      "React Developer",
-      "Freelance Developer",
-      "Contractor",
+      "Business Consulting",
+      "AI Consulting",
+      "Technical Training",
+      "Workshops",
+      "AI Automation",
+      "1-on-1 Mentorship",
+      "Developer Mentorship",
+      "AI Adoption",
+      "Remote Work Abroad",
       "Content Creator",
-      "Startup Developer",
-      "AI Development",
       "Claude Code"
     ]
   }
@@ -66,12 +66,16 @@ const stack = [
   "TypeScript",
   "Next.js",
   "PostgreSQL",
+  "SQLite",
   "GraphQL",
-  "Claude Code"
+  "Claude Code",
+  "Cursor",
+  "opencode",
+  "OpenAI"
 ]
 
-const availableBadgeStyle =
-  "text-emerald-600 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800"
+const comingSoonBadgeStyle =
+  "text-amber-600 dark:text-amber-400 border-amber-300 dark:border-amber-800"
 const openBadgeStyle =
   "text-violet-600 dark:text-violet-400 border-violet-300 dark:border-violet-800"
 
@@ -89,14 +93,14 @@ export default async function WorkWithMe({
 
   const services = [
     {
-      ...t.services.startup,
-      badge: t.available,
-      badgeColor: availableBadgeStyle
+      ...t.services.business,
+      badge: t.comingSoon,
+      badgeColor: comingSoonBadgeStyle
     },
     {
-      ...t.services.contract,
-      badge: t.available,
-      badgeColor: availableBadgeStyle
+      ...t.services.mentorship,
+      badge: t.comingSoon,
+      badgeColor: comingSoonBadgeStyle
     },
     {
       ...t.services.content,
@@ -108,6 +112,8 @@ export default async function WorkWithMe({
       badgeColor: openBadgeStyle
     }
   ]
+
+  const aiTooling = [t.ai.engineering, t.ai.automation, t.ai.agents]
 
   return (
     <main id="main" className="w-auto md:max-w-3xl mx-auto my-14 md:my-28">
@@ -178,10 +184,24 @@ export default async function WorkWithMe({
 
       <section className="mt-10 md:mt-14">
         <h2 className="font-serif text-2xl md:text-3xl italic tracking-tight mb-4">
-          {t.stackHeading}
+          {t.aiHeading}
         </h2>
         <hr className="w-12 border-t border-current opacity-20 mb-6" />
 
+        <div className="space-y-4">
+          {aiTooling.map((item) => (
+            <div key={item.title} className="flex flex-col gap-0.5">
+              <span className="text-sm md:text-base font-bold">
+                {item.title}
+              </span>
+              <span className="text-sm opacity-60">{item.description}</span>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-8 mb-3 text-[10px] uppercase tracking-[0.2em] opacity-50">
+          {t.stackHeading}
+        </p>
         <div className="flex flex-wrap gap-2">
           {stack.map((tech) => (
             <span
