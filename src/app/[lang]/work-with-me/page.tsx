@@ -66,8 +66,12 @@ const stack = [
   "TypeScript",
   "Next.js",
   "PostgreSQL",
+  "SQLite",
   "GraphQL",
-  "Claude Code"
+  "Claude Code",
+  "Cursor",
+  "opencode",
+  "OpenAI"
 ]
 
 const comingSoonBadgeStyle =
