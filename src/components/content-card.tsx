@@ -1,4 +1,6 @@
 import { Play, Read } from "@/components/icons"
+import type { Dictionary } from "@/dictionaries"
+import type { Locale } from "@/lib/i18n"
 import type { ContentItem } from "@/lib/types"
 import { formatDuration, readableDate } from "@/lib/utils"
 import Image from "next/image"
@@ -6,14 +8,18 @@ import Image from "next/image"
 const CARD_BASE =
   "group flex rounded-lg border border-current/10 dark:border-current/20 hover:border-current/30 dark:hover:border-current/40 transition-all duration-300 motion-reduce:transition-none"
 
+type CardLabels = Dictionary["card"]
+
 function Thumbnail({
   item,
   featured,
-  priority = false
+  priority = false,
+  t
 }: {
   item: ContentItem
   featured: boolean
   priority?: boolean
+  t: CardLabels
 }) {
   const { title, thumbnailUrl, videoUrl, articleUrl, durationSeconds } = item
   const isArticleOnly = !videoUrl && !!articleUrl
@@ -34,7 +40,7 @@ function Thumbnail({
       />
       {isArticleOnly && (
         <span className="absolute left-2 top-2 rounded-sm border border-current/20 bg-background px-1.5 py-0.5 text-[10px] uppercase tracking-widest opacity-70">
-          Article
+          {t.article}
         </span>
       )}
       {videoUrl && (
@@ -57,7 +63,15 @@ function Thumbnail({
   )
 }
 
-function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
+function Actions({
+  item,
+  featured,
+  t
+}: {
+  item: ContentItem
+  featured: boolean
+  t: CardLabels
+}) {
   const { videoUrl, articleUrl, readingMinutes } = item
 
   const compactActionClass =
@@ -73,7 +87,7 @@ function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
             rel="noreferrer noopener"
             className="inline-flex items-center justify-center gap-2 rounded-sm bg-foreground min-h-11 px-4 py-2.5 text-xs uppercase tracking-widest text-background hover:opacity-80 transition-opacity"
           >
-            <Play width={14} height={14} /> Watch
+            <Play width={14} height={14} /> {t.watch}
           </a>
         )}
         {articleUrl && (
@@ -83,7 +97,7 @@ function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
             rel="noreferrer noopener"
             className="inline-flex items-center justify-center gap-2 rounded-sm border border-current/30 min-h-11 px-4 py-2.5 text-xs uppercase tracking-widest hover:border-current/60 transition-colors"
           >
-            <Read width={14} height={14} /> Read
+            <Read width={14} height={14} /> {t.read}
           </a>
         )}
       </div>
@@ -99,7 +113,7 @@ function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
           rel="noreferrer noopener"
           className={compactActionClass}
         >
-          <Play width={12} height={12} /> Watch
+          <Play width={12} height={12} /> {t.watch}
         </a>
       )}
       {articleUrl && (
@@ -109,7 +123,7 @@ function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
           rel="noreferrer noopener"
           className={compactActionClass}
         >
-          <Read width={12} height={12} /> Read
+          <Read width={12} height={12} /> {t.read}
           {readingMinutes != null && (
             <span className="opacity-60">· {readingMinutes}m</span>
           )}
@@ -121,12 +135,16 @@ function Actions({ item, featured }: { item: ContentItem; featured: boolean }) {
 
 type Props = {
   item: ContentItem
+  locale: Locale
+  t: CardLabels
   featured?: boolean
   priority?: boolean
 }
 
 export function ContentCard({
   item,
+  locale,
+  t,
   featured = false,
   priority = false
 }: Props) {
@@ -149,7 +167,7 @@ export function ContentCard({
           title={title}
           className="block md:w-[440px] md:shrink-0"
         >
-          <Thumbnail item={item} featured priority={priority} />
+          <Thumbnail item={item} featured priority={priority} t={t} />
         </a>
         <div className="flex flex-1 flex-col gap-3">
           <a
@@ -168,11 +186,15 @@ export function ContentCard({
             </p>
           )}
           <div className="flex flex-wrap items-center gap-x-2 text-xs uppercase tracking-widest opacity-60">
-            <span>{readableDate(date)}</span>
-            {readingMinutes != null && <span>· {readingMinutes} min read</span>}
+            <span>{readableDate(date, locale)}</span>
+            {readingMinutes != null && (
+              <span>
+                · {readingMinutes} {t.minRead}
+              </span>
+            )}
           </div>
           <div className="mt-1 md:mt-auto">
-            <Actions item={item} featured />
+            <Actions item={item} featured t={t} />
           </div>
         </div>
       </article>
@@ -188,16 +210,16 @@ export function ContentCard({
         title={title}
         className="flex flex-col gap-3"
       >
-        <Thumbnail item={item} featured={false} priority={priority} />
+        <Thumbnail item={item} featured={false} priority={priority} t={t} />
         <h2 className="font-bold text-base md:text-lg leading-snug line-clamp-2 group-hover:opacity-80 transition-opacity">
           {title}
         </h2>
       </a>
       <div className="flex items-center justify-between gap-2">
         <span className="text-xs uppercase tracking-widest opacity-60">
-          {readableDate(date)}
+          {readableDate(date, locale)}
         </span>
-        <Actions item={item} featured={false} />
+        <Actions item={item} featured={false} t={t} />
       </div>
     </article>
   )

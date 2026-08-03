@@ -1,14 +1,19 @@
 "use client"
 
-import { useRouter, useSearchParams } from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { Suspense, useEffect, useId, useRef, useState } from "react"
 
 import { ContentCard } from "@/components/content-card"
 import { ContentFeedSkeleton } from "@/components/skeletons"
+import type { Dictionary } from "@/dictionaries"
+import type { Locale } from "@/lib/i18n"
 import type { ContentItem } from "@/lib/types"
 
 type Props = {
   items: ContentItem[]
+  locale: Locale
+  t: Dictionary["feed"]
+  cardLabels: Dictionary["card"]
 }
 
 // How many of the newest items get the large full-width "featured" treatment
@@ -24,18 +29,20 @@ function matches(item: ContentItem, query: string): boolean {
 function SearchInput({
   value,
   onChange,
-  onClear
+  onClear,
+  t
 }: {
   value: string
   onChange: (value: string) => void
   onClear: () => void
+  t: Dictionary["feed"]
 }) {
   const inputId = useId()
 
   return (
     <div className="relative w-full">
       <label htmlFor={inputId} className="sr-only">
-        Search videos and articles
+        {t.searchLabel}
       </label>
       <span
         className="absolute left-3 top-1/2 -translate-y-1/2 opacity-60 pointer-events-none"
@@ -64,8 +71,8 @@ function SearchInput({
         type="search"
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder="Search videos and articles..."
-        aria-label="Search videos and articles"
+        placeholder={t.searchPlaceholder}
+        aria-label={t.searchLabel}
         className="w-full rounded-lg border border-current/10 dark:border-current/20 bg-transparent pl-10 pr-10 py-2.5 text-sm md:text-base focus:border-current/30 dark:focus:border-current/40 transition-colors"
       />
       {value.length > 0 && (
@@ -73,7 +80,7 @@ function SearchInput({
           type="button"
           onClick={onClear}
           className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-sm opacity-60 hover:opacity-100 transition-opacity"
-          aria-label="Clear search"
+          aria-label={t.clearSearch}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -97,8 +104,9 @@ function SearchInput({
   )
 }
 
-function ContentFeedInner({ items }: Props) {
+function ContentFeedInner({ items, locale, t, cardLabels }: Props) {
   const router = useRouter()
+  const pathname = usePathname()
   const searchParams = useSearchParams()
   const queryFromUrl = searchParams?.get("q") ?? ""
 
@@ -122,7 +130,8 @@ function ContentFeedInner({ items }: Props) {
       params.delete("q")
     }
     const queryString = params.toString()
-    router.replace(queryString ? `/videos?${queryString}` : "/videos", {
+    const basePath = pathname ?? "/videos"
+    router.replace(queryString ? `${basePath}?${queryString}` : basePath, {
       scroll: false
     })
   }
@@ -152,10 +161,13 @@ function ContentFeedInner({ items }: Props) {
     ? items.filter((item) => matches(item, inputValue))
     : items
 
+  const resultWord = (count: number) =>
+    count === 1 ? t.resultSingular : t.resultPlural
+
   const resultSummary = isSearching
     ? filtered.length === 0
-      ? `No results for "${inputValue.trim()}"`
-      : `${filtered.length} result${filtered.length === 1 ? "" : "s"} for "${inputValue.trim()}"`
+      ? `${t.noResultsFor} "${inputValue.trim()}"`
+      : `${filtered.length} ${resultWord(filtered.length)} ${t.resultsFor} "${inputValue.trim()}"`
     : ""
 
   return (
@@ -164,6 +176,7 @@ function ContentFeedInner({ items }: Props) {
         value={inputValue}
         onChange={handleChange}
         onClear={handleClear}
+        t={t}
       />
 
       <p
@@ -177,7 +190,7 @@ function ContentFeedInner({ items }: Props) {
 
       {filtered.length === 0 ? (
         <p className="opacity-60 text-sm md:text-base" role="status">
-          No results for &ldquo;{inputValue.trim()}&rdquo;.
+          {t.noResultsFor} &ldquo;{inputValue.trim()}&rdquo;.
         </p>
       ) : isSearching ? (
         <>
@@ -185,11 +198,16 @@ function ContentFeedInner({ items }: Props) {
             className="text-xs uppercase tracking-widest opacity-60"
             aria-hidden="true"
           >
-            {filtered.length} result{filtered.length === 1 ? "" : "s"}
+            {filtered.length} {resultWord(filtered.length)}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtered.map((item) => (
-              <ContentCard key={item.id} item={item} />
+              <ContentCard
+                key={item.id}
+                item={item}
+                locale={locale}
+                t={cardLabels}
+              />
             ))}
           </div>
         </>
@@ -197,13 +215,24 @@ function ContentFeedInner({ items }: Props) {
         <>
           <div className="flex flex-col gap-4">
             {filtered.slice(0, FEATURED_COUNT).map((item) => (
-              <ContentCard key={item.id} item={item} featured />
+              <ContentCard
+                key={item.id}
+                item={item}
+                locale={locale}
+                t={cardLabels}
+                featured
+              />
             ))}
           </div>
           {filtered.length > FEATURED_COUNT && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filtered.slice(FEATURED_COUNT).map((item) => (
-                <ContentCard key={item.id} item={item} />
+                <ContentCard
+                  key={item.id}
+                  item={item}
+                  locale={locale}
+                  t={cardLabels}
+                />
               ))}
             </div>
           )}

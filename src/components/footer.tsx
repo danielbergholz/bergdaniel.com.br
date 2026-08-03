@@ -1,13 +1,8 @@
 import { ExternalLink } from "@/components/icons"
 import Link from "next/link"
 
-const footerLinks = [
-  { href: "/videos", label: "Videos" },
-  { href: "/courses", label: "Courses" },
-  { href: "/products", label: "Products" },
-  { href: "/work-with-me", label: "Work with me" },
-  { href: "/links", label: "Links" }
-]
+import type { Dictionary } from "@/dictionaries"
+import { type Locale, localePath } from "@/lib/i18n"
 
 const socialLinks = [
   {
@@ -37,7 +32,21 @@ const internalLinkStyle =
 const externalLinkStyle =
   "inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-foreground/60 hover:text-foreground border border-current/15 dark:border-current/25 rounded-sm px-2.5 py-1.5 transition-colors"
 
-export function Footer() {
+type Props = {
+  locale: Locale
+  t: Dictionary["footer"]
+  nav: Dictionary["nav"]
+}
+
+export function Footer({ locale, t, nav }: Props) {
+  const footerLinks = [
+    { href: localePath(locale, "/videos"), label: nav.videos },
+    { href: localePath(locale, "/courses"), label: nav.courses },
+    { href: localePath(locale, "/products"), label: nav.products },
+    { href: localePath(locale, "/work-with-me"), label: nav.workWithMe },
+    { href: localePath(locale, "/links"), label: t.links }
+  ]
+
   return (
     <footer className="mt-20 md:mt-28 pt-8 border-t border-current/10 dark:border-current/20">
       <div className="max-w-5xl mx-auto flex flex-col gap-8 md:gap-10">
@@ -55,8 +64,8 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 lg:gap-16">
-            <nav aria-label="Site pages">
-              <p className={sectionLabel}>Pages</p>
+            <nav aria-label={t.pagesAria}>
+              <p className={sectionLabel}>{t.pages}</p>
               <ul className="flex flex-col gap-2.5">
                 {footerLinks.map(({ href, label }) => (
                   <li key={href}>
@@ -68,8 +77,8 @@ export function Footer() {
               </ul>
             </nav>
 
-            <nav aria-label="Social media">
-              <p className={sectionLabel}>Social</p>
+            <nav aria-label={t.socialAria}>
+              <p className={sectionLabel}>{t.social}</p>
               <ul className="flex flex-col gap-2.5">
                 {socialLinks.map(({ href, label }) => (
                   <li key={href}>
@@ -78,7 +87,7 @@ export function Footer() {
                       target="_blank"
                       rel="noreferrer noopener"
                       className={externalLinkStyle}
-                      aria-label={`${label} (opens in a new tab)`}
+                      aria-label={`${label} (${t.opensNewTab})`}
                     >
                       {label}
                       <ExternalLink />

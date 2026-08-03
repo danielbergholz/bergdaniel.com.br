@@ -1,45 +1,29 @@
 import type { MetadataRoute } from "next"
 
+import { localePath, locales } from "@/lib/i18n"
+import { siteRoutes } from "@/lib/routes"
+
+const baseUrl = "https://bergdaniel.com.br"
+
+// Generated from the route registry in src/lib/routes.ts — one entry per
+// locale per route, each carrying the full hreflang alternate set.
+// routes.test.ts guarantees the registry matches the pages on disk.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://bergdaniel.com.br"
   const currentDate = new Date()
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 1.0
-    },
-    {
-      url: `${baseUrl}/videos`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.9
-    },
-    {
-      url: `${baseUrl}/courses`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8
-    },
-    {
-      url: `${baseUrl}/products`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7
-    },
-    {
-      url: `${baseUrl}/work-with-me`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7
-    },
-    {
-      url: `${baseUrl}/links`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.5
+  return siteRoutes.flatMap((route) => {
+    const languages = {
+      "pt-BR": `${baseUrl}${localePath("pt", route.path)}`,
+      en: `${baseUrl}${localePath("en", route.path)}`,
+      "x-default": `${baseUrl}${localePath("pt", route.path)}`
     }
-  ]
+
+    return locales.map((locale) => ({
+      url: `${baseUrl}${localePath(locale, route.path)}`,
+      lastModified: currentDate,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+      alternates: { languages }
+    }))
+  })
 }

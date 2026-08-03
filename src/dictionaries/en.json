@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "home": {
+      "title": "Daniel Bergholz - Software Engineer, Content Creator & Solopreneur",
+      "description": "Daniel Bergholz is a Software Engineer, Content Creator and Solopreneur from Brazil building SaaS products and teaching programming to developers",
+      "ogDescription": "Daniel Bergholz is a Software Engineer, Content Creator and Solopreneur from Brazil building SaaS products and teaching programming"
+    },
+    "videos": {
+      "title": "Videos | Daniel Bergholz",
+      "description": "Watch Daniel Bergholz's videos or read the article version — fullstack web development tutorials, programming tips, and developer content"
+    },
+    "courses": {
+      "title": "Courses | Daniel Bergholz",
+      "description": "Free and premium fullstack web development courses"
+    },
+    "links": {
+      "title": "Links | Daniel Bergholz",
+      "description": "Social media links: YouTube, Twitter, Blog and GitHub"
+    },
+    "products": {
+      "title": "Products - Daniel Bergholz",
+      "description": "Projects built by Daniel Bergholz - CourseShelf learning community, TechSchool free tech education platform and more developer tools"
+    },
+    "workWithMe": {
+      "title": "Work With Me - Daniel Bergholz",
+      "description": "Hire Daniel Bergholz as a fullstack developer, contractor, or content collaborator. Specializing in Elixir, Phoenix, React, and AI-driven development for startups."
+    }
+  },
+  "nav": {
+    "skipLink": "Skip to content",
+    "videos": "Videos",
+    "courses": "Courses",
+    "products": "Products",
+    "workWithMe": "Work with me",
+    "members": "YouTube Members",
+    "membersAria": "Join on YouTube (opens in a new tab)",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "pages": "Pages",
+    "youtube": "YouTube",
+    "switchLocale": "Mudar para português",
+    "language": "Language"
+  },
+  "footer": {
+    "pages": "Pages",
+    "social": "Social",
+    "pagesAria": "Site pages",
+    "socialAria": "Social media",
+    "opensNewTab": "opens in a new tab",
+    "links": "Links"
+  },
+  "home": {
+    "hello": "Hello",
+    "introBefore": "My name is",
+    "name": "Daniel Bergholz",
+    "introAfter": ", I'm a Software Engineer, Content Creator and Solopreneur from Brazil",
+    "getInTouch": "Get in touch",
+    "getInTouchAria": "Get in touch via email",
+    "socialAria": "Social Media",
+    "statsAria": "YouTube Stats",
+    "subscribers": "Subscribers",
+    "views": "Views",
+    "latestVideosAria": "Latest videos",
+    "latestVideos": "Latest videos",
+    "viewAll": "View all",
+    "viewAllTitle": "See all videos and articles",
+    "noVideosBefore": "No videos available right now. Check back soon or browse",
+    "noVideosLink": "all content",
+    "membershipAria": "Channel membership"
+  },
+  "videos": {
+    "title": "Videos",
+    "intro": "Everything I publish, newest first. Most videos come with a written version too — watch on YouTube or read the article, whichever you prefer."
+  },
+  "feed": {
+    "searchLabel": "Search videos and articles",
+    "searchPlaceholder": "Search videos and articles...",
+    "clearSearch": "Clear search",
+    "noResultsFor": "No results for",
+    "resultSingular": "result",
+    "resultPlural": "results",
+    "resultsFor": "for"
+  },
+  "card": {
+    "watch": "Watch",
+    "read": "Read",
+    "article": "Article",
+    "minRead": "min read"
+  },
+  "courses": {
+    "title": "Courses",
+    "intro": "Free fullstack web development playlists on YouTube. Start with the English courses or browse the Portuguese catalog below.",
+    "englishHeading": "English courses",
+    "portugueseHeading": "Cursos em português",
+    "emptyEnglish": "No English courses available right now. Check back soon.",
+    "emptyPortuguese": "No Portuguese courses available right now. Check back soon."
+  },
+  "video": {
+    "free": "Free",
+    "new": "New",
+    "videoSingular": "video",
+    "videoPlural": "videos"
+  },
+  "membership": {
+    "title": "Join for early access",
+    "badge": "Members",
+    "body": "Become a channel member to watch new videos before anyone else, get member-only perks, and support the channel directly."
+  },
+  "links": {
+    "title": "Links",
+    "sectionAria": "Social Media Links",
+    "premium": "Premium",
+    "blog": "Blog"
+  },
+  "products": {
+    "title": "Products",
+    "courseshelf": {
+      "badge": "Beta",
+      "description": "The community where self-taught learners discover, review, and recommend online courses across every subject. Think of it as your personal learning library, curated by people who've actually taken the courses.",
+      "offersHeading": "What CourseShelf offers:",
+      "offers": [
+        "Community-driven course reviews and recommendations",
+        "Personal learning library and playlist creation",
+        "Courses across all subjects - from coding to cooking",
+        "Connect with fellow self-taught learners and share your journey"
+      ]
+    },
+    "techschool": {
+      "badge": "Live",
+      "description": "Free technology education platform for everyone. TechSchool curates the best free programming courses from across the internet, helping developers go from zero to their first job without any financial burden.",
+      "offersHeading": "What TechSchool offers:",
+      "offers": [
+        "189+ curated free courses in multiple programming languages",
+        "Bootcamp-style learning paths",
+        "Courses in Go, Elixir, Python, Ruby, React, Node.js and more",
+        "Community-driven platform with open source contributions"
+      ]
+    }
+  },
+  "workWithMe": {
+    "title": "Work with me",
+    "intro": "Fullstack developer specializing in AI-driven development. I ship fast, build products from scratch, and create content that reaches thousands of developers.",
+    "available": "Available",
+    "open": "Open",
+    "services": {
+      "startup": {
+        "title": "Startup Engineering",
+        "description": "Looking for a fullstack developer who can ship fast and own features end-to-end? I thrive in mid-stage startups where speed and quality both matter. 6+ years building products from zero to production.",
+        "highlights": [
+          "Elixir, Phoenix, React, TypeScript, GraphQL",
+          "AI integrations (OpenAI, Groq, Claude)",
+          "0-to-1 product development and scaling",
+          "10x productivity with AI-driven workflows"
+        ]
+      },
+      "contract": {
+        "title": "Contract Work",
+        "description": "Available for focused contract engagements. I deliver fast without cutting corners, leveraging Claude Code to maintain a high level of output. Best for MVPs, AI features, and fullstack web applications.",
+        "highlights": [
+          "MVPs and proof-of-concept builds",
+          "AI feature integration into existing products",
+          "B2B SaaS and admin dashboards",
+          "Phoenix/React fullstack applications"
+        ]
+      },
+      "content": {
+        "title": "Content & Collabs",
+        "description": "I run a YouTube channel with {subscribers}+ subscribers where I teach web development. Always open to podcast appearances, guest videos, co-created content, and sponsorships. I speak English and Portuguese.",
+        "highlights": [
+          "Podcast and video guest appearances",
+          "Technical content collaborations",
+          "Sponsorships and partnerships",
+          "Bilingual content (English & Portuguese)"
+        ]
+      }
+    },
+    "trackHeading": "Track record",
+    "track": {
+      "gearflow": "B2B marketplace with AI-powered parts extraction, built with Elixir & Phoenix",
+      "nebulab": "3 years building global Shopify storefronts and e-commerce platforms",
+      "courseshelf": "Founded a community-driven course review platform, built with AI",
+      "techschool": "Open source education platform with 2K monthly visitors"
+    },
+    "stackHeading": "Tech stack",
+    "outro": "Interested in working together? Send me an email and let's talk.",
+    "emailTitle": "Send email to Daniel Bergholz"
+  }
+}
