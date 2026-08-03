@@ -1,9 +1,9 @@
 {
   "meta": {
     "home": {
-      "title": "Daniel Bergholz - Software Engineer, Content Creator & Solopreneur",
-      "description": "Daniel Bergholz is a Software Engineer, Content Creator and Solopreneur from Brazil building SaaS products and teaching programming to developers",
-      "ogDescription": "Daniel Bergholz is a Software Engineer, Content Creator and Solopreneur from Brazil building SaaS products and teaching programming"
+      "title": "Daniel Bergholz - Content Creator, Educator & Consultant",
+      "description": "Daniel Bergholz is a Content Creator, Educator and Consultant from Brazil, teaching programming and helping companies and developers get more out of AI",
+      "ogDescription": "Daniel Bergholz is a Content Creator, Educator and Consultant from Brazil, teaching programming and helping companies get more out of AI"
     },
     "videos": {
       "title": "Videos | Daniel Bergholz",
@@ -23,7 +23,7 @@
     },
     "workWithMe": {
       "title": "Work With Me - Daniel Bergholz",
-      "description": "Hire Daniel Bergholz as a fullstack developer, contractor, or content collaborator. Specializing in Elixir, Phoenix, React, and AI-driven development for startups."
+      "description": "Business consulting, 1-on-1 mentorship, and content collaborations with Daniel Bergholz. Technical trainings, workshops, AI adoption, and automation."
     }
   },
   "nav": {
@@ -32,12 +32,9 @@
     "courses": "Courses",
     "products": "Products",
     "workWithMe": "Work with me",
-    "members": "YouTube Members",
-    "membersAria": "Join on YouTube (opens in a new tab)",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "pages": "Pages",
-    "youtube": "YouTube",
     "language": "Language"
   },
   "footer": {
@@ -52,7 +49,7 @@
     "hello": "Hello",
     "introBefore": "My name is",
     "name": "Daniel Bergholz",
-    "introAfter": ", I'm a Software Engineer, Content Creator and Solopreneur from Brazil",
+    "introAfter": ", I'm a Content Creator, Educator and Consultant from Brazil",
     "getInTouch": "Get in touch",
     "getInTouchAria": "Get in touch via email",
     "socialAria": "Social Media",
@@ -64,8 +61,7 @@
     "viewAll": "View all",
     "viewAllTitle": "See all videos and articles",
     "noVideosBefore": "No videos available right now. Check back soon or browse",
-    "noVideosLink": "all content",
-    "membershipAria": "Channel membership"
+    "noVideosLink": "all content"
   },
   "videos": {
     "title": "Videos",
@@ -108,7 +104,6 @@
   "links": {
     "title": "Links",
     "sectionAria": "Social Media Links",
-    "premium": "Premium",
     "blog": "Blog"
   },
   "products": {
@@ -138,28 +133,28 @@
   },
   "workWithMe": {
     "title": "Work with me",
-    "intro": "Fullstack developer specializing in AI-driven development. I ship fast, build products from scratch, and create content that reaches thousands of developers.",
-    "available": "Available",
+    "intro": "I help companies and developers get more out of AI — through trainings, consulting, mentorship, and content that reaches thousands of developers.",
+    "comingSoon": "Coming soon",
     "open": "Open",
     "services": {
-      "startup": {
-        "title": "Startup Engineering",
-        "description": "Looking for a fullstack developer who can ship fast and own features end-to-end? I thrive in mid-stage startups where speed and quality both matter. 6+ years building products from zero to production.",
+      "business": {
+        "title": "Business Consulting",
+        "description": "I help your business grow with AI: hands-on technical trainings and workshops for your employees, and consulting to automate manual work in any role — engineering, support, operations, and beyond.",
         "highlights": [
-          "Elixir, Phoenix, React, TypeScript, GraphQL",
-          "AI integrations (OpenAI, Groq, Claude)",
-          "0-to-1 product development and scaling",
-          "10x productivity with AI-driven workflows"
+          "Technical trainings and workshops for your team",
+          "Automation of manual work in any role",
+          "AI-assisted software engineering practices",
+          "Delivered in English or Portuguese"
         ]
       },
-      "contract": {
-        "title": "Contract Work",
-        "description": "Available for focused contract engagements. I deliver fast without cutting corners, leveraging Claude Code to maintain a high level of output. Best for MVPs, AI features, and fullstack web applications.",
+      "mentorship": {
+        "title": "1-on-1 Mentorship",
+        "description": "Individual mentorship for developers who want to level up. I help you adopt cutting-edge AI tooling — and help Brazilian devs land a remote job abroad.",
         "highlights": [
-          "MVPs and proof-of-concept builds",
-          "AI feature integration into existing products",
-          "B2B SaaS and admin dashboards",
-          "Phoenix/React fullstack applications"
+          "Adopt cutting-edge AI tooling in your daily work",
+          "Land a remote job abroad (for Brazilian devs)",
+          "CV, LinkedIn, and interview preparation",
+          "Guidance from years of working remotely for international companies"
         ]
       },
       "content": {
@@ -180,8 +175,23 @@
       "courseshelf": "Founded a community-driven course review platform, built with AI",
       "techschool": "Open source education platform with 2K monthly visitors"
     },
+    "aiHeading": "AI tooling",
+    "ai": {
+      "engineering": {
+        "title": "AI-assisted software engineering",
+        "description": "Ship in days what used to take weeks — without giving up quality."
+      },
+      "automation": {
+        "title": "Automation",
+        "description": "Turn repetitive manual work into reliable workflows, for any role — not just engineering."
+      },
+      "agents": {
+        "title": "Cloud agents working 24/7",
+        "description": "Agents that review code, fix bugs, and move work forward while your team sleeps."
+      }
+    },
     "stackHeading": "Tech stack",
-    "outro": "Interested in working together? Send me an email and let's talk.",
+    "outro": "Interested in any of these? Send me an email and let's talk — I'll let you know as soon as consulting and mentorship open up.",
     "emailTitle": "Send email to Daniel Bergholz"
   }
 }

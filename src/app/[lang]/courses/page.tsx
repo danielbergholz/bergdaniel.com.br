@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
+import { MembershipCTA } from "@/components/membership-cta"
 import { Video } from "@/components/video"
 import { getDictionary } from "@/dictionaries"
 import { getCourses } from "@/data-access/youtube"
@@ -156,6 +157,10 @@ export default async function Courses({
           )}
         </section>
       ))}
+
+      <div className="mt-10 md:mt-14">
+        <MembershipCTA t={dict.membership} />
+      </div>
     </main>
   )
 }

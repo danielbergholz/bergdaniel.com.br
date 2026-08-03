@@ -4,7 +4,6 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useCallback, useEffect, useId, useRef, useState } from "react"
 
-import { ExternalLink } from "@/components/icons"
 import type { Dictionary } from "@/dictionaries"
 import {
   type Locale,
@@ -13,8 +12,6 @@ import {
   locales,
   stripLocalePrefix
 } from "@/lib/i18n"
-
-const JOIN_URL = "https://www.youtube.com/@DanielBergholz/join"
 
 // Label for switching TO a locale, written in that locale's own language (the
 // W3C pattern for language switchers — the reader who needs it may not speak
@@ -28,9 +25,6 @@ const switchLocaleLabels: Record<Locale, string> = {
 
 const internalLinkBase =
   "text-sm normal-case tracking-normal font-medium transition-colors"
-
-const joinButtonStyle =
-  "inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-violet-700 dark:text-violet-300 border border-violet-400/70 dark:border-violet-600/70 rounded-sm px-3 py-1.5 hover:bg-violet-50 dark:hover:bg-violet-950/40 hover:border-violet-500 dark:hover:border-violet-500 transition-colors"
 
 type Props = {
   locale: Locale
@@ -92,20 +86,6 @@ export function Nav({ locale, t }: Props) {
       document.removeEventListener("keydown", handleKeyDown)
     }
   }, [isMenuOpen, closeMenu])
-
-  const joinLink = (
-    <a
-      href={JOIN_URL}
-      target="_blank"
-      rel="noreferrer noopener"
-      onClick={closeMenu}
-      className={joinButtonStyle}
-      aria-label={t.membersAria}
-    >
-      {t.members}
-      <ExternalLink />
-    </a>
-  )
 
   // Same page in the other locale: strip the current prefix, apply the target's.
   const basePath = stripLocalePrefix(pathname ?? "/")
@@ -194,13 +174,6 @@ export function Nav({ locale, t }: Props) {
           />
 
           {localeSwitcher}
-
-          <div
-            className="h-5 w-px bg-current/15 dark:bg-current/25 shrink-0"
-            aria-hidden="true"
-          />
-
-          {joinLink}
         </div>
 
         <button
@@ -269,13 +242,6 @@ export function Nav({ locale, t }: Props) {
                   {t.language}
                 </p>
                 {localeSwitcher}
-              </div>
-
-              <div className="border-t border-current/10 dark:border-current/20 pt-6">
-                <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-foreground/50">
-                  {t.youtube}
-                </p>
-                {joinLink}
               </div>
             </div>
           </div>

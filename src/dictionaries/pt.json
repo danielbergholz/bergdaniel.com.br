@@ -1,9 +1,9 @@
 {
   "meta": {
     "home": {
-      "title": "Daniel Bergholz - Engenheiro de Software, Criador de Conteúdo e Solopreneur",
-      "description": "Daniel Bergholz é engenheiro de software, criador de conteúdo e solopreneur. Constrói produtos SaaS e ensina programação para devs",
-      "ogDescription": "Daniel Bergholz é engenheiro de software, criador de conteúdo e solopreneur. Constrói produtos SaaS e ensina programação"
+      "title": "Daniel Bergholz - Criador de Conteúdo, Educador e Consultor",
+      "description": "Daniel Bergholz é criador de conteúdo, educador e consultor. Ensina programação e ajuda empresas e devs a aproveitarem melhor a IA",
+      "ogDescription": "Daniel Bergholz é criador de conteúdo, educador e consultor. Ensina programação e ajuda empresas a aproveitarem melhor a IA"
     },
     "videos": {
       "title": "Vídeos | Daniel Bergholz",
@@ -23,7 +23,7 @@
     },
     "workWithMe": {
       "title": "Trabalhe Comigo - Daniel Bergholz",
-      "description": "Contrate Daniel Bergholz como desenvolvedor fullstack, contractor ou colaborador de conteúdo. Especialista em Elixir, Phoenix, React e desenvolvimento com IA para startups."
+      "description": "Consultoria para empresas, mentoria individual e collabs de conteúdo com Daniel Bergholz. Treinamentos técnicos, workshops, adoção de IA e automação."
     }
   },
   "nav": {
@@ -32,12 +32,9 @@
     "courses": "Cursos",
     "products": "Produtos",
     "workWithMe": "Trabalhe comigo",
-    "members": "Membros do YouTube",
-    "membersAria": "Vire membro no YouTube (abre em nova aba)",
     "openMenu": "Abrir menu",
     "closeMenu": "Fechar menu",
     "pages": "Páginas",
-    "youtube": "YouTube",
     "language": "Idioma"
   },
   "footer": {
@@ -52,7 +49,7 @@
     "hello": "Olá",
     "introBefore": "Meu nome é",
     "name": "Daniel Bergholz",
-    "introAfter": ", sou engenheiro de software, criador de conteúdo e solopreneur",
+    "introAfter": ", sou criador de conteúdo, educador e consultor",
     "getInTouch": "Fale comigo",
     "getInTouchAria": "Fale comigo por email",
     "socialAria": "Redes sociais",
@@ -64,8 +61,7 @@
     "viewAll": "Ver todos",
     "viewAllTitle": "Ver todos os vídeos e artigos",
     "noVideosBefore": "Nenhum vídeo disponível no momento. Volte em breve ou veja",
-    "noVideosLink": "todo o conteúdo",
-    "membershipAria": "Membros do canal"
+    "noVideosLink": "todo o conteúdo"
   },
   "videos": {
     "title": "Vídeos",
@@ -108,7 +104,6 @@
   "links": {
     "title": "Links",
     "sectionAria": "Links das redes sociais",
-    "premium": "Premium",
     "blog": "Blog"
   },
   "products": {
@@ -138,28 +133,28 @@
   },
   "workWithMe": {
     "title": "Trabalhe comigo",
-    "intro": "Desenvolvedor fullstack especializado em desenvolvimento com IA. Entrego rápido, construo produtos do zero e crio conteúdo que alcança milhares de devs.",
-    "available": "Disponível",
+    "intro": "Ajudo empresas e devs a aproveitarem melhor a IA — com treinamentos, consultoria, mentoria e conteúdo que alcança milhares de devs.",
+    "comingSoon": "Em breve",
     "open": "Aberto",
     "services": {
-      "startup": {
-        "title": "Engenharia para startups",
-        "description": "Procurando um dev fullstack que entrega rápido e assume features de ponta a ponta? Eu me destaco em startups em estágio intermediário, onde velocidade e qualidade importam igualmente. Mais de 6 anos construindo produtos do zero até a produção.",
+      "business": {
+        "title": "Consultoria para empresas",
+        "description": "Ajudo sua empresa a crescer com IA: treinamentos técnicos e workshops práticos para seus funcionários, e consultoria para automatizar trabalho manual em qualquer área — engenharia, suporte, operações e mais.",
         "highlights": [
-          "Elixir, Phoenix, React, TypeScript, GraphQL",
-          "Integrações com IA (OpenAI, Groq, Claude)",
-          "Desenvolvimento de produto do 0 ao 1 e escala",
-          "Produtividade 10x com fluxos de trabalho guiados por IA"
+          "Treinamentos técnicos e workshops para o seu time",
+          "Automação de trabalho manual em qualquer área",
+          "Práticas de engenharia de software com IA",
+          "Em português ou inglês"
         ]
       },
-      "contract": {
-        "title": "Trabalho por contrato",
-        "description": "Disponível para contratos com escopo focado. Entrego rápido sem cortar caminho, usando Claude Code para manter um alto nível de produção. Ideal para MVPs, features de IA e aplicações web fullstack.",
+      "mentorship": {
+        "title": "Mentoria individual",
+        "description": "Mentoria individual para devs que querem evoluir. Te ajudo a adotar as ferramentas de IA mais avançadas — e a conquistar uma vaga remota pra trabalhar pra gringa.",
         "highlights": [
-          "MVPs e provas de conceito",
-          "Integração de features de IA em produtos existentes",
-          "SaaS B2B e painéis administrativos",
-          "Aplicações fullstack com Phoenix/React"
+          "Adote as ferramentas de IA mais avançadas no seu dia a dia",
+          "Conquiste uma vaga remota no exterior",
+          "Preparação de currículo, LinkedIn e entrevistas",
+          "Orientação de quem trabalha remoto pra gringa há anos"
         ]
       },
       "content": {
@@ -180,8 +175,23 @@
       "courseshelf": "Fundei uma plataforma comunitária de avaliação de cursos, construída com IA",
       "techschool": "Plataforma open source de educação com 2 mil visitantes mensais"
     },
+    "aiHeading": "Ferramentas de IA",
+    "ai": {
+      "engineering": {
+        "title": "Engenharia de software assistida por IA",
+        "description": "Entregue em dias o que antes levava semanas — sem abrir mão da qualidade."
+      },
+      "automation": {
+        "title": "Automação",
+        "description": "Transforme trabalho manual repetitivo em fluxos confiáveis, para qualquer área — não só engenharia."
+      },
+      "agents": {
+        "title": "Agentes na nuvem trabalhando 24/7",
+        "description": "Agentes que revisam código, corrigem bugs e fazem o trabalho andar enquanto seu time dorme."
+      }
+    },
     "stackHeading": "Stack",
-    "outro": "Quer trabalhar comigo? Me manda um email e vamos conversar.",
+    "outro": "Ficou interessado? Me manda um email e vamos conversar — te aviso assim que a consultoria e a mentoria abrirem.",
     "emailTitle": "Enviar email para Daniel Bergholz"
   }
 }

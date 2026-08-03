@@ -1,14 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-import {
-  DevTo,
-  Diamond,
-  GitHub,
-  LinkedIn,
-  Twitter,
-  YouTube
-} from "@/components/icons"
+import { DevTo, GitHub, LinkedIn, Twitter, YouTube } from "@/components/icons"
 import { Link } from "@/components/link"
 import { getDictionary } from "@/dictionaries"
 import { defaultLocale, hasLocale, pageAlternates } from "@/lib/i18n"
@@ -51,13 +44,6 @@ export default async function Links({
         aria-label={t.sectionAria}
         className="flex flex-col items-center gap-3"
       >
-        <Link
-          title={t.premium}
-          href="https://www.youtube.com/@DanielBergholz/join"
-        >
-          <Diamond width={28} height={28} />
-        </Link>
-
         <Link href="https://www.youtube.com/@DanielBergholz" title="YouTube">
           <YouTube width={28} height={28} />
         </Link>
