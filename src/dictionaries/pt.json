@@ -1,13 +1,13 @@
 {
   "meta": {
     "home": {
-      "title": "Daniel Bergholz - Criador de Conteúdo, Educador e Consultor",
-      "description": "Daniel Bergholz é criador de conteúdo, educador e consultor. Ensina programação e ajuda empresas e devs a aproveitarem melhor a IA",
-      "ogDescription": "Daniel Bergholz é criador de conteúdo, educador e consultor. Ensina programação e ajuda empresas a aproveitarem melhor a IA"
+      "title": "Daniel Bergholz - Criador de Conteúdo, Professor e Consultor",
+      "description": "Daniel Bergholz é criador de conteúdo, professor e consultor. Ensina programação e ajuda empresas e devs a aproveitarem melhor a IA",
+      "ogDescription": "Daniel Bergholz é criador de conteúdo, professor e consultor. Ensina programação e ajuda empresas a aproveitarem melhor a IA"
     },
     "videos": {
       "title": "Vídeos | Daniel Bergholz",
-      "description": "Assista aos vídeos do Daniel Bergholz ou leia a versão em artigo — tutoriais de desenvolvimento web fullstack, dicas de programação e conteúdo para devs"
+      "description": "Assista aos vídeos do Daniel Bergholz ou leia a versão em artigo: tutoriais de desenvolvimento web fullstack, dicas de programação e conteúdo para devs"
     },
     "courses": {
       "title": "Cursos | Daniel Bergholz",
@@ -49,7 +49,7 @@
     "hello": "Olá",
     "introBefore": "Meu nome é",
     "name": "Daniel Bergholz",
-    "introAfter": ", sou criador de conteúdo, educador e consultor",
+    "introAfter": ", sou criador de conteúdo, professor e consultor",
     "getInTouch": "Fale comigo",
     "getInTouchAria": "Fale comigo por email",
     "socialAria": "Redes sociais",
@@ -65,7 +65,7 @@
   },
   "videos": {
     "title": "Vídeos",
-    "intro": "Tudo que eu publico, do mais recente ao mais antigo. A maioria dos vídeos também tem versão escrita — assista no YouTube ou leia o artigo, como preferir."
+    "intro": "Tudo que eu publico, do mais recente ao mais antigo. A maioria dos vídeos também tem versão escrita: assista no YouTube ou leia o artigo, como preferir."
   },
   "feed": {
     "searchLabel": "Buscar vídeos e artigos",
@@ -133,13 +133,13 @@
   },
   "workWithMe": {
     "title": "Trabalhe comigo",
-    "intro": "Ajudo empresas e devs a aproveitarem melhor a IA — com treinamentos, consultoria, mentoria e conteúdo que alcança milhares de devs.",
+    "intro": "Ajudo empresas e devs a aproveitarem melhor a IA com treinamentos, consultoria, mentoria e conteúdo que alcança milhares de devs.",
     "comingSoon": "Em breve",
     "open": "Aberto",
     "services": {
       "business": {
         "title": "Consultoria para empresas",
-        "description": "Ajudo sua empresa a crescer com IA: treinamentos técnicos e workshops práticos para seus funcionários, e consultoria para automatizar trabalho manual em qualquer área — engenharia, suporte, operações e mais.",
+        "description": "Ajudo sua empresa a crescer com IA: treinamentos técnicos e workshops práticos para seus funcionários, e consultoria para automatizar trabalho manual em qualquer área, de engenharia a suporte e operações.",
         "highlights": [
           "Treinamentos técnicos e workshops para o seu time",
           "Automação de trabalho manual em qualquer área",
@@ -149,7 +149,7 @@
       },
       "mentorship": {
         "title": "Mentoria individual",
-        "description": "Mentoria individual para devs que querem evoluir. Te ajudo a adotar as ferramentas de IA mais avançadas — e a conquistar uma vaga remota pra trabalhar pra gringa.",
+        "description": "Mentoria individual para devs que querem evoluir. Te ajudo a adotar as ferramentas de IA mais avançadas e a conquistar uma vaga remota pra trabalhar pra gringa.",
         "highlights": [
           "Adote as ferramentas de IA mais avançadas no seu dia a dia",
           "Conquiste uma vaga remota no exterior",
@@ -179,11 +179,11 @@
     "ai": {
       "engineering": {
         "title": "Engenharia de software assistida por IA",
-        "description": "Entregue em dias o que antes levava semanas — sem abrir mão da qualidade."
+        "description": "Entregue em dias o que antes levava semanas, sem abrir mão da qualidade."
       },
       "automation": {
         "title": "Automação",
-        "description": "Transforme trabalho manual repetitivo em fluxos confiáveis, para qualquer área — não só engenharia."
+        "description": "Transforme trabalho manual repetitivo em fluxos confiáveis para qualquer área, não só engenharia."
       },
       "agents": {
         "title": "Agentes na nuvem trabalhando 24/7",
@@ -191,7 +191,7 @@
       }
     },
     "stackHeading": "Stack",
-    "outro": "Ficou interessado? Me manda um email e vamos conversar — te aviso assim que a consultoria e a mentoria abrirem.",
+    "outro": "Ficou interessado? Me manda um email e vamos conversar. Te aviso assim que a consultoria e a mentoria abrirem.",
     "emailTitle": "Enviar email para Daniel Bergholz"
   }
 }

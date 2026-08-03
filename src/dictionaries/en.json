@@ -7,7 +7,7 @@
     },
     "videos": {
       "title": "Videos | Daniel Bergholz",
-      "description": "Watch Daniel Bergholz's videos or read the article version — fullstack web development tutorials, programming tips, and developer content"
+      "description": "Watch Daniel Bergholz's videos or read the article version: fullstack web development tutorials, programming tips, and developer content"
     },
     "courses": {
       "title": "Courses | Daniel Bergholz",
@@ -65,7 +65,7 @@
   },
   "videos": {
     "title": "Videos",
-    "intro": "Everything I publish, newest first. Most videos come with a written version too — watch on YouTube or read the article, whichever you prefer."
+    "intro": "Everything I publish, newest first. Most videos come with a written version too: watch on YouTube or read the article, whichever you prefer."
   },
   "feed": {
     "searchLabel": "Search videos and articles",
@@ -133,13 +133,13 @@
   },
   "workWithMe": {
     "title": "Work with me",
-    "intro": "I help companies and developers get more out of AI — through trainings, consulting, mentorship, and content that reaches thousands of developers.",
+    "intro": "I help companies and developers get more out of AI through trainings, consulting, mentorship, and content that reaches thousands of developers.",
     "comingSoon": "Coming soon",
     "open": "Open",
     "services": {
       "business": {
         "title": "Business Consulting",
-        "description": "I help your business grow with AI: hands-on technical trainings and workshops for your employees, and consulting to automate manual work in any role — engineering, support, operations, and beyond.",
+        "description": "I help your business grow with AI: hands-on technical trainings and workshops for your employees, and consulting to automate manual work in any role, from engineering to support and operations.",
         "highlights": [
           "Technical trainings and workshops for your team",
           "Automation of manual work in any role",
@@ -149,7 +149,7 @@
       },
       "mentorship": {
         "title": "1-on-1 Mentorship",
-        "description": "Individual mentorship for developers who want to level up. I help you adopt cutting-edge AI tooling — and help Brazilian devs land a remote job abroad.",
+        "description": "Individual mentorship for developers who want to level up. I help you adopt cutting-edge AI tooling and help Brazilian devs land a remote job abroad.",
         "highlights": [
           "Adopt cutting-edge AI tooling in your daily work",
           "Land a remote job abroad (for Brazilian devs)",
@@ -179,11 +179,11 @@
     "ai": {
       "engineering": {
         "title": "AI-assisted software engineering",
-        "description": "Ship in days what used to take weeks — without giving up quality."
+        "description": "Ship in days what used to take weeks, without giving up quality."
       },
       "automation": {
         "title": "Automation",
-        "description": "Turn repetitive manual work into reliable workflows, for any role — not just engineering."
+        "description": "Turn repetitive manual work into reliable workflows for any role, not just engineering."
       },
       "agents": {
         "title": "Cloud agents working 24/7",
@@ -191,7 +191,7 @@
       }
     },
     "stackHeading": "Tech stack",
-    "outro": "Interested in any of these? Send me an email and let's talk — I'll let you know as soon as consulting and mentorship open up.",
+    "outro": "Interested in any of these? Send me an email and let's talk. I'll let you know as soon as consulting and mentorship open up.",
     "emailTitle": "Send email to Daniel Bergholz"
   }
 }
