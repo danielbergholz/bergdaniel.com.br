@@ -41,10 +41,12 @@ export function pageAlternates(locale: Locale, path: string) {
   }
 }
 
-// Inverse of localePath for public URLs: "/en/videos" -> "/videos".
+// Inverse of localePath: "/en/videos" -> "/videos". Also strips the default
+// locale's prefix ("/pt/videos" -> "/videos") — it never appears in public
+// URLs, but stripping it keeps callers correct even if they're ever handed
+// the internal rewritten path.
 export function stripLocalePrefix(pathname: string): string {
   for (const locale of locales) {
-    if (locale === defaultLocale) continue
     if (pathname === `/${locale}`) return "/"
     if (pathname.startsWith(`/${locale}/`))
       return pathname.slice(locale.length + 1)

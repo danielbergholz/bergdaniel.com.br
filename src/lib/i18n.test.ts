@@ -26,6 +26,10 @@ test("stripLocalePrefix inverts localePath for public URLs", () => {
   assert.equal(stripLocalePrefix("/videos"), "/videos")
   assert.equal(stripLocalePrefix("/en"), "/")
   assert.equal(stripLocalePrefix("/en/videos"), "/videos")
+  // The default locale's prefix only exists internally (proxy rewrite), but
+  // strip it too so callers can't build double-prefixed paths from it.
+  assert.equal(stripLocalePrefix("/pt"), "/")
+  assert.equal(stripLocalePrefix("/pt/videos"), "/videos")
   // Not a locale prefix, just a path that starts with "en".
   assert.equal(stripLocalePrefix("/enigma"), "/enigma")
 })

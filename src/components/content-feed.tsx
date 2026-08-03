@@ -6,7 +6,7 @@ import { Suspense, useEffect, useId, useRef, useState } from "react"
 import { ContentCard } from "@/components/content-card"
 import { ContentFeedSkeleton } from "@/components/skeletons"
 import type { Dictionary } from "@/dictionaries"
-import type { Locale } from "@/lib/i18n"
+import { type Locale, localePath } from "@/lib/i18n"
 import type { ContentItem } from "@/lib/types"
 
 type Props = {
@@ -130,7 +130,7 @@ function ContentFeedInner({ items, locale, t, cardLabels }: Props) {
       params.delete("q")
     }
     const queryString = params.toString()
-    const basePath = pathname ?? "/videos"
+    const basePath = pathname ?? localePath(locale, "/videos")
     router.replace(queryString ? `${basePath}?${queryString}` : basePath, {
       scroll: false
     })
