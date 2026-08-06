@@ -1,9 +1,9 @@
 {
   "meta": {
     "home": {
-      "title": "Daniel Bergholz - Content Creator, Educator & Consultant",
-      "description": "Daniel Bergholz is a Content Creator, Educator and Consultant from Brazil, teaching programming and helping companies and developers get more out of AI",
-      "ogDescription": "Daniel Bergholz is a Content Creator, Educator and Consultant from Brazil, teaching programming and helping companies get more out of AI"
+      "title": "Daniel Bergholz - Software Engineer, Content Creator & Educator",
+      "description": "Daniel Bergholz is a Software Engineer, Content Creator and Educator from Brazil, teaching programming and helping companies and developers get more out of AI",
+      "ogDescription": "Daniel Bergholz is a Software Engineer, Content Creator and Educator from Brazil, teaching programming and helping companies get more out of AI"
     },
     "videos": {
       "title": "Videos | Daniel Bergholz",
@@ -49,7 +49,7 @@
     "hello": "Hello",
     "introBefore": "My name is",
     "name": "Daniel Bergholz",
-    "introAfter": ", I'm a Content Creator, Educator and Consultant from Brazil",
+    "introAfter": ", I'm a Software Engineer, Content Creator and Educator from Brazil",
     "getInTouch": "Get in touch",
     "getInTouchAria": "Get in touch via email",
     "socialAria": "Social Media",

@@ -1,9 +1,9 @@
 {
   "meta": {
     "home": {
-      "title": "Daniel Bergholz - Criador de Conteúdo, Professor e Consultor",
-      "description": "Daniel Bergholz é criador de conteúdo, professor e consultor. Ensina programação e ajuda empresas e devs a aproveitarem melhor a IA",
-      "ogDescription": "Daniel Bergholz é criador de conteúdo, professor e consultor. Ensina programação e ajuda empresas a aproveitarem melhor a IA"
+      "title": "Daniel Bergholz - Engenheiro de Software, Criador de Conteúdo e Professor",
+      "description": "Daniel Bergholz é engenheiro de software, criador de conteúdo e professor. Ensina programação e ajuda empresas e devs a aproveitarem melhor a IA",
+      "ogDescription": "Daniel Bergholz é engenheiro de software, criador de conteúdo e professor. Ensina programação e ajuda empresas a aproveitarem melhor a IA"
     },
     "videos": {
       "title": "Vídeos | Daniel Bergholz",
@@ -49,7 +49,7 @@
     "hello": "Olá",
     "introBefore": "Meu nome é",
     "name": "Daniel Bergholz",
-    "introAfter": ", sou criador de conteúdo, professor e consultor",
+    "introAfter": ", sou engenheiro de software, criador de conteúdo e professor",
     "getInTouch": "Fale comigo",
     "getInTouchAria": "Fale comigo por email",
     "socialAria": "Redes sociais",
