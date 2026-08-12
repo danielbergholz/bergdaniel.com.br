@@ -5,7 +5,10 @@ import type {
   Playlists,
   VideoDetails
 } from "@/lib/types"
-import { isAcceptedCollaborator } from "@/lib/youtube-collabs"
+import {
+  isAcceptedCollaborator,
+  isOnOrAfterCollabStart
+} from "@/lib/youtube-collabs"
 import { parseIsoDuration } from "@/lib/utils"
 
 const API_KEY = process.env.YOUTUBE_API_KEY
@@ -144,11 +147,15 @@ const getHostUploads = async (maxResults: number): Promise<LatestVideo[]> => {
 // Guest appearances on a host channel (Dashbit by default): recent uploads
 // where this channel is an accepted YouTube Studio collaborator. The Data API
 // has no collaborator field, so each candidate is checked via InnerTube.
+// Only videos on/after COLLAB_START (2026-08-03) are considered — older host
+// uploads can falsely list this channel as a collaborator.
 // Missing CHANNEL_ID → [] (do not fail the page).
 export const getCollabVideos = async (): Promise<LatestVideo[]> => {
   if (!CHANNEL_ID) return []
 
-  const candidates = await getHostUploads(COLLAB_CANDIDATE_COUNT)
+  const candidates = (await getHostUploads(COLLAB_CANDIDATE_COUNT)).filter(
+    (video) => isOnOrAfterCollabStart(video.snippet.publishedAt)
+  )
 
   const checks = await Promise.all(
     candidates.map(async (video) => {

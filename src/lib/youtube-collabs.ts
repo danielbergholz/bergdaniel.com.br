@@ -4,6 +4,16 @@
 
 const CHANNEL_ID_RE = /^UC[\w-]{22}$/
 
+// Earliest publish date for host-channel collabs we trust. Older Dashbit videos
+// sometimes list this channel as a collaborator without being a real guest
+// appearance (e.g. April 2026 Tidewave uploads). Inclusive of 2026-08-03.
+export const COLLAB_START_MS = Date.parse("2026-08-03T00:00:00.000Z")
+
+export function isOnOrAfterCollabStart(publishedAt: string): boolean {
+  const ms = Date.parse(publishedAt)
+  return !Number.isNaN(ms) && ms >= COLLAB_START_MS
+}
+
 function asRecord(value: unknown): Record<string, unknown> | null {
   if (value === null || typeof value !== "object" || Array.isArray(value)) {
     return null

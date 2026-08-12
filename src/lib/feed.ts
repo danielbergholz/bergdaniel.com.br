@@ -4,6 +4,7 @@ import type {
   LatestVideo,
   VideoDetails
 } from "@/lib/types"
+import { isOnOrAfterCollabStart } from "./youtube-collabs.ts"
 
 // Videos at or under this length are treated as Shorts and dropped from the feed.
 // The API has no Shorts flag; this channel's Shorts are all <=65s and its shortest
@@ -123,7 +124,9 @@ export function buildContentFeed(
   }
 
   const collabIds = new Set(
-    collabVideos.map((video) => video.snippet.resourceId.videoId)
+    collabVideos
+      .filter((video) => isOnOrAfterCollabStart(video.snippet.publishedAt))
+      .map((video) => video.snippet.resourceId.videoId)
   )
 
   const usedArticleIds = new Set<number>()
@@ -151,11 +154,12 @@ export function buildContentFeed(
     )
   }
 
-  // Guest appearances on other channels (Studio collaborator). Skip Shorts and
-  // IDs already present from own uploads (those already got isCollab above).
+  // Guest appearances on other channels (Studio collaborator). Skip Shorts,
+  // pre-cutoff publishes, and IDs already present from own uploads.
   for (const video of collabVideos) {
     const videoId = video.snippet.resourceId.videoId
     if (seenVideoIds.has(videoId)) continue
+    if (!isOnOrAfterCollabStart(video.snippet.publishedAt)) continue
     const videoDetails = details.get(videoId)
     if (isShort(videoDetails)) continue
     seenVideoIds.add(videoId)

@@ -271,8 +271,8 @@ test("sorts newest first across videos and articles", () => {
 })
 
 test("collab videos appear with isCollab and sort by date with own videos", () => {
-  const own = video({ id: "ownvid00001", date: "2025-01-01T00:00:00Z" })
-  const collab = video({ id: "collab00001", date: "2025-03-01T00:00:00Z" })
+  const own = video({ id: "ownvid00001", date: "2026-08-01T00:00:00Z" })
+  const collab = video({ id: "collab00001", date: "2026-08-04T00:00:00Z" })
   const feed = buildContentFeed(
     [own],
     [],
@@ -293,8 +293,14 @@ test("collab videos appear with isCollab and sort by date with own videos", () =
 })
 
 test("collab Shorts are dropped", () => {
-  const collabShort = video({ id: "collabshort1" })
-  const collabLong = video({ id: "collablong01" })
+  const collabShort = video({
+    id: "collabshort1",
+    date: "2026-08-04T00:00:00Z"
+  })
+  const collabLong = video({
+    id: "collablong01",
+    date: "2026-08-04T00:00:00Z"
+  })
   const feed = buildContentFeed(
     [],
     [],
@@ -312,8 +318,8 @@ test("collab Shorts are dropped", () => {
 })
 
 test("duplicate id in uploads and collabs does not double-card", () => {
-  const own = video({ id: "shared00001", date: "2025-02-01T00:00:00Z" })
-  const collab = video({ id: "shared00001", date: "2025-02-01T00:00:00Z" })
+  const own = video({ id: "shared00001", date: "2026-08-04T00:00:00Z" })
+  const collab = video({ id: "shared00001", date: "2026-08-04T00:00:00Z" })
   const feed = buildContentFeed(
     [own],
     [],
@@ -324,5 +330,26 @@ test("duplicate id in uploads and collabs does not double-card", () => {
 
   assert.equal(feed.length, 1)
   assert.equal(feed[0].id, "shared00001")
+  assert.equal(feed[0].isCollab, true)
+})
+
+test("collabs published before 2026-08-03 are dropped", () => {
+  const tooOld = video({ id: "oldcollab001", date: "2026-08-02T23:59:59Z" })
+  const onCutoff = video({ id: "cutcollab001", date: "2026-08-03T00:00:00Z" })
+  const feed = buildContentFeed(
+    [],
+    [],
+    noCourses,
+    durations([
+      ["oldcollab001", 600],
+      ["cutcollab001", 600]
+    ]),
+    [tooOld, onCutoff]
+  )
+
+  assert.deepEqual(
+    feed.map((i) => i.id),
+    ["cutcollab001"]
+  )
   assert.equal(feed[0].isCollab, true)
 })

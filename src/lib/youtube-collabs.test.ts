@@ -2,7 +2,8 @@ import assert from "node:assert/strict"
 import { test } from "node:test"
 import {
   extractCollaboratorChannelIds,
-  isAcceptedCollaborator
+  isAcceptedCollaborator,
+  isOnOrAfterCollabStart
 } from "./youtube-collabs.ts"
 
 const MINE = "UCnmbV9eyMwIl50Ji1ObFxqg"
@@ -95,4 +96,11 @@ test("ignores channel ids outside collab dialog list items", () => {
   }
   assert.deepEqual(extractCollaboratorChannelIds(payload), [])
   assert.equal(isAcceptedCollaborator(payload, MINE), false)
+})
+
+test("isOnOrAfterCollabStart is inclusive of 2026-08-03", () => {
+  assert.equal(isOnOrAfterCollabStart("2026-08-02T23:59:59Z"), false)
+  assert.equal(isOnOrAfterCollabStart("2026-08-03T00:00:00Z"), true)
+  assert.equal(isOnOrAfterCollabStart("2026-08-04T12:00:00Z"), true)
+  assert.equal(isOnOrAfterCollabStart("not-a-date"), false)
 })
