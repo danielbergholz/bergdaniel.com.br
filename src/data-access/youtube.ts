@@ -1,9 +1,11 @@
 import type {
   ChannelStats,
+  LatestVideo,
   LatestVideos,
   Playlists,
   VideoDetails
 } from "@/lib/types"
+import { isAcceptedCollaborator } from "@/lib/youtube-collabs"
 import { parseIsoDuration } from "@/lib/utils"
 
 const API_KEY = process.env.YOUTUBE_API_KEY
@@ -82,6 +84,84 @@ export const getCourses = async () => {
   )
 
   return { englishCourses, portugueseCourses }
+}
+
+// Host channel whose uploads we scan for Studio collabs that include this
+// channel. Defaults to Dashbit; override with YOUTUBE_COLLAB_CHANNEL_ID.
+const COLLAB_HOST_CHANNEL_ID =
+  process.env.YOUTUBE_COLLAB_CHANNEL_ID ?? "UCN75P76wkH3V_CDWCKpM-pQ"
+const COLLAB_HOST_UPLOADS_PLAYLIST_ID = COLLAB_HOST_CHANNEL_ID.replace(
+  /^UC/,
+  "UU"
+)
+const COLLAB_CANDIDATE_COUNT = 30
+
+const INNERTUBE_CLIENT = {
+  clientName: "WEB",
+  clientVersion: "2.20260101.00.00",
+  hl: "en",
+  gl: "US"
+}
+
+// InnerTube watch-next payload — the only place Studio collaborators appear.
+// Undocumented; on failure return null so one bad video does not break the feed.
+const fetchWatchNext = async (videoId: string): Promise<unknown | null> => {
+  try {
+    const response = await fetch(
+      "https://www.youtube.com/youtubei/v1/next?prettyPrint=false",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          context: { client: INNERTUBE_CLIENT },
+          videoId
+        }),
+        next: { revalidate: 86400 }
+      }
+    )
+    if (!response.ok) return null
+    return response.json()
+  } catch {
+    return null
+  }
+}
+
+const getHostUploads = async (maxResults: number): Promise<LatestVideo[]> => {
+  const url = `${BASE_URL}/playlistItems?part=snippet&maxResults=${maxResults}&playlistId=${COLLAB_HOST_UPLOADS_PLAYLIST_ID}&key=${API_KEY}`
+  const response = await fetch(url, { next: { revalidate: 3600 } })
+  if (!response.ok) {
+    throw new Error(`YouTube API error: ${response.status}`)
+  }
+
+  const data: LatestVideos = await response.json()
+  if (!Array.isArray(data.items)) {
+    throw new Error("YouTube API: missing playlist items")
+  }
+
+  return data.items
+}
+
+// Guest appearances on a host channel (Dashbit by default): recent uploads
+// where this channel is an accepted YouTube Studio collaborator. The Data API
+// has no collaborator field, so each candidate is checked via InnerTube.
+// Missing CHANNEL_ID → [] (do not fail the page).
+export const getCollabVideos = async (): Promise<LatestVideo[]> => {
+  if (!CHANNEL_ID) return []
+
+  const candidates = await getHostUploads(COLLAB_CANDIDATE_COUNT)
+
+  const checks = await Promise.all(
+    candidates.map(async (video) => {
+      const videoId = video.snippet.resourceId.videoId
+      const payload = await fetchWatchNext(videoId)
+      if (!payload || !isAcceptedCollaborator(payload, CHANNEL_ID)) {
+        return null
+      }
+      return video
+    })
+  )
+
+  return checks.filter((video): video is LatestVideo => video !== null)
 }
 
 type VideoDetailsResponse = {

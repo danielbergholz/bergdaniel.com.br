@@ -1,5 +1,6 @@
 import { getArticles } from "@/data-access/blog"
 import {
+  getCollabVideos,
   getCourseVideoIds,
   getLatestVideos,
   getVideoDetails
@@ -12,15 +13,25 @@ import type { ContentItem } from "@/lib/types"
 // `body_markdown` is consumed in there and never returned, so the large article
 // bodies don't reach the client.
 export const getContentFeed = async (): Promise<ContentItem[]> => {
-  const [videos, articles, courseVideoIds] = await Promise.all([
+  const [videos, articles, courseVideoIds, collabVideos] = await Promise.all([
     getLatestVideos(50),
     getArticles(),
-    getCourseVideoIds()
+    getCourseVideoIds(),
+    getCollabVideos()
   ])
 
-  const details = await getVideoDetails(
-    videos.map((video) => video.snippet.resourceId.videoId)
-  )
+  const details = await getVideoDetails([
+    ...new Set([
+      ...videos.map((video) => video.snippet.resourceId.videoId),
+      ...collabVideos.map((video) => video.snippet.resourceId.videoId)
+    ])
+  ])
 
-  return buildContentFeed(videos, articles, courseVideoIds, details)
+  return buildContentFeed(
+    videos,
+    articles,
+    courseVideoIds,
+    details,
+    collabVideos
+  )
 }

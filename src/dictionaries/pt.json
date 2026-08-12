@@ -65,7 +65,7 @@
   },
   "videos": {
     "title": "Vídeos",
-    "intro": "Tudo que eu publico, do mais recente ao mais antigo. A maioria dos vídeos também tem versão escrita: assista no YouTube ou leia o artigo, como preferir."
+    "intro": "Tudo que eu publico, do mais recente ao mais antigo — incluindo participações em outros canais. A maioria dos meus vídeos também tem versão escrita: assista no YouTube ou leia o artigo, como preferir."
   },
   "feed": {
     "searchLabel": "Buscar vídeos e artigos",
@@ -80,6 +80,7 @@
     "watch": "Assistir",
     "read": "Ler",
     "article": "Artigo",
+    "collab": "Collab",
     "minRead": "min de leitura"
   },
   "courses": {

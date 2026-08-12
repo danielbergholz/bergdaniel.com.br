@@ -30,6 +30,8 @@ export type ContentItem = {
   videoUrl?: string
   articleUrl?: string
   readingMinutes?: number
+  // Guest appearance via YouTube Studio collab (often another channel).
+  isCollab?: boolean
 }
 
 // Per-video metadata from the videos endpoint, keyed by video id.

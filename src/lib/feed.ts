@@ -56,7 +56,8 @@ export function siteLanguage(tag: string | undefined): "en" | "pt" | undefined {
 function videoToItem(
   video: LatestVideo,
   article: Article | undefined,
-  details: VideoDetails | undefined
+  details: VideoDetails | undefined,
+  isCollab = false
 ): ContentItem {
   const { title, publishedAt, thumbnails, resourceId, description } =
     video.snippet
@@ -73,7 +74,8 @@ function videoToItem(
     language: siteLanguage(details?.language),
     videoUrl: `https://www.youtube.com/watch?v=${resourceId.videoId}`,
     articleUrl: article?.url,
-    readingMinutes: article?.reading_time_minutes
+    readingMinutes: article?.reading_time_minutes,
+    ...(isCollab ? { isCollab: true } : {})
   }
 }
 
@@ -94,15 +96,23 @@ function articleToItem(article: Article, videoId: string | null): ContentItem {
   }
 }
 
-// Merge YouTube uploads and dev.to posts into one deduped, newest-first feed.
-// Pairing is automatic: a post's body links its video, and a video's description
-// links its post — no manual mapping. Shorts and course-playlist videos are
-// excluded. Pure (no I/O) so it can be unit-tested with fixtures.
+function isShort(details: VideoDetails | undefined): boolean {
+  const duration = details?.durationSeconds
+  return duration !== undefined && duration <= SHORTS_MAX_SECONDS
+}
+
+// Merge YouTube uploads, Studio-collab guest videos, and dev.to posts into one
+// deduped, newest-first feed. Pairing is automatic for own uploads: a post's
+// body links its video, and a video's description links its post — no manual
+// mapping. Shorts and course-playlist videos are excluded. Collabs are marked
+// with isCollab (guest appearances on other channels). Pure (no I/O) so it
+// can be unit-tested with fixtures.
 export function buildContentFeed(
   videos: LatestVideo[],
   articles: Article[],
   courseVideoIds: Set<string>,
-  details: Map<string, VideoDetails>
+  details: Map<string, VideoDetails>,
+  collabVideos: LatestVideo[] = []
 ): ContentItem[] {
   const articleByVideoId = new Map<string, Article>()
   const articleBySlug = new Map<string, Article>()
@@ -112,7 +122,12 @@ export function buildContentFeed(
     if (videoId) articleByVideoId.set(videoId, article)
   }
 
+  const collabIds = new Set(
+    collabVideos.map((video) => video.snippet.resourceId.videoId)
+  )
+
   const usedArticleIds = new Set<number>()
+  const seenVideoIds = new Set<string>()
   const items: ContentItem[] = []
 
   for (const video of videos) {
@@ -122,8 +137,7 @@ export function buildContentFeed(
     // keep anything whose duration is unknown rather than guess).
     if (courseVideoIds.has(videoId)) continue
     const videoDetails = details.get(videoId)
-    const duration = videoDetails?.durationSeconds
-    if (duration !== undefined && duration <= SHORTS_MAX_SECONDS) continue
+    if (isShort(videoDetails)) continue
 
     let article = articleByVideoId.get(videoId)
     if (!article) {
@@ -131,7 +145,21 @@ export function buildContentFeed(
       if (slug) article = articleBySlug.get(slug)
     }
     if (article) usedArticleIds.add(article.id)
-    items.push(videoToItem(video, article, videoDetails))
+    seenVideoIds.add(videoId)
+    items.push(
+      videoToItem(video, article, videoDetails, collabIds.has(videoId))
+    )
+  }
+
+  // Guest appearances on other channels (Studio collaborator). Skip Shorts and
+  // IDs already present from own uploads (those already got isCollab above).
+  for (const video of collabVideos) {
+    const videoId = video.snippet.resourceId.videoId
+    if (seenVideoIds.has(videoId)) continue
+    const videoDetails = details.get(videoId)
+    if (isShort(videoDetails)) continue
+    seenVideoIds.add(videoId)
+    items.push(videoToItem(video, undefined, videoDetails, true))
   }
 
   // Posts with no matching video card become their own cards (still linking a

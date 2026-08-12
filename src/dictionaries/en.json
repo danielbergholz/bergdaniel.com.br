@@ -65,7 +65,7 @@
   },
   "videos": {
     "title": "Videos",
-    "intro": "Everything I publish, newest first. Most videos come with a written version too: watch on YouTube or read the article, whichever you prefer."
+    "intro": "Everything I publish, newest first — including guest appearances on other channels. Most of my own videos come with a written version too: watch on YouTube or read the article, whichever you prefer."
   },
   "feed": {
     "searchLabel": "Search videos and articles",
@@ -80,6 +80,7 @@
     "watch": "Watch",
     "read": "Read",
     "article": "Article",
+    "collab": "Collab",
     "minRead": "min read"
   },
   "courses": {

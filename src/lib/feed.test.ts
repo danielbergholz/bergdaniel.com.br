@@ -269,3 +269,60 @@ test("sorts newest first across videos and articles", () => {
     ["article-3", "oldvid00001"]
   )
 })
+
+test("collab videos appear with isCollab and sort by date with own videos", () => {
+  const own = video({ id: "ownvid00001", date: "2025-01-01T00:00:00Z" })
+  const collab = video({ id: "collab00001", date: "2025-03-01T00:00:00Z" })
+  const feed = buildContentFeed(
+    [own],
+    [],
+    noCourses,
+    durations([
+      ["ownvid00001", 600],
+      ["collab00001", 900]
+    ]),
+    [collab]
+  )
+
+  assert.deepEqual(
+    feed.map((i) => i.id),
+    ["collab00001", "ownvid00001"]
+  )
+  assert.equal(feed[0].isCollab, true)
+  assert.equal(feed[1].isCollab, undefined)
+})
+
+test("collab Shorts are dropped", () => {
+  const collabShort = video({ id: "collabshort1" })
+  const collabLong = video({ id: "collablong01" })
+  const feed = buildContentFeed(
+    [],
+    [],
+    noCourses,
+    durations([
+      ["collabshort1", 60],
+      ["collablong01", 600]
+    ]),
+    [collabShort, collabLong]
+  )
+
+  assert.equal(feed.length, 1)
+  assert.equal(feed[0].id, "collablong01")
+  assert.equal(feed[0].isCollab, true)
+})
+
+test("duplicate id in uploads and collabs does not double-card", () => {
+  const own = video({ id: "shared00001", date: "2025-02-01T00:00:00Z" })
+  const collab = video({ id: "shared00001", date: "2025-02-01T00:00:00Z" })
+  const feed = buildContentFeed(
+    [own],
+    [],
+    noCourses,
+    durations([["shared00001", 600]]),
+    [collab]
+  )
+
+  assert.equal(feed.length, 1)
+  assert.equal(feed[0].id, "shared00001")
+  assert.equal(feed[0].isCollab, true)
+})
